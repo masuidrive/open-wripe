@@ -1,0 +1,14 @@
+development:
+  app_key: XXXXXXX
+  app_secret: XXXXXXX
+  mode: sandbox
+
+test:
+  app_key: XXXXXXX
+  app_secret: XXXXXXX
+  mode: sandbox
+
+production:
+  app_key: <%= ENV['DROPBOX_KEY'] %>
+  app_secret: <%= ENV['DROPBOX_SECRET'] %>
+  mode: sandbox

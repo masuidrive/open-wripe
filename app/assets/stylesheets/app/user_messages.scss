@@ -1,0 +1,67 @@
+#user_messages {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .subject {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .body {
+    font-size: 12px;
+    opacity: 0.5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .alert {
+    padding: 4px 8px;
+    margin: 8px 0;
+  }
+  
+  .close {
+    right: 0!important;
+  }
+}
+
+/*
+
+<div id="user_messages">
+<div class="alert alert-info">
+ <button type="button" class="close" data-dismiss="alert">&times;</button>
+<a href="#user_message_info" data-toggle="modal">
+ <div class="subject">Request Request Request Request</div>
+ <div class="body">
+  Best check yo self, you're not...
+ </div>
+</a>
+</div>
+
+<div class="alert alert-info">
+ <button type="button" class="close" data-dismiss="alert">&times;</button>
+ <div class="subject">Request</div>
+ <div class="body">
+  Best check yo self, you're not...
+ </div>
+</div>
+</div>
+
+
+<div class="modal hide fade" id="user_message_info">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <p>One fine body…</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Stay in sidebar</a>
+    <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
+  </div>
+</div>
+*/

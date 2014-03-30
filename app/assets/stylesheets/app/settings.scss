@@ -1,0 +1,38 @@
+$icon_size: 128px;
+
+#settings-backup {
+  .dropbox-icon128 {
+    position: absolute;
+    left: 15px;
+    top: 15px;    
+    width: $icon_size;
+    height: $icon_size;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-image: url('/images/dropbox_icon128.png');
+  }
+}
+
+#settings-evernote {
+  .evernote-icon128 {
+    position: absolute;
+    left: 15px;
+    top: 15px;    
+    width: $icon_size;
+    height: $icon_size;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-image: url('/images/evernote_icon128.png');
+  }
+}
+
+.desktop, .tablet {
+  #settings-backup, #settings-evernote {
+    .messages {
+      padding: 0 !important;
+      margin: 0 0 0 $icon_size + 15px !important;
+      min-height: $icon_size;
+    }
+  }
+}
+

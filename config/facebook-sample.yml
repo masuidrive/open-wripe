@@ -1,0 +1,19 @@
+development:
+  application_id: 123456789
+  application_secret: XXXXXXX
+  callback: http://wripe.dev/fbauth/callback
+
+test:
+  application_id: 123456789
+  application_secret: XXXXXXX
+  callback: http://localhost:57124/fbauth/callback
+  tests:
+    - email: test1@tfbnw.net
+      password: wripe
+      account: dorothy
+      name: Test
+
+production:
+  application_id: <%= ENV['FACEBOOK_APP_ID'] %>
+  application_secret: <%= ENV['EVERNOTE_SECRET'] %>
+  callback: <%= ENV['APP_BASE'] %>/fbauth/callback

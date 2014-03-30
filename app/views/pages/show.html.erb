@@ -1,0 +1,93 @@
+<style>
+html, body {
+  background: white;
+}
+
+.container-fluid {
+  margin-top: 48px;
+}
+
+.span4 {
+  margin-top: 10px;
+}
+
+#headings_html .heading-1 {
+  margin-left: 0em;
+}
+
+#headings_html .heading-2 {
+  margin-left: 0.5em;
+}
+
+#headings_html .heading-3 {
+  margin-left: 1.0em;
+}
+
+#headings_html_box {
+  background-color: #eee;
+  padding: 8px 0 1px 0;
+  margin: 12px 0 0 0;
+}
+</style>
+
+<%= render_top_nav do %>
+  <li><a><%= @page.title %></a></li>
+<% end %>
+
+<div class="container-fluid">
+ <div class="row-fluid">
+  <div class="span8">
+   <div id="contents_html">
+    <ul id="contents_list">
+    </ul>
+   </div>
+  </div>
+  <div class="span4">
+   <div id="headings_html_box">
+    <ul id="headings_html">
+    </ul>
+   </div>
+  </div>
+ </div>
+</div>
+
+<%= javascript_include_tag :app, :defer =>"defer" %>
+<script>
+marked.Parser.prototype.tok_orig = marked.Parser.prototype.tok;
+marked.Parser.prototype.tok = function() {
+  switch (this.token.type) {
+    case 'heading': {
+      return '<h'
+        + this.token.depth
+        + ' id="'
+        + this.token.el_id
+        + '"><a name="'
+        + this.token.el_id
+        + '"></a>'
+        + this.inline.output(this.token.text)
+        + '</h'
+        + this.token.depth
+        + '>\n';
+    }
+    default:
+      return this.tok_orig();
+  }
+};
+
+$(function() {
+  var contents = "<%=raw escape_javascript(@page.body) %>";
+  var tokens = marked.lexer(contents);
+  var headings = [], headings_html = [];
+  for(var i=0; i<tokens.length; ++i) {
+    if(tokens[i].type == 'heading') {
+      if(tokens[i].depth <= 3) {
+        tokens[i].el_id = 'heading-' + i;
+        headings.push(tokens[i]);
+        headings_html += '<li class="heading-' + tokens[i].depth + '"><a href="#' + tokens[i].el_id + '">' + escape_html(tokens[i].text) + '</a></li>';
+        }
+    }
+  }
+  $('#headings_html').html(headings_html);
+  $('#contents_list').html(marked.parser(tokens));
+});
+</script>

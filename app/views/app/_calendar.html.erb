@@ -1,0 +1,130 @@
+<div id="calendar-container" class="main-container hide">
+ <div id="calendar-main-pane">
+
+  <div id="calendar-loading" class="alert alert-info alert-loading hide">Loading...</div>
+  <div id="calendar-load-error" class="alert alert-error alert-load-error hide">
+   <strong>Error:</strong> <span id="calendar-loading-error-text"></span>
+  </div>
+  
+  <div id="calendar-pane" class="pane scrollable">
+   <div id="calendar-header" class="clearfix">
+    <h2 class="hidden-phone pull-left">
+     <span id="calendar-date"></span>
+     <button class="btn btn-small" id="calendar-prev-month-button"><i class="icon-backward"></i></button>
+     <button class="btn btn-small" id="calendar-next-month-button"><i class="icon-forward"></i></button>
+    </h2>
+    <div id="calendar-select-date" class="pull-right">
+     <select id="calendar-month">
+      <option value="1">January - 1</option>       
+      <option value="2">February - 2</option>       
+      <option value="3">March - 3</option>       
+      <option value="4">April - 4</option>       
+      <option value="5">May - 5</option>       
+      <option value="6">June - 6</option>       
+      <option value="7">July - 7</option>       
+      <option value="8">August - 8</option>       
+      <option value="9">September - 9</option>       
+      <option value="10">October - 10</option>       
+      <option value="11">November - 11</option>       
+      <option value="12">December - 12</option> 
+     </select>
+     <select id="calendar-year">
+      <option value="2012">2012</option>
+      <option value="2013">2013</option>
+      <option value="2014">2014</option>
+      <option value="2015">2015</option>
+      <option value="2016">2016</option>
+      <option value="2017">2017</option>
+      <option value="2018">2018</option>
+      <option value="2019">2019</option>
+     </select>
+     <button id="calendar-go" class="btn">Go</button>
+    </div>
+   </div><!-- #calendar-header -->
+
+   <div id="calendar-list-wrapper"><!-- calendar-list-page -->
+    <ul class="calendar-wdays-header clearfix">
+     <li class="day">mon</li>
+     <li class="day">tues</li>
+     <li class="day">wed</li>
+     <li class="day">thurs</li>
+     <li class="day">fri</li>
+     <li class="day">sat</li>
+     <li class="day">sun</li>
+    </ul>
+    <div id="calendar-loading" class="alert alert-info hide">Loading...</div>
+    <div id="calendar-loading-error" class="alert alert-error hide">
+     <strong>Error:</strong> <span id="calendar-loading-error-text"></span>
+    </div>
+    <div class="visible-phone">
+     <div id="calendar-no-items" class="hide">No items</div>
+    </div>
+    <ul id="calendar-list" class="clearfix">
+    </ul>
+   </div><!-- calendar-view -->
+  </div><!-- calendar-pane -->
+<!-- /calendar-pane -->
+
+  </div>
+<!-- /list-column -->
+
+<!-- sidebar-column -->
+ <div id="calendar-sidebar-pane" class="scrollable hidden-phone">
+  <div class="wrapper">
+
+   <%= render_help 'help-hotkey', '<i class="icon-keyboard"></i> Shortcuts' do %>
+    <p>
+     <ul>
+      <li>New - <strong>N</strong></li>
+      <li>Notes - <strong>I</strong></li>
+      <li>Archive - <strong>D</strong></li>
+      <li>Calendar - <strong>C</strong></li>
+      <li>Search - <strong>S</strong></li>
+      <li>Prev/Next month - <i class="icon-arrow-left"></i>/<i class="icon-arrow-right"></i>/<strong>H</strong>/<strong>L</strong></li>
+     </ul>
+    </p>
+   <% end %>
+
+   <%= render_help 'help-calendar', '<i class="icon-calendar"></i> Calendar' do %>
+    Dates writen in the title or body of your notes are automatically inserted in your calendar.
+   <% end %>
+
+   <%= render_help 'help-calendar-external', '<i class="icon-link"></i> Sync with externals' do %>
+    <p>
+     wri.pe can sync calendar with external services.<br/>
+     ex) Google calendar, iCal
+    </p>
+    <a class="btn btn-mini" role="button" data-toggle="modal" href="#calendar-sync-external"><i class="icon-calendar"></i> Sync with external services</a>
+   <% end %>
+
+   <div>
+    <a href="#" class="help-show-all">Show all helps</a>
+   </div>
+  </div><!-- wrapper -->
+ </div><!-- calendar-sidebar-pane -->
+
+</div><!-- calendar-container -->
+
+
+<%= render_dialog 'calendar-sync-external', 'Sync with calendar services', cancel: 'Close' do %>
+<p>
+  Copy the link below and paste it into your calendar app supports iCal feeds.
+</p>
+<p>
+  <input type="text" id="calendar-sync-external-url" readonly="readonly" />
+</p>
+<!-- p>
+ or
+</p>
+<p>
+ <a id="calendar-sync-gcal" class="btn" href="#" target="_blank"><i class="icon-calendar"></i> Add to your Google Calendar</a></br>
+ Synchronization may take a while to be applied to Google Calendar.
+</p -->
+
+<hr/>
+<p>
+ <span id="calendar-sync-generate-key" class="btn"><i class="icon-lock"></i> Regenerate new URL</span><br/>
+ You can regenerate new URL for sharing. Old URLs will be discard. 
+</p>
+
+<% end %>

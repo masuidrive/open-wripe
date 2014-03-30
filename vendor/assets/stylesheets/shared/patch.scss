@@ -1,0 +1,89 @@
+@import "layout";
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body form {
+  margin: 0;
+}
+
+a {
+  color: #2980b9;
+}
+
+.circle {
+  display: block;
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 12px;
+  background-color: #EA5444;
+  color: white;
+
+}
+
+.btn {
+  background-image: none !important;
+  text-shadow: none !important;
+  border: 0 !important;
+  box-shadow: none!important;
+  background-color: #95a5a6 !important;
+  color: white !important;
+}
+
+.btn.disabled {
+  opacity: 0.5;
+}
+
+.btn-success {
+  background-color: #27ae60 !important;
+}
+
+.btn-primary {
+  background-color: #2980b9 !important;
+}
+
+.btn-danger {
+  background-color: #c0392b !important;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+.space {
+  background: rgba(0.5, 0.5, 0.5, 0.05);
+  border-bottom: 1px solid rgba(0.5, 0.5, 0.5, 0.1);
+  margin: 0 1px;
+  padding: 0 2px;
+}
+
+.phone {
+  .navbar-fixed-top {
+    position: absolute!important;
+  }
+  .modal {
+    margin: 0px!important;
+    width: 90% !important;
+    left: 5% !important;
+  }
+
+  .container-fluid {
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+  }
+
+  .modal-header, .modal-body, .modal-footer {
+    padding: 8px 12px !important;
+  }
+}
+
+.tablet {
+  .navbar-fixed-top {
+    position: absolute!important;
+  }
+}

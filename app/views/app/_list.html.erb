@@ -1,0 +1,202 @@
+<div id="list-page-container" class="main-container hide">
+ <div id="list-page-main-pane">
+
+  <div id="list-page-loading" class="alert alert-info alert-loading hide">Loading...</div>
+  <div id="list-page-load-error" class="alert alert-error alert-load-error hide">
+   <strong>Error:</strong> <span id="list-page-loading-error-text"></span>
+  </div>
+  
+  <div id="list-page-paginate">
+   <div id="list-page-header" class="clearfix">
+    <form id="list-page-searchbox" class="hide pull-left form-search">
+     <div class="input-append">
+      <input type="text" class="search-query" id="list-page-search-query">
+      <button type="submit" id="list-page-search-submit" class="btn">
+        <span class="hidden-phone">Search</span>
+        <span class="visible-phone"><i class="icon-search"></i></span>
+      </button>
+     </div>
+    </form><!-- list-page-searchbox -->
+    <div id="list-page-header-title" class="pull-left">
+     <i class="icon-file-alt"></i> Notes
+    </div>
+    <div id="list-page-pageno"></div>
+   </div><!-- list-page-header -->
+  </div><!-- list-page-pagenate -->
+
+  <div id="list-page-tags-head" class="hidden">
+    <ul>
+      <li>Tag1</li>
+      <li>Tag2</li>
+      <li>Tag3</li>
+      <li>Tag4</li>
+    </ul>
+  </div>
+
+  <div id="list-page-wrapper" class="wrapper scrollable">
+   <div id="list-page"></div>
+   <div id="help-welcome" class="hide">
+    <div class="wrapper">
+     <h2>Welcome to wri.pe</h2>
+     <p>
+      wri.pe is a simple note taking service that can be used anywhere.
+     </p>
+     <p>
+      Dates writen in the title or body of your notes are automatically inserted in your calendar.
+     </p>
+     <p>
+      If you don't need a note anymore you can easily archive it.
+     </p>
+     <p>
+      Of course, you can use it from iPhone and Android devices.<!-- (Currently working on the offline mode)-->
+     </p>
+     <p>
+      I've made this application for my personal usage but I'm happy if many people start using it.
+     </p>
+    </div>
+    <div class="speaker">
+     <div class="icon"></div>
+     <div class="author">
+      <div class="name">Yuichiro MASUI</div>
+      <div class="title">Developer
+       <span class="social">
+        <a href="http://twitter.com/masuidrive_en" target="_blank"><i class="icon-twitter"></i></a>
+        <a href="https://facebook.com/masuidrive" target="_blank"><i class="icon-facebook-sign"></i></a>
+        <a href="https://github.com/masuidrive" target="_blank"><i class="icon-github"></i></a>
+       </span>
+      </div>
+     </div>
+    </div>
+   </div><!-- list-page-welcome -->
+   <div id="list-page-empty" class="hide">
+    <div class="wrapper">
+     <p>
+      If you archive a note it will be shown here.
+     </p>
+     <p>
+      Archive notes disapear for your calendar but will be still available through the search function.<br/>
+     </p>
+     <p>
+      Let's archive notes that are not being used lately!
+     </p>
+    </div>
+   </div><!-- list-page-empty -->
+
+   <div id="list-page-search-empty" class="hide">
+    <!-- 検索結果が空の時にココが表示されます -->
+   </div><!-- list-page-search-empty -->
+
+   <div id="list-page-eol">
+    <!-- リストの最後の座標を検出 -->
+   </div>
+
+   <div id="list-page-auto-loading">
+    <i class="icon-spinner icon-spin"></i> Auto loading...
+   </div>
+
+  </div><!-- .scrollable -->
+ </div><!-- list-page-main-pane -->
+
+ <div id="list-page-sidebar-pane" class="scrollable hidden-phone">
+  <div class="wrapper">
+
+   <div class="secret">
+    <div id="list-page-sidebar-tags" class="alert alert-help">
+     <div class="title"><i class="icon-tags"></i> Tags</div>
+     <div class="body">
+      <!-- tags -->
+     </div>
+    </div>
+   </div>
+
+   <%= render_help 'help-hotkey', '<i class="icon-keyboard"></i> Shortcuts' do %>
+    <p>
+     <ul>
+      <li>New - <span class="list-page-search-visible">[Ctrl]+</span><strong>N</strong></li>
+      <li>Notes - <span class="list-page-search-visible">[Ctrl]+</span><strong>I</strong></li>
+      <li>Archive - <span class="list-page-search-visible">[Ctrl]+</span><strong>D</strong></li>
+      <li>Calendar - <span class="list-page-search-visible">[Ctrl]+</span><strong>C</strong></li>
+      <li>Search - <span class="list-page-search-visible">[Ctrl]+</span><strong>S</strong></li>
+      <li>Up/Down cursor - <i class="icon-arrow-up"></i>/<i class="icon-arrow-down"></i>/<strong>K</strong>/<strong>J</strong></li>
+      <li>Edit - <span class="list-page-search-hidden">[Enter]/</span><span class="list-page-search-visible">[Ctrl]+</span><strong>O</strong></li>
+      <li>Archive a note - <span class="list-page-search-visible">[Ctrl]+</span><strong>E</strong></li>
+     </ul>
+    </p>
+    <div class="list-page-search-visible">You can use [Alt] and ⌘ instead of [Ctrl].</div>
+   <% end %>
+    
+   <%= render_help 'help-whatsnew', '<i class="icon-mobile-phone"></i> Updates' do %>
+    <!-- p><i class="icon-cloud-upload"></i> Connect with Evernote <i class="date">[July ??]</i></p -->
+    <p><i class="icon-cloud-upload"></i> Added Evernote sync <i class="date">[Sept 28th]</i></p>
+    <p><i class="icon-font"></i> Added font selector <i class="date">[Aug 3rd]</i></p>
+    <p><i class="icon-save"></i> Added autosave <i class="date">[July 29th]</i></p>
+    <p><i class="icon-calendar"></i> Sync with your calendar app <i class="date">[June 8]</i></p>
+    <p><i class="icon-pencil"></i> Open <a href="http://wripe.tumblr.com/" target="_blank">blog</a> <i class="date">[June 2]</i></p>
+   <% end %>
+   
+   <%= render_help 'help-mobile', '<i class="icon-mobile-phone"></i> iPhone / Android' do %>
+    wri.pe works on iPhone, iPad and Android.
+   <% end %>
+   
+   <%= render_help 'help-backup', '<i class="icon-time"></i> Backup' do %>
+     <p>
+     wri.pe can do an automatic daily backup of all your notes. Even if wri.pe is out of service your data will be safe. You can set the daily backup clicking on your account name on the top-right. 
+     </p>
+     <div>
+      <a id="help-backup-button" class="btn btn-mini"><i class="icon-time"></i> Back up to Dropbox</a>
+     </div>
+   <% end %>
+
+   <%= render_help 'help-evernote', '<i class="icon-cloud-upload"></i> Evernote' do %>
+     <p>
+      Connect with Evernote
+     </p>
+     <div>
+      <a id="help-evernote-button" class="btn btn-mini"><i class="icon-cloud-upload"></i> Connect with Evernote</a>
+     </div>
+   <% end %>
+   
+   <%= render_help 'help-upcoming', '<i class="icon-star"></i> Upcoming' do %>
+    <ul>
+     <li>Tagging</li>
+     <li>Share with friends</li>
+     <li>Publish to public</li>
+     <li>Support another of other text formats</li>
+     <li>File attachments</li>
+     <li>Browser add-on</li>
+     <li>If you have ideas, please <a href="#" id="help-feedback-button">feedback to me</a>.
+    </ul>
+   <% end %>
+
+   <div>
+    <a href="#" class="help-show-all">Show all helps</a>
+   </div>
+  </div><!-- wrapper -->
+ </div><!-- list-page-sidebar-pane -->
+
+</div><!-- /list-page-container -->
+
+<tmpl id="list-page-template" type="text/x-jquery-tmpl" class="hide"> 
+ <div class="page${cursor ? ' cursor' : ''}" id="list-page-${key}" name="${key}">
+  <div class="title">
+   <a href="#${key}/edit">${title}</a>
+  </div>
+  <div class="info clearfix">
+   <span class="modified_at">
+    <span class="hidden-phone">Updated at </span>${relativeDate(modified_at * 1000)}
+   </span>
+   <!--
+   <span class="owner">
+    by ${user.username}
+   </span>
+   -->
+   <a href="#" id="list-page-archive-${key}" key="${key}" class="btn btn-mini archive-btn ${archived ? 'hide' : ''}">
+    <i class="icon-folder-open"></i> Archive
+   </a>
+   <a href="#" id="list-page-unarchive-${key}" key="${key}" class="btn btn-mini unarchive-btn ${archived ? '' : 'hide'}">
+    <i class="icon-inbox"></i> Move to notes
+   </a>
+   <span id="list-page-moving-${key}" class="unarchive-btn hide">moving...</span>
+  </div>
+ </div><!-- page -->
+</tmpl><!-- page_template -->

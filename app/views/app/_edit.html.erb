@@ -1,0 +1,174 @@
+<div id="edit-page-container" class="main-container hide">
+ <div id="edit-page-main-pane" class="hidden-phone">
+
+  <div id="edit-page-loading">
+   <i class="icon-spinner icon-spin icon-4x"></i>
+  </div>
+
+  <div id="edit-page-wrapper"><!-- class="fixed-font" -->
+  <div>
+   <input autocomplete="off" id="edit-page-title" type="text" value="" />
+  </div>
+  <div>
+   <textarea id="edit-page-body"></textarea>
+  </div>
+
+  <div id="edit-page-bottom-bar" class="clearfix">
+   <%= render :partial => 'markdown_toolbar' %>
+
+   <div class="pull-right">
+    <button id="edit-page-save" class="btn btn-primary" data-toggle="tooltip" title="[Ctrl]+S" data-delay="800">
+     <span name="save">Save</span>
+     <span name="saving">Saving...</span>
+    </button>
+   </div>
+  </div><!-- #edit-page-bottom-bar -->
+  </div><!-- wrapper -->
+
+  <div id="edit-page-pane-handle">
+   <!-- move handle -->
+  </div>
+  
+ </div><!-- #edit-page-main-pane -->
+
+ <div id="edit-page-sidebar-pane">
+  <div class="wrapper">
+   <ul id="edit-page-sidebar-tab" class="nav nav-tabs side-nav">
+    <li id="edit-page-tab-edit" class="visible-phone"><a href="#edit-page-pane-phone"><i class="icon-pencil"></i> Edit</a></li>
+    <li><a id="edit-page-tab-preview" href="#edit-page-preview"><i class="icon-play"></i> Preview</a></li>
+    <li><a href="#edit-page-help" class="hidden-phone"><i class="icon-question-sign"></i> Help</a></li>
+    <li><a href="#edit-page-settings"><i class="icon-cog"></i> Settings</a></li>
+   </ul>
+   <div id="edit-page-sidebar-tab-content" class="tab-content">
+    <div class="tab-pane" id="edit-page-pane-phone">
+     <div>
+      <input autocomplete="off" id="edit-page-title-phone" type="text" value="" />
+     </div>
+
+     <div>
+      <textarea id="edit-page-body-phone"></textarea>
+     </div>
+
+     <div id="edit-page-bottom-bar-phone" class="clearfix">
+      <div class="btn-group pull-left">
+       <a href="#notes" class="btn"><i class="icon-arrow-left"></i> Back</a>
+      </div>
+
+      <div class="pull-right">
+       <button id="edit-page-save-phone" class="btn btn-primary">
+        <span name="save">Save</span>
+        <span name="saving">Saving...</span>
+       </button>
+      </div>
+     </div>
+    </div><!-- edit-page-pane-phone -->
+
+    <div id="edit-page-preview" class="tab-pane active">
+     <div id="edit-page-preview-body">
+     </div>
+     <div id="edit-page-preview-wordcount">
+     </div>
+    </div><!-- edit-page-preview -->
+    <div id="edit-page-help" class="tab-pane">
+     <%= render :partial => 'edit_help' %>
+    </div>
+    <div id="edit-page-settings" class="tab-pane">
+
+     <label class="selectbox">
+      Font: 
+
+      <div class="dropdown">
+       <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown"><span id="edit-fontname">Font name</span> <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+        <li><a id="edit_font_proportional_xlarge" class="edit_fontname_proportional edit_fontsize_xlarge">Proportinal</a></li>
+        <li><a id="edit_font_proportional_large" class="edit_fontname_proportional edit_fontsize_large">Proportinal</a></li>
+        <li><a id="edit_font_proportional_medium" class="edit_fontname_proportional edit_fontsize_medium">Proportinal</a></li>
+        <li><a id="edit_font_proportional_small" class="edit_fontname_proportional edit_fontsize_small">Proportinal</a></li>
+        <li><a id="edit_font_fixed_xlarge" class="edit_fontname_fixed edit_fontsize_xlarge">Fixed</a></li>
+        <li><a id="edit_font_fixed_large" class="edit_fontname_fixed edit_fontsize_large">Fixed</a></li>
+        <li><a id="edit_font_fixed_medium" class="edit_fontname_fixed edit_fontsize_medium">Fixed</a></li>
+        <li><a id="edit_font_fixed_small" class="edit_fontname_fixed edit_fontsize_small">Fixed</a></li>
+       </ul>
+      </div>
+     </label>
+
+
+     <label class="checkbox toggle flat">
+      <input id="edit-page-autosave-check" type="checkbox" value="checked"/>
+      <p>
+       Autosave:
+       <span>On</span>
+       <span>Off</span>
+      </p>
+      <a class="slide-button"></a>
+     </label>
+
+     <button class="btn btn-danger" id="edit-page-delete-btn">Delete this note</a>
+    </div><!-- edit-page-settings -->
+
+   </div><!-- edit-page-tab-content -->
+  </div><!-- edit-sidebar-column -->
+ </div><!-- row-fluid -->
+</div><!-- container-fluid -->
+
+
+<%= render_dialog 'edit-page-delete-error', 'Cannot delete this note', cancel: 'Close' do %>
+  <p>Please try again later</p>
+<% end %>
+
+<%= render_dialog 'edit-page-delete', 'Delete this note', cancel: 'Back to edit', cancel_class: 'btn-primary',
+    action: { :class => 'btn-danger', :action => 'delete', :label => 'Delete!' } do %>
+<p>
+  Are you sure you want to delete?
+</p>
+<% end %>
+
+<%= render_dialog 'page-edit-leave', 'Not saved yet!', cancel: 'Back to edit', cancel_class: 'btn-primary',
+    action: { :class => 'btn', :action => 'leave', :label => 'Leave' } do %>
+<p>
+ You have made some changes which you might want to save.
+</p>
+<% end %>
+
+<%= render_dialog 'page-edit-load-draft', 'Load from draft', cancel: 'Cancel',
+    action: { :class => 'btn-primary', :action => 'load', :label => 'Load' } do %>
+<p>
+ Would you like to load from draft?
+</p>
+<% end %>
+
+<%= render_dialog 'page-edit-conflict', 'Conflicted', cancel: 'Back to edit' do %>
+<p>
+   A conflict was detected and it has been automerged.<br/>
+   Fix and save again.
+</p>
+<% end %>
+
+<%= render_dialog 'page-edit-save-error', 'Save error', cancel: 'Back to edit' do %>
+<p>
+ Can't save it. Could you try again later?
+</p>
+<p id="page-edit-save-error-label-message"></p>
+<% end %>
+
+<%= render_dialog 'page-edit-load-error', 'Load error', cancel: 'Back to edit' do %>
+<p>
+ Can't load it. Could you try again later?
+</p>
+<p id="page-edit-save-error-label-message">
+</p>
+<% end %>
+
+<%= render_dialog 'page-edit-not-notfound', 'Page not found', cancel: 'Create new note' do %>
+<p id="page-edit-save-notfound-label-message">
+ This page could not be found.
+</p>
+<% end %>
+
+<%= render_dialog 'edit-page-insert-link', 'Create link', cancel: 'Close',
+    action: { :class => 'btn-primary', :action => 'link', :label => 'Insert link' } do %>
+ <label>Label</label>
+ <input type="text" placeholder="Title" id="edit-page-insert-link-text" style="width: 90%">
+ <label>URL</label>
+ <input type="text" placeholder="http://...." id="edit-page-insert-link-url" style="width: 90%">
+<% end %>

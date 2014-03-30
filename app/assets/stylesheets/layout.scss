@@ -1,0 +1,40 @@
+$body_bg_color: white;
+$main_bg_color: #F3F3F3;
+
+// 
+$nav_top_bg_color: transparent;
+$nav_top_text_color: #333;
+$nav_top_height: 0;//32px;
+
+$nav_left_width: 90px;
+$nav_left_width_phone: 54px;
+
+$nav_left_bg_color: #272D33;
+$nav_left_icon_color: #5D5D5C;
+$nav_left_text_color: rgba(255, 255, 255, 0.5);
+
+$nav_left_active_bg_color: #f36c3d;
+$nav_left_active_text_color: white;
+$nav_left_active_icon_color: white;
+
+$edit_page_sidebar_bg_color: white;
+$edit_page_sidebar_width: 320px;
+
+$list_page_cursor_color: #f36c3d;
+
+$list_page_sidebar_bg_color: $main_bg_color;
+$list_page_sidebar_width: 240px;
+$sidebar_top: 48px;
+
+$panel_margin: 8px;
+
+$help_bg_color: white;
+$help_text_color: #5D5D5C;
+$help_title_bg_color: white;
+$help_title_text_color: #5D5D5C;
+
+$editor_font_family: arial,helvetica,clean,sans-serif;
+$editor_font_family_fixed: Consolas, 'Courier New', Courier, Monaco, monospace;
+
+$feedback_text_color: white;
+$feedback_tab_color: #f36c3d;

@@ -1,0 +1,80 @@
+//= require shared/toggle-switch
+   
+.flat.toggle {
+  background-color: #95a5a6;
+  color: #fff;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+
+.flat.switch {
+  overflow: hidden;
+}
+      
+.flat.switch .slide-button {
+  background-color: #2980b9;
+  
+  -webkit-transform: skew(20deg) translateX(10px);
+  -moz-transform: skew(20deg) translateX(10px);
+  -ms-transform: skew(20deg) translateX(10px);
+  transform: skew(20deg) translateX(10px);
+}
+
+.flat.toggle .slide-button {
+  border-radius: 4px;
+  background-color: #848484;
+}
+
+/* Selected ON toggle */
+.flat.toggle input:first-of-type:checked ~ .slide-button {
+  background-color: #2980b9;
+}
+
+.flat.switch input:first-of-type:checked ~ .slide-button {
+  -webkit-transform: skew(20deg) translateX(-10px);
+  -moz-transform: skew(20deg) translateX(-10px);
+  -ms-transform: skew(20deg) translateX(-10px);
+  -o-transform: skew(20deg) translateX(-10px);
+  transform: skew(20deg) translateX(-10px);
+}
+
+.flat p {
+  color: #333;
+}
+
+.flat span {
+  color: #fff;
+}
+
+.flat.switch,
+.flat span {
+  text-transform: uppercase;
+}
+
+/* Fix Android/Holo Theme in firefox - force absolute position */
+.flat.switch input {
+  top: 0;
+  left: 0;
+}
+
+.flat:after {
+  clear: left;
+}
+
+.flat select {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  border-radius:6px;
+  width: 200px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 13px;
+  text-indent: 1em;
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  background: #b6b6b6;
+  background-size:40px 32px;
+  background-position: right center;
+}

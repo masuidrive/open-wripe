@@ -1,0 +1,18 @@
+development:
+  client_id: XXXXXXX
+  client_secret: XXXXXXX
+  callback: http://wripe.dev/ghauth/callback
+
+test:
+  client_id: XXXXXXX
+  client_secret: XXXXXXX
+  callback: http://localhost:57124/ghauth/callback
+  tests:
+    - email: wripe@example.com 
+      password: wripe
+      account: wripe
+
+production:
+  client_id: <%= ENV['GITHUB_CLIENT_ID'] %>
+  client_secret: <%= ENV['GITHUB_SECRET'] %>
+  callback: <%= ENV['APP_BASE'] %>/ghauth/callback

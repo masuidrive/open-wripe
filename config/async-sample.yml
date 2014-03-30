@@ -1,0 +1,21 @@
+development:
+  inline: true
+  sqs: https://sqs.us-east-1.amazonaws.com/99999999999/wripe-ar-development
+  access_key_id: XXXXXXX
+  secret_access_key: XXXXXXX
+  region: us-east-1
+
+test:
+  inline: true
+  sqs: https://sqs.us-east-1.amazonaws.com/99999999999/wripe-ar-test
+  access_key_id: XXXXXXX
+  secret_access_key: XXXXXXX
+  region: us-east-1
+
+production:
+  inline: false
+  sqs: <%= ENV['S3_SQS'] %>
+  access_key_id: <%= ENV['S3_KEY'] %>
+  secret_access_key: <%= ENV['S3_SECRET'] %>
+  region: <%= ENV['S3_REGION'] %>
+

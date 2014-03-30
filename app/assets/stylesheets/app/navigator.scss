@@ -1,0 +1,139 @@
+@import "layout";
+
+$logo_height: 48px;
+$logo_height_phone: 24px;
+
+
+#navigator-logo {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: $nav_left_width;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+}
+
+#navigator {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $nav_left_width;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  overflow-y: auto;
+  overflow-x: visible;
+  z-index: 100;
+  background-color: $nav_left_bg_color;
+
+  ul {
+    margin: $logo_height 0 0 0;
+  }
+
+  .icon {
+    color: $nav_left_icon_color;
+    height: 22px;
+    display: block;
+  }
+
+  a {
+    display: block;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    text-align: center;
+    height: $nav_left_width - 12;
+    width: $nav_left_width;
+    text-decoration: none;
+    color: $nav_left_text_color;
+    padding-top: 9px;
+    z-index:100;
+  }
+
+  a span {
+    display: block;
+  }
+
+  li.active {
+    background-color: $nav_left_active_bg_color;
+    position: relative;
+
+    .icon {
+      //text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+      color: $nav_left_active_icon_color !important;
+    }
+
+    a:after {
+      $caret_size: 9px;
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-right: $caret_size solid $main_bg_color;
+      border-top: $caret_size solid transparent;
+      border-bottom: $caret_size solid transparent;
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 29px;
+    }
+
+    a {
+      color: $nav_left_active_text_color !important;
+      //text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  li:active { // clicking
+    background-color: #BDC3C7;
+  }
+}
+
+.phone {
+  #navigator-logo {
+    position: absolute;
+    top: 4px;
+    width: $nav_left_width_phone;
+    font-size: 14px;
+  }
+
+  #navigator {
+    width: $nav_left_width_phone !important;
+    i {
+      font-size: 2em !important;
+    }
+
+    ul {
+      margin: $logo_height_phone 0 32px 0;
+    }
+
+    a {
+      width: $nav_left_width_phone !important;
+      height: $nav_left_width_phone !important;
+      font-size: 12px;
+      padding-top: 7px !important;
+    }
+
+    a span {
+      width: $nav_left_width_phone !important;
+      display: block;
+    }
+
+    .icon {
+      color: $nav_left_icon_color;
+      height: 8px;
+    }
+
+    li.active {
+      a:after {
+        $caret_size: 8px;
+        border-right: $caret_size solid $main_bg_color;
+        border-top: $caret_size solid transparent;
+        border-bottom: $caret_size solid transparent;
+        top: 18px;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title><%= @page_title || 'wri.pe' %></title>
+  <%= stylesheet_link_tag controller.controller_name, :media => "all" %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<%= yield %>
+</html>

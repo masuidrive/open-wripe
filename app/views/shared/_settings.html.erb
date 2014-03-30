@@ -1,0 +1,50 @@
+<%= render_dialog 'settings-backup', 'Daily backup', cancel: 'Close' do %>
+ <div class="dropbox-icon128 hidden-phone"></div>
+ <div class="messages">
+  <p>
+   Daily automatic backup to Dropbox.<br/>
+   It stores up until 14 generations of changes.<br/>
+   Your files are private and can't be accessed by our service.
+  </p>
+  <p id="settings-backup-dropbox-turnedoff">
+   Current status: Off<br/><a id="settings-backup-dropbox-turnon-button">Use dropbox</a>
+  </p>
+  <p id="settings-backup-dropbox-processing">
+   Processing Dropbox connection in other window
+  </p>
+  <p id="settings-backup-dropbox-turnedon">
+   Current status: On<br/><a id="settings-backup-dropbox-turnoff-button">Turn off automatic backup</a>
+  </p>
+ </div>
+<% end %>
+
+<%= render_dialog 'settings-export', 'Download all notes', cancel: 'Close',
+    action: { :class => 'btn-primary', :action => 'download', :label => 'Download zipped notes' } do %>
+ <div class="messages">
+  <p>
+    You can download all your notes.
+  </p>
+  <p>
+    We recommend to use <a id="settings-backup-button-in-export" data-dismiss="modal" aria-hidden="true">Dropbox backup feature</a> what makes automatical daily backup into your Droxbox.
+  </p>
+ </div>
+<% end %>
+
+<%= render_dialog 'settings-evernote', 'Connect with Evernote', cancel: 'Close' do %>
+ <div class="evernote-icon128 hidden-phone"></div>
+ <div class="messages">
+  <p>
+   Realtime automatic sync to Evernote.<br/>
+  </p>
+  <p id="settings-evernote-turnedoff">
+   Current status: Off<br/><a id="settings-evernote-turnon-button">Connect with Evernote</a>
+  </p>
+  <p id="settings-evernote-processing">
+   Processing Evernote connection in other window
+  </p>
+  <p id="settings-evernote-turnedon">
+   Current status: Already connected<br/>
+   <a id="settings-evernote-turnoff-button">Turn off Evernote sync</a>
+  </p>
+ </div>
+<% end %>

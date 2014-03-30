@@ -1,0 +1,332 @@
+//
+@import "layout";
+$header_height: 47px;
+$header_tags_height: 32px;
+
+// layout
+#list-page-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+  #list-page-main-pane {
+    position: absolute;
+    left: $panel_margin;
+    right: $list_page_sidebar_width;
+    top: 0;
+    bottom: 0;
+    .wrapper {
+      padding: 0 $panel_margin 0 $panel_margin;
+    }
+  }
+
+  #list-page-sidebar-pane {
+    width: $list_page_sidebar_width;
+    position: absolute;
+    right: 0;
+    top: $sidebar_top;
+    height: 100%;
+    .wrapper {
+      padding: $nav_top_height $panel_margin*2 0 $panel_margin;
+    }
+  }
+}
+
+// 
+#list-page-container {
+  #list-page:empty {
+    border: 0 !important;
+  }
+
+  #list-page-tags-head {
+    position: relative;
+    height: $header_tags_height;
+    background-color: blue;    
+    margin: 0 $panel_margin 0 $panel_margin;
+
+    ul {
+
+    }
+
+    li {
+      float: left;
+    }
+
+    ul:after {
+      clear: left;
+    }
+  }
+
+  #list-page-wrapper {
+    position: relative;
+    z-index: 1;
+  }  
+
+  #list-page {
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    .page:first-child {
+      border-top: 0;
+    }
+
+    .page.cursor {
+      border-left: 4px solid $list_page_cursor_color;
+    }
+
+    .page {
+      padding: 6px 0 4px 8px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      border-left: 4px solid rgba(0, 0, 0, 0);
+
+      .title a {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 1.2em;
+        font-family: $editor_font_family;
+      }
+
+      .info {
+        color: #aaa;
+        font-size: 88%;
+      
+        .updated_at {
+          margin-right: 1em;
+        }
+
+        .archive-btn {
+          float: right;
+          margin-right: 6px;
+        }
+
+        .unarchive-btn {
+          float: right;
+          margin-right: 6px;
+        }
+      } // .info
+    } // .page
+  } // #list-page
+
+  #list-page-auto-loading {
+    text-align: center;
+    margin: 10px;
+  }
+
+  #list-page-header {
+    position: relative;
+    top: $nav_top_height;// + $panel_margin;
+    height: $header_height;
+    vertical-align: text-bottom;
+    right: 0;
+    left: 0;
+    margin: 0 $panel_margin 0 10px;
+    padding-right: $panel_margin/2;
+    //background-color: white;
+    //box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    //border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+    .form-search {
+      float: left;
+      
+      .input-append {
+        position: absolute;
+        bottom: $panel_margin;
+      }
+
+      .btn {
+        line-height: 22px;
+      }
+    }
+
+    #list-page-header-title {
+      position: absolute;
+      bottom: $panel_margin;
+      left: $panel_margin;
+
+      font-size: 24px;
+      color: #666;
+    }
+
+    #list-page-pageno {
+      position: absolute;
+      bottom: $panel_margin;
+      right: 4px;
+    }
+
+    #list-page-nav-btn-group {
+      position: absolute;
+      bottom: $panel_margin - 2;
+      right: 0;
+    }
+  } // #list-page-header
+
+  #list-page-sidebar-pane {
+    background-color: $list_page_sidebar_bg_color;
+  }
+
+  #help-welcome {
+    .wrapper {
+      background-color: white;
+      border-radius: 8px;
+      font-family: arial,helvetica,clean,sans-serif;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+      margin: 16px 1px 0 0;
+      padding: 8px;
+      line-height: 125%;
+
+      p {
+        // text-indent: 0.5em;
+      }
+      h2 {
+        font-size: 20px;
+        line-height: 20px;
+        margin-bottom: 14px;
+      }
+    }
+
+    .speaker {
+      position: relative;
+      top: 8px;
+      color: #444;
+      .icon {
+        position: relative;
+        top: 12px;
+        left: 4px;
+        width: 64px;
+        height: 64px;
+        border-radius: 32px;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+        background-image: url('/images/masuidrive64.jpg');
+      }
+
+      .author {
+        position: absolute;
+        left: 64px+16px;
+        top: 24px;
+        
+        .name {
+          font-weight: bold;
+          font-size: 16px;
+          margin-bottom: 4px;
+        }
+
+        .title {
+          line-height: 16px;
+        }
+
+        .social {
+          margin-left: 8px;
+          a:hover {
+            text-decoration: none;
+          }
+        }
+
+      }
+      &:before {
+        border-top: 16px solid white;
+        border-left: 18px solid transparent;
+        border-right: 18px solid transparent;
+        display: inline-block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: -8px;
+        left: 18px;
+        content: "";
+      }
+    }
+  }
+
+
+  #list-page-empty {
+    .wrapper {
+      background-color: white;
+      border-radius: 8px;
+      font-family: arial,helvetica,clean,sans-serif;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+      margin: 16px 1px 0 0;
+      padding: 16px 8px 8px 8px;
+      line-height: 125%;
+
+      p {
+        // text-indent: 0.5em;
+      }
+      h2 {
+        font-size: 20px;
+        line-height: 20px;
+        margin-bottom: 14px;
+      }
+    }
+  }
+}
+
+.list-page-search-visible {
+  display: none;
+}
+
+.list-page-search {
+  .list-page-search-visible {
+    display: inline;
+  }
+  .list-page-search-hidden {
+    display: none;
+  }
+}
+
+.list-page-notes {
+  #list-page-sidebar-tags {
+    display: block !important;
+    font-family: arial, helvetica, clean, sans-serif;
+  }
+}
+
+.phone #list-page-container {
+  #list-page-main-pane {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    #page-list {
+      .wrapper {
+        margin: $header_height $panel_margin 0 0;
+      }
+    }
+
+    #list-page-header {
+      #list-page-pageno {
+        position: absolute;
+        top: 2px;
+        right: 0;
+        height: 14px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  #list-page-loading-error {
+    margin: 8px 6px 0 46px !important;
+  }
+
+  #list-new-button {
+    margin-top: 20px;
+    line-height: 24px;
+  }
+
+  #list-old-button {
+    margin-top: 20px;
+    line-height: 24px;
+  }
+
+  #list-page-loading {
+    width: 60% !important;
+    left: 16% !important;
+  }
+  
+  #list-page-search-query {
+    margin-left: -6px;
+    width: 80px !important;
+  }
+}

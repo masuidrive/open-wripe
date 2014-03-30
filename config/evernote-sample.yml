@@ -1,0 +1,26 @@
+development:
+  consumer_key: XXXXXXX-0000
+  consumer_secret: XXXXXXX
+  sandbox: true
+  callback: http://wripe.dev/evernote_auth/callback
+
+test:
+  consumer_key: XXXXXXX-0000
+  consumer_secret: XXXXXXX
+  sandbox: true
+  callback: http://127.0.0.1:57124/evernote_auth/callback
+  tests:
+    - email: wripe1@example.com
+      password: wripe1
+      account: wripe1
+      access_token: "XXXXXXX"
+    - email: wripe2@example.com
+      password: wripe2
+      account: wripe2
+      access_token: "XXXXXXX"
+
+production:
+  consumer_key: <%= ENV['EVERNOTE_KEY'] %>
+  consumer_secret: <%= ENV['EVERNOTE_SECRET'] %>
+  sandbox: false
+  callback: <%= ENV['APP_BASE'] %>/evernote_auth/callback

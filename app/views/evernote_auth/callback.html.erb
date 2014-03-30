@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link href="/assets/shared/bootstrap.css" media="all" rel="stylesheet" />
+<title>Evernote authentication - wri.pe</title>
+<style>
+body {
+  background-color: #333333;
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+}
+
+.box560 {
+  position: relative;
+  box-sizing: border-box;
+  moz-box-sizing: border-box;
+  background: white;
+  margin: 45px auto 0 auto;
+  padding: 0 0 16px 0;
+  width: 558px;
+  border-radius: 6px;
+}
+
+.box560 h3 {
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #eeeeee;
+  padding: 4px 15px;
+  box-sizing: border-box;
+  moz-box-sizing: border-box;
+}
+
+.box560 p {
+  width: 100%;
+  padding: 4px 16px 4px 152px;
+  box-sizing: border-box;
+  moz-box-sizing: border-box;
+}
+
+.box560 .messages {
+  min-height: 142px;
+}
+
+.buttons {
+  text-align: center;
+  width: 100%;
+}
+
+#merging {
+  width: 100%;
+  text-align: center;
+  display: none;
+}
+
+#merge-error {
+  width: 100%;
+  text-align: center;
+  display: none;
+}
+
+.evernote-icon128 {
+  position: absolute;
+  left: 15px;
+  top: 64px;    
+  width: 128px;
+  height: 128px;
+  padding: 0 !important;
+  margin: 0 !important;
+  background-image: url('/images/evernote_icon128.png');
+}
+
+</style>
+<body>
+<% if @error == :already_connected %>
+ <div class="box560">
+  <h3>Connect with Evernote</h3>
+
+  <div class="evernote-icon128 hidden-phone"></div>
+  <div class="messages">
+   <p>
+    This Evernote account already connected with other wri.pe account.<br/>
+   </p>
+  </div>
+  <a class="btn" onclick="window.close();return false">Cancel to connect with Evernote</a>
+ </div>
+<% else %>
+<a href="#" onclick="window.close();">Close this window</a>
+<script>
+if(!!window.navigator.standalone) {
+  location.href = 'https://wri.pe/app';
+}
+else {
+  window.close();
+}
+</script>
+<% end %>
+</body>
+</html>

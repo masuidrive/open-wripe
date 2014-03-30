@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  page_id: 1
+  user_id: 1
+  read_permission: false
+  write_permission: false
+  share_permission: false
+
+two:
+  page_id: 1
+  user_id: 2
+  read_permission: false
+  write_permission: false
+  share_permission: false

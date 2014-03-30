@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+  <head>
+    <meta charset="utf-8">
+    <title>wri.pe - simple and smart notepad</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="wri.pe - simple and smart markdown-based notepad"/>
+    <meta name="keywords" content="wri.pe,wripe,write,wripu,wripo,wripa,notepad,memo,markdown,offline,archive,calendar"/>
+    <link href="/assets/shared/bootstrap.css" media="all" rel="stylesheet" />
+    <link href="/assets/shared/bootstrap-responsive.css" media="all" rel="stylesheet" />
+    <link href="/assets/shared/font-awesome.css" media="all" rel="stylesheet" />
+    
+    <link rel="apple-touch-icon-precomposed" href="/images/wripe114s.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://wri.pe/images/wripe400s.png"/>
+    <meta property="og:title" content="wri.pe" />
+    <meta property="og:description" content="wri.pe - simple and smart markdown-based notepad" />
+    <meta property="og:url" content="https://wri.pe/"/>
+
+    <!-- Le styles -->
+    <script>
+if (window.location.protocol != "https:" && window.location.hostname.indexOf('wri.pe') >= 0) {
+    window.location.href = "https://wri.pe/"
+}
+</script>
+    <style type="text/css">
+      body {
+        font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+        padding-top: 10px;
+      }
+
+.secret {
+  display: none;
+}
+
+.buttons {
+  padding-top: 20px;
+  height: 80px;
+  visibility: hidden;
+}
+
+      .btn {
+        background-image: none !important;
+        text-shadow: none !important;
+        border: 0 !important;
+        box-shadow: none!important;
+        background-color: #95a5a6 !important;
+        color: white !important;
+      }
+
+      .btn-success {
+        background-color: #0088cc !important;
+      }
+
+      .btn-facebook {
+        padding: 0 12px;
+        width: 186px;
+        background-color: #2980b9 !important;
+      }
+
+      .btn-github {
+        padding: 0 12px;
+        width: 186px;
+        background-color: #707070 !important;
+      }
+
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 30px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 72px;
+        line-height: 1;
+        color: #555;
+      }
+      .jumbotron .btn {
+        margin-bottom: 6px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 16px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+
+.loggedin {
+  display: none;
+}
+
+.footer {
+  text-align: center;
+}
+
+.evernote-color {
+  color: #69aa35;
+}
+
+#authorizing-panel {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 65536;
+  background: rgba(0,0,0,0.6);
+}
+
+.authorizing-box {
+  background: white;
+  width: 8em;
+  padding: 10px 20px;
+  margin: 200px auto 0 auto;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  font-size: 1.5em;
+}
+
+.logo {
+  width: 440px;
+  height: 124px;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .logo {
+    width: 300px;
+    height: 84px;
+  }
+}
+
+.ja {
+  display: none;
+}
+
+.ja-font {
+  word-break: break-all;
+  font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+}
+
+#social-buttons {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+
+ #fb-share {
+  position: relative;
+  top: 1px;
+ }
+
+    </style>
+  </head>
+
+<script>
+var authorizing = function() {
+  var el = document.getElementById('authorizing-panel');
+  el.style.display = 'block';
+  try {
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Mobile') > 0){
+      var body = $(document.body);
+      var panel = $('#authorizing-panel');
+      panel.height(body.height());
+      panel.width(body.width());
+      panel.css('position', 'absolute');
+    }
+  }
+  catch(e) {
+    // no-op. Probably clicked login button before loaded jQuery.    
+  }
+  return true;
+};
+
+var hide_authorizing = function() {
+  var el = document.getElementById('authorizing-panel');
+  el.style.display = 'none';
+}
+</script>
+
+<body onpageshow="hide_authorizing();">
+ <div id="authorizing-panel">
+  <div class="authorizing-box">
+   <i class="icon-spinner icon-spin"></i> <span class="authorizing-label">Authorizing...</span>
+  </div>
+ </div>
+
+<div id="social-buttons">
+
+<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwri.pe%2F&amp;send=false&amp;layout=button_count&amp;width=200&amp;show_faces=true&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=531310196912189" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px" allowTransparency="true" id="fb-share"></iframe>
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://wri.pe/" data-text="wri.pe - simple and smart web notepad"></a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<a href="https://news.ycombinator.com/submit" class="hn-button" data-title="wri.pe" data-url="https://wri.pe/" data-count="horizontal"></a>
+<script type="text/javascript">var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
+</div>
+
+ <div class="container-narrow">
+  <div class="jumbotron">
+   <img class="logo" src="/images/wripe-top880.png" title="wri.pe" alt="wri.pe"/>
+   <p class="lead en">wri.pe is a simple and smart web notepad.</p>
+   <p class="lead ja ja-font">wri.pe is a simple and smart web notepad.</p>
+   <div class="buttons">
+    <div class="guest">
+     <div>
+      <a class="btn btn-facebook clearfix" href="/fbauth/sign_in" onclick="return authorizing();" id="signin-facebook">
+       <i class="icon-facebook icon-2x pull-left" style="padding: 0px 6px 3px 6px;display:block"></i><div style="line-height:37px;" class="pull-left">Sign in with Facebook</div>
+      </a>
+
+      <a class="btn btn-github" href="/ghauth/sign_in" onclick="return authorizing();" id="signin-github">
+       <i class="icon-github icon-2x pull-left" style="padding: 0 8px 3px 0;display:block"></i><div style="line-height:37px;" class="pull-left">Sign in with Github</div>
+      </a>
+
+     </div>
+     <div class="en">
+      We will not post to your wall without your permission.
+     </div>
+     <div class="ja ja-font">
+      wri.peはあなたの明示的な許可なしにwallへの投稿やメッセージ送信などを行いません。
+     </div>
+    </div>
+    <div class="loggedin">
+     <a class="btn btn-success" href="/app">
+      <i class="icon-file-alt icon-2x" style="padding: 0 8px 0 0"></i><span style="position: relative; top:-3px; font-size: 1.2em">Access your notes</span>
+     </a>
+    </div>
+   </div>
+  </div><!-- jumbotron -->
+
+<style>
+
+.marketing .span4 {
+  padding: 6px;
+}
+
+.span4 .box {
+  background-color: #f8f8f8;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.big-icon {
+  text-align: center;
+  padding-bottom: 8px;
+}
+
+.big-icon i {
+  color: #888;
+  display: block;
+}
+
+.screenshots-row {
+}
+
+/* */
+@media (max-width: 480px) {
+  .marketing .row-fluid {
+    display: inline;
+  }
+  .marketing .span4 {
+    display: inline;
+    width: 100% !important; /* span6 */
+    height: auto !important;
+  }
+
+  h3 {
+    margin: 0 !important;
+  }
+
+  .screenshots-row {  
+    padding: 0 12px;
+  }
+}
+
+
+</style>
+  <div class="marketing">
+   <div class="row-fluid">
+    <div class="span4"><div class="box">
+     <div class="big-icon"><i class="icon-pencil icon-4x"></i><strong>Simple</strong></div>
+     <p class="en">Are you tired of complexity? All you want is just taking notes? Then wri.pe is for you, we focus on simplicity</p>
+     <p class="ja ja-font">ノートを取りたいだけなのに、複雑なアプリにうんざりしていませんか？  そんなあなたのためにwri.peがあります。私たちは、シンプルであることにフォーカスしています。</p>
+    </div></div>
+
+    <div class="span4"><div class="box">
+     <div class="big-icon"><i class="icon-calendar icon-4x"></i><strong>Calendar</strong></div>
+     <p class="en">Dates writen in the title or body of your notes are automatically inserted in your calendar.</p>
+     <p class="ja ja-font">ノートに書かれた日付を解析し、カレンダーで表示します。</p>
+    </div></div>
+
+    <div class="span4"><div class="box">
+     <div class="big-icon"><i class="icon-keyboard icon-4x"></i><strong>Shortcut keys and markdown.</strong></div>
+     <p class="en">You can use almost all functions using your keyboard. wri.pe also supports markdown.</p>
+     <p class="ja ja-font">キーボードだけですべての機能を。 また、wri.peはmarkdown記法をサポートしています。</p>
+    </div></div>
+   </div><!-- row-fluid -->
+
+   <div class="row-fluid">
+    <div class="span4"><div class="box">
+     <div class="big-icon"><i class="icon-mobile-phone icon-4x"></i><strong>Available on any device</strong></div>
+     <p class="en">Access your notes from any location. wri.pe can be used from iPhone/iPad, Android and PC browsers.</p>
+     <p class="ja ja-font">どんな場所からでも使えます。 wri.peはiPhoneやiPad、Android、PCブラウザに対応しています。</p>
+    </div></div>
+
+    <div class="span4"><div class="box">
+     <div class="big-icon"><i class="icon-time icon-4x"></i><strong>Backup to clouds</strong></div>
+     <p class="en">Your notes are safe at wri.pe with <span class="secret"><span class="evernote-color">Evernote</span> sync and</span> a daily backup to Dropbox and Evernote.</p>
+     <p class="ja ja-font">wri.peで書いたメモはDropboxやEvernoteに毎日バックアップされます。</p>
+    </div></div>
+
+    <div class="span4"><div class="box">
+     <div class="big-icon"><i class="icon-search icon-4x"></i><strong>More informations</strong></div>
+     <p>
+      <a href="http://www.youtube.com/watch?v=PWKV6Z3pSW0"><i class="icon-play"></i>
+       <span class="en">Tutorial video</span>
+       <span class="ja ja-font">チュートリアル</span>
+      </a><br/>
+      <a href="http://wripe.tumblr.com/"><i class="icon-pencil"></i>
+      Dev blog</a><br/>
+      <a href="http://masuidrive.com/"><i class="icon-user"></i>
+      masuidrive projects</a>
+　    </p>
+    </div></div>
+
+   </div><!-- row-fluid -->
+
+   <h3>Upcoming...</h3>
+   <div class="row-fluid">
+    <div class="span4"><div class="box">
+     <div class="big-icon"><i class="icon-unlink icon-4x"></i><strong>Offline</strong></div>
+     <p class="en">wri.pe support HTML5 offline capability. wri.pe will be able to be used without an Internet connection.</p>
+     <p class="ja ja-font">wri.peはHTML5オフライン機能を利用しています。ネットが使えない場所でも利用できるようになります。</p>
+    </div></div>
+
+    <div class="span4"><div class="box">
+     <div class="big-icon"><i class="icon-group icon-4x"></i><strong>Share</strong></div>
+      <p class="en">Notes will be able to be published online or restricted to friends.</p>
+      <p class="ja ja-font">ノートをネット全体や友達限定で公開できるようになります。</p>
+     </div></div>
+
+     <div class="span4"><div class="box">
+      <div class="big-icon"><i class="icon-code-fork icon-4x"></i><strong>Collaboration</strong></div>
+      <p class="en">wri.pe will support fork and pull-request features like Git.</p>
+      <p class="ja ja-font">Gitのようなfork / pull requestをサポートし、新しいコラボレーションを提案します。</p>
+     </div></div>
+    </div>
+   </div><!--marketing-->
+
+
+   <h3>Sponsor</h3>
+   <div class="row-fluid">
+    <div class="span4"><div class="box">
+     <p class="en">Let's try <a href="https://codeiq.jp/">CodeIQ</a> that's quiz for programmers.</p>
+     <p class="ja ja-font"><a href="https://codeiq.jp/">CodeIQで出題中!</a></p>
+    </div></div>
+   </div><!--marketing-->
+
+  <hr/>
+  <div class="footer">
+   <p>Provided by <a href="http://masuidrive.com/">masuidrive projects</a> 2013</p>
+   <a href="/terms.html">Terms of service</a>
+  </div>
+
+ </div> <!-- /container -->
+</body>
+
+<script src="/assets/jquery.js"></script>
+<script>
+
+function browserLanguage() {
+  try {
+    return (navigator.browserLanguage || navigator.language || navigator.userLanguage).substr(0,2)
+  }
+  catch(e) {
+    return undefined;
+  }
+}
+
+function setLanguage(default_language, languages) {
+  var addCSSRule = (document.createStyleSheet)
+    ? (function(sheet) {
+      return function(selector, declaration) {
+        sheet.addRule(selector, declaration);
+      };
+    })(document.createStyleSheet())
+    :
+    (function(sheet){
+      return function(selector, declaration) {
+        sheet.insertRule(selector + '{' + declaration + '}', sheet.cssRules.length);
+      };
+    })((function(e){
+      e.appendChild(document.createTextNode(''));
+      (document.getElementsByTagName('head')[0] || (function(h) {
+        document.documentElement.insertBefore(h, this.firstChild);
+        return h;
+      })(document.createElement('head'))).appendChild(e);
+      return e.sheet;
+    })(document.createElement('style')));
+
+  var removeCSSRule = function(ruleName) {
+    for(var i = 0; i < document.styleSheets.length; i++) { 
+      var styleSheet = document.styleSheets[i];
+      var ii = cssRule = 0;                              
+      do {
+        cssRule = (styleSheet.cssRules ? styleSheet.cssRules : styleSheet.rules)[ii];
+        if(cssRule && cssRule.selectorText && cssRule.selectorText.toLowerCase() == ruleName) { 
+            styleSheet.cssRules ? styleSheet.deleteRule(ii) : styleSheet.removeRule(ii);
+            return true;
+        }
+        ii++;                                 
+      } while(cssRule);
+    }
+    return false;
+  }
+
+  var array_include = function(ary, v) {
+    for (var i in ary) {
+      if (ary[i] == v) return true;
+    }
+    return false;
+  };
+
+  var lang = browserLanguage();
+  if(lang==default_language || !array_include(languages, lang)) return false;
+
+  addCSSRule("." + default_language, "display: none;");
+  removeCSSRule("." + lang);
+  return true;
+};
+
+
+$(document).ready(function() {
+  // login button
+  $.ajax({
+    url: '/session.json',
+    dataType: 'json'
+  })
+  .done(function(data){
+    $('.buttons').css('visibility', 'visible');
+    $('.guest').hide();
+    $('.loggedin').show();
+  })
+  .fail(function(){
+    // guest user
+    $('.buttons').css('visibility', 'visible');
+    localStorage.clear();
+  });
+  setTimeout(function() {
+    $('.buttons').css('visibility', 'visible');
+  }, 1000);
+
+  setLanguage("en", ["ja"]);
+
+  // Google analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-40504922-1', 'wri.pe');
+  ga('send', 'pageview');
+})
+</script>
+</html>

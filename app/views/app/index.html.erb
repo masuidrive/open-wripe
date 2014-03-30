@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en"<%=raw Rails.env.production? ? ' manifest="application.manifest"' : '' %> xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>wri.pe</title>
+  <%= stylesheet_link_tag :app, :media => "all" %>
+  <meta content="" name="csrf-param" />
+  <meta content="" name="csrf-token" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="apple-touch-icon-precomposed" href="/images/wripe114s.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://wri.pe/images/wripe400s.png"/>
+  <meta property="og:title" content="wri.pe" />
+  <meta property="og:description" content="wri.pe - simple and smart markdown-based notepad" />
+  <meta property="og:url" content="https://wri.pe/app" />
+
+</head>
+<body>
+<div id="body-loading">Loading...</div>
+<div id="app" class="invisible">
+ <div id="topbar" class="clearfix">
+  <div class="pull-right">
+   <a href="#" class="dropdown-toggle nav-username" data-toggle="dropdown" id="nav-username-link"><img class="user-icon" id="nav-usericon"/><span class="hidden-phone" id="nav-username"></span> <b class="caret"></b></a>
+   <ul class="dropdown-menu">
+    <li><a id="settings-evernote-button"><i class="icon-cloud-upload"></i> Evernote</a></li>
+    <li><a id="settings-backup-button"><i class="icon-time"></i> Backup</a></li>
+    <li><a id="settings-export-button"><i class="icon-cloud-download"></i> Export</a></li>
+    <li><a id="settings-feedback-button" target="_blank"><i class="icon-comment"></i> Feedback</a></li>
+    <li><a href="/sign_out"><i class="icon-signout"></i> Sign out</a></li>
+    <li class="revision">Rev. <span id="wripe-version"><%= WRIPE_VERSION %></span></li>
+   </ul>
+  </div><!-- pull-right -->
+ </div><!-- topbar -->
+
+ <div id="navigator">
+  <div id="navigator-logo">
+   wri.pe
+  </div>
+  <ul>
+   <li><a href="#new" id="navigator-new" class="item"><span><i class="icon-plus icon icon-3x"></i><br/>New</a></span></li>
+   <li><a href="#notes" id="navigator-index" class="item"><span><i class="icon-file-alt icon icon-3x"></i><br/>Notes</a></span></li>
+   <li><a href="#archived" id="navigator-archived" class="item"><span><i class="icon-folder-close icon icon-3x"></i><br/>Archive</a></span></li>
+   <li><a href="#calendar" id="navigator-calendar" class="item"><span><i class="icon-calendar icon icon-3x"></i><br/>Calendar</a></span></li>
+   <li><a href="#search" id="navigator-search" class="item"><span><i class="icon-search icon icon-3x"></i><br/>Search</a></span></li>
+   <li class="hide"><a href="#" id="navigator-edit" class="item">Edit</a></li>
+  </ul>
+ </div>
+ <%= render :partial => 'edit' %>
+ <%= render :partial => 'list' %>
+ <%= render :partial => 'calendar' %>
+ <%= render :partial => 'shared/settings' %>
+
+ <div id="feedback-tab" class="visible-desktop">
+  <span>Feedback</span>
+ </div>
+ <%= render_dialog 'feedback-dialog', "What's on your mind?", cancel: 'Close',
+    action: { :class => 'btn-primary', :action => 'send', :label => 'Send' } do %>
+  <div class="clearfix">
+   <label class="pull-left">Subject: </label>
+   <select id="feedback-subject" class="pull-left" style="width: 10em">
+    <option value="1">Bug</option>
+    <option value="2">Idea</option>
+    <option value="0">Other</option>
+   </select>
+  </div>
+  <div>
+   <textarea id="feedback-body" placeholder="Please let me now your thoughts."></textarea>
+  </div>
+  <div id="feedback-attach-capture">
+   <input type="checkbox" id="feedback-attach"/> Attach screenshot
+   <input type="hidden" id="feedback-image-data" value="1"/>
+   <img id="feedback-capture"/>
+  </div>
+ <% end %>
+
+ <%= render_dialog 'edit-page-enable-autosave', 'New feature: Autosave', cancel: 'No',
+    action: { :class => 'btn-primary', :action => 'enable-autosave', :label => 'Yes' } do %>
+  <div class="clearfix">
+   <p>
+    Added Evernote sync. [Sept 28th]
+   </p>
+  </div>
+ <% end %>
+
+ <%= render_dialog 'splash-dialog', 'Updates', cancel: 'Ok' do %>
+  <div class="clearfix">
+   <ul>
+    <li>From the 'Settings' tab when editing a note you can now select a font. [3rd Aug]</li>
+   </li>
+  </div>
+ <% end %>
+
+</div><!-- app -->
+
+</body>
+<%= javascript_include_tag :app, :defer =>"defer" %>
+</html>

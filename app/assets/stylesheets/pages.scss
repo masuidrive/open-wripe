@@ -1,0 +1,93 @@
+@import "layout";
+
+#side-tab-content {
+  overflow:hidden;
+}
+
+html, body {
+  height: 100%;
+  background: $body_bg_color;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.container-fluid {
+  padding-top: 32px;
+  height: 100%;
+}
+
+.phone {
+  #side-tab-content {
+    margin-left: -6px !important;
+    margin-right: -6px !important;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-bottom: 6px;
+  }
+}
+
+.row-fluid {
+  height: 100%;
+}
+
+.row-fluid .span8 {
+  height: 100%;
+}
+
+.row-fluid .span4 {
+  height: 100%;
+  padding: 8px 0;
+}
+
+#page_title {
+  width: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  font-size: 1.2em;
+  height: 2em;
+  margin: 8px 0;
+}
+
+#page_body {
+  width: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+ 
+.float-right {
+  float: right;
+}
+
+form {
+  height: 100%;
+}
+
+iframe.tab-pane {
+  border: 0;
+  width: 100%;
+}
+
+#side-tab-content {
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+.side-nav {
+  margin-bottom: 0;
+}
+
+.nav-tabs > .active > a {
+  background-color: #f8f8f8 !important;
+}
+
+.line-selectbox {
+  line-height: 32px;
+}
+
+#confirm-delete-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 24px;
+}

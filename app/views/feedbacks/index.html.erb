@@ -1,0 +1,21 @@
+<%= paginate @feedbacks %>
+
+<table border="1">
+<% @feedbacks.each do |f|%>
+<tr>
+  <td>
+    <div>
+      <%= f.user.username rescue 'Guest' %> |
+      <%= Feedback::SUBJECT_LABELS[f.subject] rescue '' %> |
+      <%= raw "<a href=\"mailto:#{f.user.email}?subject=Thank%20you%20for%20feedback%20to%20wri.pe.&body=#{CGI::escape("Hi #{f.user.username},\n\nThank you for your feedback.\nI'm Yuichiro MASUI, wri.pe developer.\n\n\nThank you,\n
+Yuichiro\n").gsub('+','%20')}\">#{f.user.email}</a>" rescue '' %>
+    </div>
+    <div><%= f.body %></div>
+    <div><%= f.user_agent %></div>
+  </td>
+  <td><%= link_to(image_tag(f.image.url, width:64, height: 64), f.image.url) if f.image.file? %></td>
+</tr>
+<% end %>
+</table>
+
+<%= paginate @feedbacks %>
