@@ -26,7 +26,7 @@ cp config/paperclip_feedbacks_s3-sample.yml config/paperclip_feedbacks_s3.yml
 bundle install
 rake sunspot:solr:run
 rake db:migrate
-ln -s `pwd` ~/.pow/wri.pe
+ln -s `pwd` ~/.pow/wripe
 ```
 
 
