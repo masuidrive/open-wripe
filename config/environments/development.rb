@@ -1,8 +1,8 @@
 Wripe::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  app_base = URI.new(ENV['APP_BASE'] || 'https://wri.pe')
+  app_base = URI(ENV['APP_BASE'] || 'https://wri.pe')
   Rails.application.routes.default_url_options = {
-    protocol: app_base.protocol,
+    protocol: app_base.scheme,
     host: app_base.host
   }
 
