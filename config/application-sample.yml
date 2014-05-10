@@ -1,0 +1,12 @@
+defaults: &defaults
+  flags:
+    disable_ar_async: off
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
