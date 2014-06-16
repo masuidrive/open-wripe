@@ -11,6 +11,9 @@ https://wri.pe source code.
 - JRE 1.6 and above (for Solr)
 - Pow - http://pow.cx/
 
+### optional requirenments
+
+- Powder - https://github.com/rodreegez/powder
 
 ### set up
 
@@ -23,20 +26,31 @@ cp config/facebook-sample.yml config/facebook.yml
 cp config/paperclip_feedbacks_s3-sample.yml config/paperclip_feedbacks_s3.yml
 # edit above yaml files
 
-bundle install
-rake sunspot:solr:run
-rake db:migrate
+bundle install --path vendor/bundle
+bundle exec rake sunspot:solr:run
+bundle exec rake db:migrate
 ln -s `pwd` ~/.pow/wripe
 ```
 
 
 ### run
 
+You can login with GitHub or Facebook.
+
+#### except Chrome
+
 ```
+bundle exec rake sunspot:solr:run # in case of stopping solr
 open "http://wripe.dev/"
 ```
 
-You can login with GitHub and Facebook.
+#### with Chrome
+
+```
+bundle exec rake sunspot:solr:run # in case of stopping solr
+bundle exec rails s
+open "http://lvh.me:3000/"
+```
 
 
 ### test
@@ -44,25 +58,25 @@ You can login with GitHub and Facebook.
 #### with PhantomJS
 
 ```
-rake 
+bundle exec rake
 ```
 
 #### with Chrome
 
 ```
-rake DRIVER=chrome
+bundle exec rake DRIVER=chrome
 ```
 
 #### with Safari
 
 ```
-rake DRIVER=safari
+bundle exec rake DRIVER=safari
 ```
 
 #### with Firefox
 
 ```
-rake DRIVER=firefox
+bundle exec rake DRIVER=firefox
 ```
 
 #### with Internet Explorer
@@ -70,6 +84,5 @@ rake DRIVER=firefox
 windows側でselenium-serverとstone 10.0.0.3:57124 57124を起動
 
 ```
-rake DRIVER=ie
+bundle exec rake DRIVER=ie
 ```
-
