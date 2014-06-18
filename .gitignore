@@ -9,6 +9,7 @@
 /solr
 /.vagrant
 /log/*
+vendor/bundle
 *.dump
 
 # Ignore bundler config

@@ -69,8 +69,11 @@ gem "evernote_oauth", "~> 0.2.1"
 # ics export
 gem 'icalendar'
 
+# tag cloud
+gem 'acts-as-taggable-on'
+
 # create HTML5 cache manifest
-gem 'rack-offline', :git => 'https://github.com/wycats/rack-offline.git' 
+gem 'rack-offline', :git => 'https://github.com/wycats/rack-offline.git'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,4 +1,6 @@
 class Page < ActiveRecord::Base
+  acts_as_taggable_on :tags
+
   attr_accessor :dates_json
   before_create :generate_key
   around_save :save_to_history
@@ -114,6 +116,7 @@ class Page < ActiveRecord::Base
       :url => url
     }
     data[:body] = (body || '') unless options[:body] === false
+    data[:tag_list] = (tag_list.join(',') || '')
     if options[:user]
       data[:editable] = permit_write?(options[:user])
     end

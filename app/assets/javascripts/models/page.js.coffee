@@ -14,11 +14,13 @@ class Page
     _.extend @, Backbone.Events
     @save_status = undefined
     @title = "#{today_string()} "
+    @tag_list = ''
     @body = ''
     @archived = false
     @saved_data = {
       body: @body,
       title: @title,
+      tag_list: @tag_list,
       archived: @archived
     }
     @update(data) if data
@@ -105,7 +107,8 @@ class Page
     Deferred (defer) =>
       resolve = =>
         @key = @saved_data.key = undefined
-        @title = @saved_data.title = '' 
+        @title = @saved_data.title = ''
+        @tag_list = @saved_data.tag_list = ''
         @body = @saved_data.body = ''
         @archived = @saved_data.archived = false
         defer.resolve()
@@ -132,13 +135,15 @@ class Page
 
   is_changed: () ->
     @key != @saved_data.key || 
-    @title != @saved_data.title || 
+    @title != @saved_data.title ||
+    @tag_list != @saved_data.tag_list ||
     @body != @saved_data.body || 
     !!@archived != !!@saved_data.archived
 
   update: (data) ->
     @key = data.key
     @title = data.title
+    @tag_list = data.tag_list
     @body = data.body
     @lock_version = parseInt(data.lock_version)
     @archived = !!data.archived
@@ -161,6 +166,7 @@ class Page
       page: {
         key: @key,
         title: @title,
+        tag_list: @tag_list
         body: @body,
         dates_json: JSON.stringify(pickup_dates("#{@title} #{@body}"))
         lock_version: parseInt(@lock_version),

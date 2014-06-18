@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131014145849) do
+ActiveRecord::Schema.define(version: 20140614043702) do
 
   create_table "chat_messages", force: true do |t|
     t.integer  "user_id"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20131014145849) do
     t.datetime "updated_at"
   end
 
-  add_index "chat_messages", ["chatroom_id"], name: "index_chat_messages_on_chatroom_id"
+  add_index "chat_messages", ["chatroom_id"], name: "index_chat_messages_on_chatroom_id", using: :btree
 
   create_table "chatroom_users", force: true do |t|
     t.integer  "chatroom_id"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20131014145849) do
     t.datetime "updated_at"
   end
 
-  add_index "chatroom_users", ["chatroom_id", "user_id"], name: "index_chatroom_users_on_chatroom_id_and_user_id", unique: true
+  add_index "chatroom_users", ["chatroom_id", "user_id"], name: "index_chatroom_users_on_chatroom_id_and_user_id", unique: true, using: :btree
 
   create_table "chatrooms", force: true do |t|
     t.string   "key"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20131014145849) do
     t.datetime "updated_at"
   end
 
-  add_index "chatrooms", ["user_id"], name: "index_chatrooms_on_user_id"
+  add_index "chatrooms", ["user_id"], name: "index_chatrooms_on_user_id", using: :btree
 
   create_table "dropbox_users", force: true do |t|
     t.integer  "user_id"
@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 20131014145849) do
     t.string   "notebook_guid"
   end
 
-  add_index "evernote_users", ["enid"], name: "index_evernote_users_on_enid", unique: true
-  add_index "evernote_users", ["user_id"], name: "index_evernote_users_on_user_id", unique: true
+  add_index "evernote_users", ["enid"], name: "index_evernote_users_on_enid", unique: true, using: :btree
+  add_index "evernote_users", ["user_id"], name: "index_evernote_users_on_user_id", unique: true, using: :btree
 
   create_table "fb_users", force: true do |t|
     t.integer  "user_id"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20131014145849) do
     t.datetime "updated_at"
   end
 
-  add_index "fb_users", ["user_id"], name: "index_fb_users_on_user_id"
+  add_index "fb_users", ["user_id"], name: "index_fb_users_on_user_id", using: :btree
 
   create_table "feedbacks", force: true do |t|
     t.integer  "user_id"
@@ -91,11 +91,11 @@ ActiveRecord::Schema.define(version: 20131014145849) do
     t.text     "user_agent"
   end
 
-  add_index "feedbacks", ["closed", "created_at"], name: "index_feedbacks_on_closed_and_created_at"
-  add_index "feedbacks", ["closed", "subject", "created_at"], name: "index_feedbacks_on_closed_and_subject_and_created_at"
-  add_index "feedbacks", ["opened", "created_at"], name: "index_feedbacks_on_opened_and_created_at"
-  add_index "feedbacks", ["subject", "created_at"], name: "index_feedbacks_on_subject_and_created_at"
-  add_index "feedbacks", ["user_id", "created_at"], name: "index_feedbacks_on_user_id_and_created_at"
+  add_index "feedbacks", ["closed", "created_at"], name: "index_feedbacks_on_closed_and_created_at", using: :btree
+  add_index "feedbacks", ["closed", "subject", "created_at"], name: "index_feedbacks_on_closed_and_subject_and_created_at", using: :btree
+  add_index "feedbacks", ["opened", "created_at"], name: "index_feedbacks_on_opened_and_created_at", using: :btree
+  add_index "feedbacks", ["subject", "created_at"], name: "index_feedbacks_on_subject_and_created_at", using: :btree
+  add_index "feedbacks", ["user_id", "created_at"], name: "index_feedbacks_on_user_id_and_created_at", using: :btree
 
   create_table "gh_users", force: true do |t|
     t.integer  "user_id"
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 20131014145849) do
     t.datetime "updated_at"
   end
 
-  add_index "gh_users", ["user_id"], name: "index_gh_users_on_user_id"
+  add_index "gh_users", ["user_id"], name: "index_gh_users_on_user_id", using: :btree
 
   create_table "helps", force: true do |t|
     t.integer  "user_id"
@@ -118,8 +118,8 @@ ActiveRecord::Schema.define(version: 20131014145849) do
     t.datetime "updated_at"
   end
 
-  add_index "helps", ["user_id", "key"], name: "index_helps_on_user_id_and_key", unique: true
-  add_index "helps", ["user_id"], name: "index_helps_on_user_id"
+  add_index "helps", ["user_id", "key"], name: "index_helps_on_user_id_and_key", unique: true, using: :btree
+  add_index "helps", ["user_id"], name: "index_helps_on_user_id", using: :btree
 
   create_table "page_dates", force: true do |t|
     t.integer  "page_id"
@@ -129,8 +129,8 @@ ActiveRecord::Schema.define(version: 20131014145849) do
     t.datetime "updated_at"
   end
 
-  add_index "page_dates", ["page_id"], name: "index_page_dates_on_page_id"
-  add_index "page_dates", ["user_id", "date"], name: "index_page_dates_on_user_id_and_date"
+  add_index "page_dates", ["page_id"], name: "index_page_dates_on_page_id", using: :btree
+  add_index "page_dates", ["user_id", "date"], name: "index_page_dates_on_user_id_and_date", using: :btree
 
   create_table "page_histories", force: true do |t|
     t.integer  "page_id"
@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(version: 20131014145849) do
     t.datetime "updated_at"
   end
 
-  add_index "page_histories", ["page_id", "created_at"], name: "index_page_histories_on_page_id_and_created_at"
+  add_index "page_histories", ["page_id", "created_at"], name: "index_page_histories_on_page_id_and_created_at", using: :btree
 
   create_table "page_properties", force: true do |t|
     t.integer  "page_id"
@@ -151,7 +151,7 @@ ActiveRecord::Schema.define(version: 20131014145849) do
     t.datetime "updated_at"
   end
 
-  add_index "page_properties", ["page_id", "key"], name: "index_page_properties_on_page_id_and_key", unique: true
+  add_index "page_properties", ["page_id", "key"], name: "index_page_properties_on_page_id_and_key", unique: true, using: :btree
 
   create_table "page_taggings", force: true do |t|
     t.integer  "page_id"
@@ -160,7 +160,7 @@ ActiveRecord::Schema.define(version: 20131014145849) do
     t.datetime "updated_at"
   end
 
-  add_index "page_taggings", ["page_id", "page_tag_id"], name: "index_page_taggings_on_page_id_and_page_tag_id", unique: true
+  add_index "page_taggings", ["page_id", "page_tag_id"], name: "index_page_taggings_on_page_id_and_page_tag_id", unique: true, using: :btree
 
   create_table "page_tags", force: true do |t|
     t.integer  "user_id"
@@ -170,9 +170,9 @@ ActiveRecord::Schema.define(version: 20131014145849) do
     t.integer  "page_taggings_count", default: 0
   end
 
-  add_index "page_tags", ["user_id", "name"], name: "index_page_tags_on_user_id_and_name", unique: true
-  add_index "page_tags", ["user_id", "page_taggings_count"], name: "index_page_tags_on_user_id_and_page_taggings_count"
-  add_index "page_tags", ["user_id"], name: "index_page_tags_on_user_id_and_pages_count"
+  add_index "page_tags", ["user_id", "name"], name: "index_page_tags_on_user_id_and_name", unique: true, using: :btree
+  add_index "page_tags", ["user_id", "page_taggings_count"], name: "index_page_tags_on_user_id_and_page_taggings_count", using: :btree
+  add_index "page_tags", ["user_id"], name: "index_page_tags_on_user_id_and_pages_count", using: :btree
 
   create_table "page_users", force: true do |t|
     t.integer  "page_id"
@@ -184,8 +184,8 @@ ActiveRecord::Schema.define(version: 20131014145849) do
     t.datetime "updated_at"
   end
 
-  add_index "page_users", ["page_id", "user_id"], name: "index_page_users_on_page_id_and_user_id", unique: true
-  add_index "page_users", ["user_id"], name: "index_page_users_on_user_id"
+  add_index "page_users", ["page_id", "user_id"], name: "index_page_users_on_page_id_and_user_id", unique: true, using: :btree
+  add_index "page_users", ["user_id"], name: "index_page_users_on_user_id", using: :btree
 
   create_table "pages", force: true do |t|
     t.integer  "user_id"
@@ -202,10 +202,29 @@ ActiveRecord::Schema.define(version: 20131014145849) do
     t.integer  "modified_at"
   end
 
-  add_index "pages", ["user_id", "archived", "modified_at"], name: "index_pages_on_user_id_and_archived_and_modified_at"
-  add_index "pages", ["user_id", "archived", "updated_at"], name: "index_pages_on_user_id_and_archived_and_updated_at"
-  add_index "pages", ["user_id", "modified_at"], name: "index_pages_on_user_id_and_modified_at"
-  add_index "pages", ["user_id", "updated_at"], name: "index_pages_on_user_id_and_updated_at"
+  add_index "pages", ["user_id", "archived", "modified_at"], name: "index_pages_on_user_id_and_archived_and_modified_at", using: :btree
+  add_index "pages", ["user_id", "archived", "updated_at"], name: "index_pages_on_user_id_and_archived_and_updated_at", using: :btree
+  add_index "pages", ["user_id", "modified_at"], name: "index_pages_on_user_id_and_modified_at", using: :btree
+  add_index "pages", ["user_id", "updated_at"], name: "index_pages_on_user_id_and_updated_at", using: :btree
+
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "user_messages", force: true do |t|
     t.integer  "user_id"
@@ -220,12 +239,12 @@ ActiveRecord::Schema.define(version: 20131014145849) do
     t.integer  "sender_user_id"
   end
 
-  add_index "user_messages", ["user_id", "created_at"], name: "index_user_messages_on_user_id_and_created_at"
-  add_index "user_messages", ["user_id", "message_type", "created_at"], name: "idx_user_messages_4"
-  add_index "user_messages", ["user_id", "message_type", "read", "created_at"], name: "idx_user_messages_5"
-  add_index "user_messages", ["user_id", "page_id", "read", "created_at"], name: "idx_user_messages_3"
-  add_index "user_messages", ["user_id", "read", "created_at"], name: "index_user_messages_on_user_id_and_read_and_created_at"
-  add_index "user_messages", ["user_id", "sender_user_id", "created_at"], name: "idx_user_messages_6"
+  add_index "user_messages", ["user_id", "created_at"], name: "index_user_messages_on_user_id_and_created_at", using: :btree
+  add_index "user_messages", ["user_id", "message_type", "created_at"], name: "idx_user_messages_4", using: :btree
+  add_index "user_messages", ["user_id", "message_type", "read", "created_at"], name: "idx_user_messages_5", using: :btree
+  add_index "user_messages", ["user_id", "page_id", "read", "created_at"], name: "idx_user_messages_3", using: :btree
+  add_index "user_messages", ["user_id", "read", "created_at"], name: "index_user_messages_on_user_id_and_read_and_created_at", using: :btree
+  add_index "user_messages", ["user_id", "sender_user_id", "created_at"], name: "idx_user_messages_6", using: :btree
 
   create_table "user_properties", force: true do |t|
     t.integer  "user_id"
@@ -235,7 +254,7 @@ ActiveRecord::Schema.define(version: 20131014145849) do
     t.datetime "updated_at"
   end
 
-  add_index "user_properties", ["user_id", "key"], name: "index_user_properties_on_user_id_and_key", unique: true
+  add_index "user_properties", ["user_id", "key"], name: "index_user_properties_on_user_id_and_key", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"
@@ -247,8 +266,8 @@ ActiveRecord::Schema.define(version: 20131014145849) do
     t.boolean  "active",     default: true
   end
 
-  add_index "users", ["active"], name: "index_users_on_active"
-  add_index "users", ["actived_at"], name: "index_users_on_actived_at"
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["active"], name: "index_users_on_active", using: :btree
+  add_index "users", ["actived_at"], name: "index_users_on_actived_at", using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

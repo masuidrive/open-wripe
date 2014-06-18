@@ -86,7 +86,7 @@ class PagesController < ApplicationController
   end
 
   def create
-    @page = current_user.pages.create params.require(:page).permit(:title, :body, :read_permission, :dates_json).merge(modified_at: Time.now.to_i)
+    @page = current_user.pages.create params.require(:page).permit(:title, :tag_list, :body, :read_permission, :dates_json).merge(modified_at: Time.now.to_i)
 
     respond_to do |format|
       format.json { render :json => { page: @page.to_hash } }
@@ -117,7 +117,7 @@ class PagesController < ApplicationController
         if @page.lock_version != params[:page].delete(:lock_version).to_i
           return result_conflict
         end
-        @page.update_attributes params.require(:page).permit(:title, :body, :read_permission, :archived, :dates_json).merge(modified_at: Time.now.to_i)
+        @page.update_attributes params.require(:page).permit(:title, :body, :tag_list, :read_permission, :archived, :dates_json).merge(modified_at: Time.now.to_i)
       end
 
       respond_to do |format|

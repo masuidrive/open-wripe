@@ -12,6 +12,7 @@
 #= require shared/marked
 #= require shared/jquery.bootstrap-growl
 #= require shared/jquery-ui-1.10.3.custom.js
+#= require shared/bootstrap-tokenfield
 
 class LeaveConfirmationDialog extends ModalDialog
   el: $('#page-edit-leave')
@@ -53,6 +54,7 @@ class PageEditPanel extends AbsolutePanel
 
     container: "#edit-page-container"
     title: if device_type() == "phone" then "#edit-page-title-phone" else "#edit-page-title"
+    #taglist: if device_type() == "phone" then "#edit-page-tag-list-phone" else "#edit-page-tag-list"
     body: if device_type() == "phone" then "#edit-page-body-phone" else "#edit-page-body"
     bottom_bar: if device_type() == "phone" then "#edit-page-bottom-bar-phone" else "#edit-page-bottom-bar"
     loading: "#edit-page-loading"
@@ -101,6 +103,8 @@ class PageEditPanel extends AbsolutePanel
     
     $('#edit_font_fixed_small').click =>
       @change_font 'fixed', 'small'
+
+    @taglist_el = if device_type() == "phone" then $("#edit-page-tag-list-phone") else $("#edit-page-tag-list")
 
     @save_button = new LabeledButton(@save_button_el)
     @save_button.el.click => @save()
@@ -166,7 +170,7 @@ class PageEditPanel extends AbsolutePanel
     Deferred (defer) =>
       done = =>
         @page.on 'update', (old_data) =>
-          form_is_changed = old_data.page.title != @title_el.val() || old_data.page.body != @body_el.val()
+          form_is_changed = old_data.page.title != @title_el.val() || old_data.tag_list != @taglist_el.val() || old_data.page.body != @body_el.val()
           if form_is_changed
             @merge(@page.body, old_data.page.body, @body_el.val(), @page.lock_version)
           else
@@ -244,6 +248,7 @@ class PageEditPanel extends AbsolutePanel
     else
       @preview_tab_el.tab('show')
     @title_el.val('')
+    @taglist_el.tokenfield('setTokens', [])
     @body_el.val('')
     @lock_version = -1
     @save_button.label('save')
@@ -254,6 +259,10 @@ class PageEditPanel extends AbsolutePanel
   page_to_form: ->
     if @page && @page.lock_version != @lock_version
       @title_el.val(@page.title)
+      if @page.tag_list == ''
+        @taglist_el.tokenfield('setTokens', [])
+      else
+        @taglist_el.tokenfield('setTokens', @page.tag_list)
       @body_el.val(@page.body)
       @lock_version = @page.lock_version
       @preview()
@@ -261,12 +270,13 @@ class PageEditPanel extends AbsolutePanel
   form_to_page: ->
     if @page
       @page.title = @title_el.val()
+      @page.tag_list = @taglist_el.val()
       @page.body = @body_el.val()
       @page.lock_version = @lock_version
       @save_draft()
 
   is_changed: ->
-    @page && ( @page.saved_data.body != @body_el.val() || @page.saved_data.title != @title_el.val() )
+    @page && ( @page.saved_data.body != @body_el.val() || @page.saved_data.tag_list != @taglist_el.val() || @page.saved_data.title != @title_el.val() )
 
   save: ->
     if @is_active && !ModalDialog.is_active()
@@ -284,6 +294,7 @@ class PageEditPanel extends AbsolutePanel
           save_defer.done =>
             if @page && @page.lock_version == @lock_version+1
               @page.title = @title_el.val()
+              @page.tag_list = @taglist_el.val()
               @page.body = @body_el.val()
               @lock_version = @page.lock_version
             else
@@ -408,12 +419,14 @@ class PageEditPanel extends AbsolutePanel
     draft_key = sessionStorage['page-edit-key']
     if typeof draft_key != 'undefined'
       draft_body = sessionStorage['page-edit-body']
+      #draft_tag_list = sessionStorage['page-edit-tag-list']
       draft_title = sessionStorage['page-edit-title']
       draft_lock_version = sessionStorage['page-edit-lock-version']
 
       if @page && (@page.key || '') == draft_key
         use_draft = =>
           @body_el.val(@page.body = draft_body)
+          #@taglist_el.val(@page.tag_list = draft_tag_list)
           @title_el.val(@page.title = draft_title)
           @lock_version = if draft_lock_version=='' then undefined else parseInt(draft_lock_version)
 
@@ -431,9 +444,10 @@ class PageEditPanel extends AbsolutePanel
 
   save_draft: ->
     if @is_active
-      if @page && (@body_el.val() != @page.saved_data.body || @title_el.val() != @page.saved_data.title)
+      if @page && (@body_el.val() != @page.saved_data.body || @taglist_el.val() != @page.saved_data.tag_list || @title_el.val() != @page.saved_data.title)
         sessionStorage['page-edit-key'] = @page.key || ''
         sessionStorage['page-edit-body'] = @body_el.val()
+        #sessionStorage['page-edit-tag-list'] = @taglist_el.val()
         sessionStorage['page-edit-title'] = @title_el.val()
         sessionStorage['page-edit-lock-version'] = @page.lock_version || ''
       else
@@ -442,13 +456,14 @@ class PageEditPanel extends AbsolutePanel
   clear_draft: ->
     sessionStorage.removeItem('page-edit-key')
     sessionStorage.removeItem('page-edit-body')
+    #sessionStorage.removeItem('page-edit-tag-list')
     sessionStorage.removeItem('page-edit-title')
     sessionStorage.removeItem('page-edit-lock-version')
 
   autosave: ->
     if @page && session.autosave() && !ModalDialog.is_active()
-      data = @page.saved_data || { body: @page.body, title: @page.title }
-      if data.body != @body_el.val() || data.title != @title_el.val()
+      data = @page.saved_data || { body: @page.body, tag_list: @page.tag_list, title: @page.title }
+      if data.body != @body_el.val() || data.tag_list != @taglist_el.val() || data.title != @title_el.val()
         @save()
 
   change_font: (fontname, fontsize) ->

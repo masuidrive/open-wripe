@@ -71,7 +71,7 @@ class AppRouter extends Backbone.Router
     @_select 'edit', '0'+page_id
 
   update_hash: (action) ->
-    Backbone.history.navigate(action, {trigger: false})
+    Backbone.history.navigate(action, {trigger: true})
 
   _select: (panel_name, option) ->
     analytics.pageview("/app##{panel_name}")
@@ -163,3 +163,5 @@ $(document).ready ->
   konami.load()
   if localStorage.secret_tags == 'true'
     $('.secret').css('display', 'inline')
+
+  $("#edit-page-tag-list").tokenfield()
