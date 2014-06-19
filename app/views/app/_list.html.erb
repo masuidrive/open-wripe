@@ -185,23 +185,23 @@
    <span class="modified_at">
     <span class="hidden-phone">Updated at </span>${relativeDate(modified_at * 1000)}
    </span>
+   {% _.each(tag_list.split(","), function(name){ %}
+   <span class="btn btn-mini">
+    ${name}
+   </span>
+   {% }); %}
    <!--
    <span class="owner">
     by ${user.username}
    </span>
    -->
-   <div class="right">
-    <span class="tags">
-     ${tag_list}
-    </span>
-    <a href="#" id="list-page-archive-${key}" key="${key}" class="btn btn-mini archive-btn ${archived ? 'hide' : ''}">
-     <i class="icon-folder-open"></i> Archive
-    </a>
-    <a href="#" id="list-page-unarchive-${key}" key="${key}" class="btn btn-mini unarchive-btn ${archived ? '' : 'hide'}">
-     <i class="icon-inbox"></i> Move to notes
-    </a>
-    <span id="list-page-moving-${key}" class="unarchive-btn hide">moving...</span>
-   </div>
+   <a href="#" id="list-page-archive-${key}" key="${key}" class="btn btn-mini archive-btn ${archived ? 'hide' : ''}">
+    <i class="icon-folder-open"></i> Archive
+   </a>
+   <a href="#" id="list-page-unarchive-${key}" key="${key}" class="btn btn-mini unarchive-btn ${archived ? '' : 'hide'}">
+    <i class="icon-inbox"></i> Move to notes
+   </a>
+   <span id="list-page-moving-${key}" class="unarchive-btn hide">moving...</span>
   </div>
  </div><!-- page -->
 </tmpl><!-- page_template -->

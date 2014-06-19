@@ -91,25 +91,20 @@ $header_tags_height: 32px;
       .info {
         color: #aaa;
         font-size: 88%;
-      
+
         .updated_at {
           margin-right: 1em;
+          vertical-align: middle;
         }
 
-        .right {
+        .archive-btn {
           float: right;
+          margin-right: 6px;
+        }
 
-          .tags {
-            margin-right: 6px;
-          }
-
-          .archive-btn {
-            margin-right: 6px;
-          }
-
-          .unarchive-btn {
-            margin-right: 6px;
-          }
+        .unarchive-btn {
+          float: right;
+          margin-right: 6px;
         }
       } // .info
     } // .page
