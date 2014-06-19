@@ -96,14 +96,20 @@ $header_tags_height: 32px;
           margin-right: 1em;
         }
 
-        .archive-btn {
+        .right {
           float: right;
-          margin-right: 6px;
-        }
 
-        .unarchive-btn {
-          float: right;
-          margin-right: 6px;
+          .tags {
+            margin-right: 6px;
+          }
+
+          .archive-btn {
+            margin-right: 6px;
+          }
+
+          .unarchive-btn {
+            margin-right: 6px;
+          }
         }
       } // .info
     } // .page
