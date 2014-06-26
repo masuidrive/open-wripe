@@ -1,10 +1,3 @@
-/*
-https://github.com/ifightcrime/bootstrap-growl
-
-The MIT License
-
-Copyright (c) Nick Larson, http://github.com/ifightcrime
-*/
 (function() {
   var $;
 
@@ -20,7 +13,7 @@ Copyright (c) Nick Larson, http://github.com/ifightcrime
       $alert.addClass("alert-" + options.type);
     }
     if (options.allow_dismiss) {
-      $alert.append("<a class=\"close\" data-dismiss=\"alert\" href=\"#\">&times;</a>");
+      $alert.append("<span class=\"close\" data-dismiss=\"alert\">&times;</span>");
     }
     $alert.append(message);
     if (options.top_offset) {
@@ -60,15 +53,16 @@ Copyright (c) Nick Larson, http://github.com/ifightcrime
     }
     $alert.fadeIn();
     if (options.delay > 0) {
-      return $alert.delay(options.delay).fadeOut(function() {
-        return $(this).remove();
+      $alert.delay(options.delay).fadeOut(function() {
+        return $(this).alert("close");
       });
     }
+    return $alert;
   };
 
   $.bootstrapGrowl.default_options = {
     ele: "body",
-    type: null,
+    type: "info",
     offset: {
       from: "top",
       amount: 20
@@ -81,4 +75,3 @@ Copyright (c) Nick Larson, http://github.com/ifightcrime
   };
 
 }).call(this);
-
