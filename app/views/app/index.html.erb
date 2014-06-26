@@ -2,6 +2,7 @@
 <html lang="en"<%=raw Rails.env.production? ? ' manifest="application.manifest"' : '' %> xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
   <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <title>wri.pe</title>
   <%= stylesheet_link_tag :app, :media => "all" %>
@@ -40,11 +41,11 @@
    wri.pe
   </div>
   <ul>
-   <li><a href="#new" id="navigator-new" class="item"><span><i class="icon-plus icon icon-3x"></i><br/>New</a></span></li>
-   <li><a href="#notes" id="navigator-index" class="item"><span><i class="icon-file-alt icon icon-3x"></i><br/>Notes</a></span></li>
-   <li><a href="#archived" id="navigator-archived" class="item"><span><i class="icon-folder-close icon icon-3x"></i><br/>Archive</a></span></li>
-   <li><a href="#calendar" id="navigator-calendar" class="item"><span><i class="icon-calendar icon icon-3x"></i><br/>Calendar</a></span></li>
-   <li><a href="#search" id="navigator-search" class="item"><span><i class="icon-search icon icon-3x"></i><br/>Search</a></span></li>
+   <li><a href="#new" id="navigator-new" class="item"><span><i class="icon-plus icon icon-3x"></i><br/>New</span></a></li>
+   <li><a href="#notes" id="navigator-index" class="item"><span><i class="icon-file-alt icon icon-3x"></i><br/>Notes</span></a></li>
+   <li><a href="#archived" id="navigator-archived" class="item"><span><i class="icon-folder-close icon icon-3x"></i><br/>Archive</span></a></li>
+   <li><a href="#calendar" id="navigator-calendar" class="item"><span><i class="icon-calendar icon icon-3x"></i><br/>Calendar</span></a></li>
+   <li><a href="#search" id="navigator-search" class="item"><span><i class="icon-search icon icon-3x"></i><br/>Search</span></a></li>
    <li class="hide"><a href="#" id="navigator-edit" class="item">Edit</a></li>
   </ul>
  </div>
@@ -89,12 +90,11 @@
   <div class="clearfix">
    <ul>
     <li>From the 'Settings' tab when editing a note you can now select a font. [3rd Aug]</li>
-   </li>
+   </ul>
   </div>
  <% end %>
 
 </div><!-- app -->
-
 </body>
 <%= javascript_include_tag :app, :defer =>"defer" %>
 </html>
