@@ -152,6 +152,9 @@ $(document).ready ->
     Backbone.$(window).on 'hashchange', ->
       window.localStorage['hash'] = Backbone.history.getHash()
 
+  $("#edit-page-tag-list").tokenfield()
+  $("#edit-page-tag-list-phone").tokenfield()
+
   konami = new Konami()
   konami.code = ->
     if localStorage.secret_tags == 'true'
@@ -163,5 +166,3 @@ $(document).ready ->
   konami.load()
   if localStorage.secret_tags == 'true'
     $('.secret').css('display', 'inline')
-
-  $("#edit-page-tag-list").tokenfield()
