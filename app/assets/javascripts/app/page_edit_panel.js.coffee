@@ -148,6 +148,7 @@ class PageEditPanel extends AbsolutePanel
 
     if device_type() == 'desktop'
       $(".btn", @bottom_bar_el).tooltip('hide')
+      @edit_tab_el.hide()
     else
       $(".btn", @bottom_bar_el).tooltip('destroy')
 
