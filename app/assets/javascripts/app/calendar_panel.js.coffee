@@ -96,7 +96,7 @@ class CalendarPanel extends AbsolutePanel
         if cal[day]
           html += cal[day].map (p) =>
             "<li class=\"page\"><a href=\"\##{escape_html(p.key)}/edit\" title=\"#{escape_html(p.title)}\">#{escape_html(p.title)}</a></li>"
-          .join('')
+          html.join('')
         html += '</ul></span></li>'
 
       $("#calendar-list").html(html)
