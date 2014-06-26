@@ -4,7 +4,7 @@
 #= require shared/defer
 #= require shared/labeled_button
 #= require shared/modal_dialog
-#= require shared/bootstrapSwitch
+#= require shared/bootstrap-switch
 
 class ExportNotesDialog extends ModalDialog
   el: $('#settings-export')
