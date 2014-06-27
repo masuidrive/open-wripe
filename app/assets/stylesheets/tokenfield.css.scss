@@ -34,8 +34,9 @@
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  margin-left: 2px;
-  margin-right: 2px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .tokenfield.focus {
   border-color: #66afe9;
