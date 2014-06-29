@@ -179,17 +179,19 @@
 <tmpl id="list-page-template" type="text/x-jquery-tmpl" class="hide"> 
  <div class="page${cursor ? ' cursor' : ''}" id="list-page-${key}" name="${key}">
   <div class="title">
-   <a href="#${key}/edit">${title}</a>
+    <div class="tags">
+     {% _.each(tag_list.split(","), function(name){ %}
+     <span class="btn btn-mini">
+      ${name}
+     </span>
+     {% }); %}
+    </div>
+    <a href="#${key}/edit">${title}</a>
   </div>
   <div class="info clearfix">
    <span class="modified_at">
     <span class="hidden-phone">Updated at </span>${relativeDate(modified_at * 1000)}
    </span>
-   {% _.each(tag_list.split(","), function(name){ %}
-   <span class="btn btn-mini">
-    ${name}
-   </span>
-   {% }); %}
    <!--
    <span class="owner">
     by ${user.username}

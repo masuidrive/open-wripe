@@ -79,13 +79,25 @@ $header_tags_height: 32px;
       border-top: 1px solid rgba(0, 0, 0, 0.1);
       border-left: 4px solid rgba(0, 0, 0, 0);
 
-      .title a {
-        display: block;
-        width: 100%;
+      .title{
         overflow: hidden;
         white-space: nowrap;
         font-size: 1.2em;
         font-family: $editor_font_family;
+        position: relative;
+        margin-bottom: 1px;
+
+        a {
+          //display: block;
+          //width: 80%;
+        }
+
+        .tags {
+          //display: block;
+          //width: 20%;
+          position: absolute;
+          right: 6px;
+        }
       }
 
       .info {
