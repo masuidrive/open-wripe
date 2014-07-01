@@ -37,6 +37,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  border: 1px solid #CCCCCC;
 }
 .tokenfield.focus {
   border-color: #66afe9;
@@ -119,7 +120,7 @@
   width: 60px;
   min-width: 60px;
   border: 0;
-  height: 2em;
+  height: 1.8em;
   padding: 0;
   margin-bottom: 6px;
   -webkit-box-shadow: none;
