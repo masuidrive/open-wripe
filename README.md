@@ -18,6 +18,7 @@ https://wri.pe source code.
 ### set up
 
 ```
+cp config/application-sample.yml config/application.yml
 cp config/async-sample.yml config/async.yml
 cp config/evernote-sample.yml config/evernote.yml
 cp config/github-sample.yml config/github.yml

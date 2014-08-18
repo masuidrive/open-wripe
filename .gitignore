@@ -13,6 +13,7 @@
 
 # Ignore bundler config
 /.bundle
+vendor/bundle
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -26,6 +27,7 @@
 .DS_Store
 
 # Ignore your setting files
+config/application.yml
 config/async.yml
 config/evernote.yml
 config/github.yml
