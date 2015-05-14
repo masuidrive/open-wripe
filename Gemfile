@@ -15,9 +15,9 @@ gem 'execjs'
 gem 'therubyracer'
 gem 'yajl-ruby'
 gem 'json', '>= 1.8.1'
+gem 'pg'
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'capybara-webkit'
@@ -29,7 +29,6 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg'
   gem 'newrelic_rpm'
   gem 'rails_12factor'
 end
@@ -70,7 +69,7 @@ gem "evernote_oauth", "~> 0.2.1"
 gem 'icalendar'
 
 # create HTML5 cache manifest
-gem 'rack-offline', :git => 'https://github.com/wycats/rack-offline.git' 
+gem 'rack-offline', :git => 'https://github.com/wycats/rack-offline.git'
 
 # Gems used only for assets and not required
 # in production environments by default.
