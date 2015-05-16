@@ -126,6 +126,8 @@ class Page < ActiveRecord::Base
       user.evernote_user.async :save_to_evernote, self
     end
     true
+  rescue => e
+    # no op
   end
 
   private
