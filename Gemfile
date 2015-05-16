@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 #ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.3'
+gem 'rails', '4.1.10'
 gem "guard-coffeescript", "~> 1.2.1"
 
 gem 'koala'
@@ -27,6 +27,7 @@ group :development, :test do
   gem 'sunspot-rails-tester'
   gem 'ruby-prof'
   gem 'sqlite3'
+  gem 'spring'
 end
 
 group :production do

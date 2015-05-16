@@ -1,14 +1,14 @@
 development:
   client_id: XXXXXXX
   client_secret: XXXXXXX
-  callback: http://wripe.dev/ghauth/callback
+  callback: http://localhost:3000/ghauth/callback
 
 test:
   client_id: XXXXXXX
   client_secret: XXXXXXX
   callback: http://localhost:57124/ghauth/callback
   tests:
-    - email: wripe@example.com 
+    - email: wripe@example.com
       password: wripe
       account: wripe
 

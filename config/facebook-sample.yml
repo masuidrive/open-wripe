@@ -1,7 +1,7 @@
 development:
   application_id: 123456789
   application_secret: XXXXXXX
-  callback: http://wripe.dev/fbauth/callback
+  callback: http://localhost:3000/fbauth/callback
 
 test:
   application_id: 123456789

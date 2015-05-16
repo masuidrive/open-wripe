@@ -2,7 +2,7 @@ development:
   consumer_key: XXXXXXX-0000
   consumer_secret: XXXXXXX
   sandbox: true
-  callback: http://wripe.dev/evernote_auth/callback
+  callback: http://localhost:3000/evernote_auth/callback
 
 test:
   consumer_key: XXXXXXX-0000
