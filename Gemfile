@@ -26,6 +26,7 @@ group :development, :test do
   gem 'database_rewinder'
   gem 'sunspot-rails-tester'
   gem 'ruby-prof'
+  gem 'sqlite3'
 end
 
 group :production do

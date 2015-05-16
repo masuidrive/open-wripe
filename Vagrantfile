@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   GUEST_RUBY_VERSION = '2.2.2'
 
   GUEST_NVM_VERSION = '0.24.1'
-  GUEST_NODE_VERSION = 'stable'
+  GUEST_NODE_VERSION = '0.10.38'
 
   # 必要なパッケージをインストール
   config.vm.provision "shell", privileged: true, inline: <<-__SCRIPT__
@@ -17,7 +17,6 @@ Vagrant.configure("2") do |config|
     apt-get install -y debconf-utils
     apt-get install -y postgresql postgresql-contrib libpq-dev
     sudo -u postgres createuser --superuser vagrant
-
     apt-get install -y redis-server
 
     # develop env
@@ -25,6 +24,13 @@ Vagrant.configure("2") do |config|
 
     # for testing
     apt-get install -y phantomjs qt5-default libqt5webkit5-dev
+
+    # solr
+    sudo apt-get -y install openjdk-7-jdk
+    mkdir /usr/java
+    ln -s /usr/lib/jvm/java-7-openjdk-amd64 /usr/java/default
+    sudo apt-get -y install solr-tomcat
+
   __SCRIPT__
 
   # RubyとNodeをコンパイル
@@ -45,7 +51,7 @@ Vagrant.configure("2") do |config|
     eval "$(rbenv init -)"
     . ~/.nvm/nvm.sh
 
-    #{defined?(GUEST_RUBY_VERSION) ? "rbenv install %s; rbenv global %s; gem install bundler" % [GUEST_RUBY_VERSION, GUEST_RUBY_VERSION] : ''}
+    #{defined?(GUEST_RUBY_VERSION) ? "rbenv install %s; rbenv global %s; gem install bundler; (cd /vagrant && bundle install)" % [GUEST_RUBY_VERSION, GUEST_RUBY_VERSION] : ''}
     #{defined?(GUEST_NODE_VERSION) ? "nvm install %s; nvm alias default %s" % [GUEST_NODE_VERSION, GUEST_NODE_VERSION] : ''}
   __SCRIPT__
 

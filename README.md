@@ -6,10 +6,9 @@ https://wri.pe source code.
 
 ### requirements
 
-- Ruby 2.0.0 and above
+- Ruby 2.2.2 and above
 - Bundler
 - JRE 1.6 and above (for Solr)
-- Pow - http://pow.cx/
 
 ### optional requirenments
 
@@ -27,10 +26,10 @@ cp config/facebook-sample.yml config/facebook.yml
 cp config/paperclip_feedbacks_s3-sample.yml config/paperclip_feedbacks_s3.yml
 # edit above yaml files
 
-bundle install --path vendor/bundle
-bundle exec rake sunspot:solr:run
+bundle install
+bundle exec rake sunspot:solr:run # run on other terminal
 bundle exec rake db:migrate
-ln -s `pwd` ~/.pow/wripe
+bundle exec rails server -b 0.0.0.0
 ```
 
 

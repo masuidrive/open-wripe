@@ -18,10 +18,10 @@ class GhUser < ActiveRecord::Base
       user = User.create! :username => username
       ghuser.update_attributes :user_id => user.id
     end
-    
+
     user.update_attributes :icon_url => profile['avatar_url']
     email = gh.emails.first rescue nil
-    user.update_attributes :email => email unless email.blank?
+    user.update_attributes :email => email[:email] unless email.blank?
     user
   end
 end
