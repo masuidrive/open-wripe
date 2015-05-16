@@ -6,8 +6,8 @@ class PageTag < ActiveRecord::Base
 
   def to_hash
     {
-      name: name,
-      pages_count: page_taggings_count
+      name: self.name,
+      pages_count: self.page_taggings_count
     }
   end
 end

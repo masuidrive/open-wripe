@@ -28,28 +28,9 @@ cp config/paperclip_feedbacks_s3-sample.yml config/paperclip_feedbacks_s3.yml
 
 bundle install
 bundle exec rake sunspot:solr:run # run on other terminal
+bundle exec rake db:create
 bundle exec rake db:migrate
 bundle exec rails server -b 0.0.0.0
-```
-
-
-### run
-
-You can login with GitHub or Facebook.
-
-#### except Chrome
-
-```
-bundle exec rake sunspot:solr:run # in case of stopping solr
-open "http://wripe.dev/"
-```
-
-#### with Chrome
-
-```
-bundle exec rake sunspot:solr:run # in case of stopping solr
-bundle exec rails s
-open "http://lvh.me:3000/"
 ```
 
 
