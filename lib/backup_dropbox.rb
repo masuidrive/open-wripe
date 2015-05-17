@@ -48,12 +48,12 @@ class DropboxBackup
       user.dropbox_user.update_attribute :backups, JSON.generate(backups)
     end
     true
-  rescue Exception => e
+  rescue => e
     puts e
     puts e.backtrace.join("\n")
     false
   ensure
-    FileUtils.rm_rf zipfile if zipfile && File.exists?(zipfile)
+    FileUtils.rm_rf zipfile if zipfile && File.exist?(zipfile)
   end
 
   def consumer

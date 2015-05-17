@@ -1,0 +1,50 @@
+# This file overrides https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+
+# Use UTF-8 as the source file encoding.
+Encoding:
+  Enabled: false
+
+# Limit lines to 80 characters.
+LineLength:
+  Enabled: false
+
+# Avoid methods longer than 10 lines of code
+MethodLength:
+  Enabled: false
+
+# Favor modifier if/unless usage when you have a single-line body.
+IfUnlessModifier:
+  Enabled: false
+
+# Favor modifier while/until usage when you have a single-line body.
+WhileUntilModifier:
+  Enabled: false
+
+# Preferred collection methods.
+CollectionMethods:
+  Enabled: false
+
+# Avoid Perl-style regex back references.
+AvoidPerlBackrefs:
+  Enabled: false
+
+# Don't interpolate global, instance and class variables directly in strings.
+VariableInterpolation:
+  Enabled: false
+
+# Don't use semicolons to terminate expressions.
+Semicolon:
+  AllowBeforeEndInOneLineMethods: false
+
+# Use only ascii symbols in comments.
+AsciiComments:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 128
+
+# TODO: Change it to true when $redis and $mixpanel is removed
+#
+# Do not introduce global variables.
+AvoidGlobalVars:
+  Enabled: false

@@ -52,7 +52,7 @@ module ActiveRecordAsync
 
   private
   def async_message_dump(methodname, args)
-    Base64.encode64(Zlib::Deflate.deflate(Marshal.dump({method: methodname, obj: self, args:args})))
+    Base64.encode64(Zlib::Deflate.deflate(Marshal.dump(method: methodname, obj: self, args:args)))
   end
 
   private
