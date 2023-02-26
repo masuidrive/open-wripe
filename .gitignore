@@ -34,3 +34,5 @@ config/github.yml
 config/dropbox.yml
 config/facebook.yml
 config/paperclip_feedbacks_s3.yml
+
+.idea

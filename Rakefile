@@ -20,9 +20,11 @@ end
 
 desc 'queue runner'
 task :queue_runner => [:environment] do
-  # load for ActiveRecord::ConnectionAdapters::TransactionState
-  ActiveRecord::ConnectionAdapters::ClosedTransaction
-  ActiveRecordAsync.runner
+  unless Settings.flags.disable_ar_async
+    # load for ActiveRecord::ConnectionAdapters::TransactionState
+    ActiveRecord::ConnectionAdapters::ClosedTransaction
+    ActiveRecordAsync.runner
+  end
 end
 
 desc 'test on browsers'
