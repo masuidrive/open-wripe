@@ -1,7 +1,7 @@
 class UserMessage < ActiveRecord::Base
   belongs_to :user
-  belongs_to :sender_user, :class_name => 'User'
-  belongs_to :page
+  belongs_to :sender_user, :class_name => 'User', optional: true
+  belongs_to :page, optional: true
   scope :user, -> u { where(user: u) }
   scope :page, -> p { where(page: p) }
   scope :type, -> t { where(message_type: t) }

@@ -1,10 +1,10 @@
-//= require shared/underscore
-//= require shared/backbone
-//= require shared/localstorage
-//= require shared/pickup_dates
-//= require shared/defer
-//= require shared/jscache
-//= require session
+#= require shared/underscore
+#= require shared/backbone
+#= require shared/localstorage
+#= require shared/pickup_dates
+#= require shared/defer
+#= require shared/jscache
+#= require session
 
 
 cache = new Cache(512 * 1024, false, new Cache.LocalStorageCacheStorage('page'))

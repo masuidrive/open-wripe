@@ -1,9 +1,10 @@
-//= require shared/bootstrap
-//= require shared/bootstrap-responsive
-//= require shared/font-awesome
+//= require bootstrap2/docs/assets/css/bootstrap
+//= require bootstrap2/docs/assets/css/bootstrap-responsive
+//= require @fortawesome/fontawesome-free/css/all
 //= require shared/patch
 //= require toggle
 //= require_tree ./app
+
 @import "layout";
 
 html, body {
@@ -28,8 +29,10 @@ form {
 
 body.phone, body.tablet {
   -webkit-user-select: none;
+  user-select: none;
   input, textarea, #edit-preview {
     -webkit-user-select: auto;
+    user-select: auto;
   }
 }
 

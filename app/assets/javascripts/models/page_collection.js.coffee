@@ -1,9 +1,9 @@
-//= require shared/underscore
-//= require shared/backbone
-//= require shared/defer
-//= require shared/localstorage
-//= require shared/jscache
-//= require session
+#= require shared/underscore
+#= require shared/backbone
+#= require shared/defer
+#= require shared/localstorage
+#= require shared/jscache
+#= require session
 
 cache = new Cache(128 * 1024, false, new Cache.LocalStorageCacheStorage('page-collection'))
 

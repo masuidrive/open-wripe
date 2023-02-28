@@ -10,7 +10,7 @@ $ ->
 
     $(appCache).bind "updateready", ->
       upgrade()
-    
+
     if appCache.status == app.UPDATEREADY
       upgrade()
 

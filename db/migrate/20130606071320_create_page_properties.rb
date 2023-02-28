@@ -1,4 +1,4 @@
-class CreatePageProperties < ActiveRecord::Migration
+class CreatePageProperties < ActiveRecord::Migration[4.2]
   def change
     create_table :page_properties do |t|
       t.integer :page_id

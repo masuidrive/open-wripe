@@ -1,4 +1,4 @@
-class AddPageTaggingsCountToPageTags < ActiveRecord::Migration
+class AddPageTaggingsCountToPageTags < ActiveRecord::Migration[4.2]
   def change
     add_column :page_tags, :page_taggings_count, :integer, :default => 0
     remove_column :page_tags, :pages_count

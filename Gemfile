@@ -4,25 +4,28 @@ source 'https://rubygems.org'
 #ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.3'
-gem "guard-coffeescript", "~> 1.2.1"
+gem 'rails', '5.2.8.1'
+gem 'guard-coffeescript'
 
 gem 'koala'
 gem 'octokit'
 gem 'oauth2'
 
-gem 'execjs'
-gem 'therubyracer'
-gem 'yajl-ruby'
-gem 'json', '>= 1.8.1'
+# gem 'execjs'
+gem 'mini_racer', platforms: :ruby
+gem 'terser'
+gem 'coffee-rails'
+
+gem 'json', '~> 2.2'
 
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'capybara-webkit'
   gem 'selenium-webdriver'
-  gem 'factory_girl'
+  gem 'webdrivers'
+  gem 'factory_bot'
+  gem 'faraday-retry'
   gem 'database_rewinder'
   gem 'sunspot-rails-tester'
   gem 'ruby-prof'
@@ -36,7 +39,8 @@ end
 
 # server
 gem 'foreman'
-gem 'unicorn'
+# Use puma as the app server
+gem 'puma'
 
 # gem 'mysql2'
 
@@ -44,13 +48,13 @@ gem 'unicorn'
 gem 'dalli'
 
 # attach file
-gem "paperclip", "~> 3.0"
-gem 'aws-sdk', '~> 1.11.0'
+gem "paperclip"
+gem 'aws-sdk'
 
 # markdown
-gem "redcarpet", "~> 2.3.0"
-gem "nokogiri", "~> 1.6.0"
-gem "sanitize", "~> 2.0.4"
+gem "redcarpet"
+gem "nokogiri"
+gem "sanitize"
 
 # paginator
 gem 'kaminari'
@@ -61,10 +65,10 @@ gem 'sunspot_solr'
 
 # backup to dropbox
 gem 'dropbox-api'
-gem "rubyzip", "~> 0.9.9"
+gem "rubyzip"
 
 # evernote
-gem "evernote_oauth", "~> 0.2.1"
+gem "evernote_oauth"
 
 # ics export
 gem 'icalendar'
@@ -75,17 +79,14 @@ gem 'rack-offline', :git => 'https://github.com/wycats/rack-offline.git'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 4.0.0'
-  gem 'coffee-rails', '~> 4.0.0'
+  gem 'sass-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', platforms: :ruby
-
-  gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-gem 'less-rails'
+gem 'zip-zip'
+gem 'bootsnap', require: false
 
 gem 'settingslogic'
 

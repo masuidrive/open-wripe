@@ -1,7 +1,7 @@
 #= require shared/underscore
 #= require shared/backbone
 #= require shared/defer
-#= require shared/bootstrap
+#= require bootstrap2/docs/assets/js/bootstrap
 
 class AbsolutePanel
   constructor: (klass) ->

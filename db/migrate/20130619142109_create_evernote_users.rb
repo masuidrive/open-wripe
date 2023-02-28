@@ -1,4 +1,4 @@
-class CreateEvernoteUsers < ActiveRecord::Migration
+class CreateEvernoteUsers < ActiveRecord::Migration[4.2]
   def change
     create_table :evernote_users do |t|
       t.integer :user_id

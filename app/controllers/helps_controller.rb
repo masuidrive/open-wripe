@@ -1,5 +1,5 @@
 class HelpsController < ApplicationController
-  before_filter :required_login
+  before_action :required_login
 
   def reset
     current_user.create_default_helps

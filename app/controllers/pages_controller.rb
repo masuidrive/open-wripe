@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
-  before_filter :required_login, except: [:show]
-  before_filter :prepage_variants, only: [:show, :edit, :update, :destroy, :archive, :unarchive]
+  before_action :required_login, except: [:show]
+  before_action :prepage_variants, only: [:show, :edit, :update, :destroy, :archive, :unarchive]
   if %w(test development).include?(Rails.env)
-    before_filter :delay_for_test
+    before_action :delay_for_test
     cattr_accessor :_delay
   end
   PER_PAGE = 10

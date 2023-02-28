@@ -1,4 +1,4 @@
-class CreatePageTags < ActiveRecord::Migration
+class CreatePageTags < ActiveRecord::Migration[4.2]
   def change
     create_table :page_tags do |t|
       t.integer :user_id

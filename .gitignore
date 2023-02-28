@@ -34,3 +34,12 @@ config/github.yml
 config/dropbox.yml
 config/facebook.yml
 config/paperclip_feedbacks_s3.yml
+
+.idea
+
+/node_modules
+
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

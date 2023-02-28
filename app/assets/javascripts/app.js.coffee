@@ -1,4 +1,5 @@
-#= require jquery
+#= require jquery/dist/jquery
+#= require bootstrap2/docs/assets/js/bootstrap
 #= require shared/underscore
 #= require shared/backbone
 #= require shared/utils

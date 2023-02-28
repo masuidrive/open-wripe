@@ -76,7 +76,7 @@ window.authorizedRequest = (options, defer) ->
   xhr = $.ajax(options)
   xhr.done (data) ->
     defer.resolve(data)
-  
+
   xhr.fail (xhr, textStatus, errorThrows) ->
     if xhr.status == 412 # CSRF and retry
       get_session () =>

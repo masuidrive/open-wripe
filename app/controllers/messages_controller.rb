@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_filter :required_login
+  before_action :required_login
   PER_PAGE = 10
 
   def index

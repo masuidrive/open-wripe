@@ -1,4 +1,6 @@
-Wripe::Application.routes.draw do
+Rails.application.routes.draw do
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   if Rails.env.production?
     offline = Rack::Offline.configure :cache_interval => 120 do
       %w(app).each do |c|
@@ -14,7 +16,7 @@ Wripe::Application.routes.draw do
       Dir[public_path.join("images/*")  ].flatten.each do |file|
         cache '/'+Pathname.new(file).relative_path_from(public_path).to_s
       end
-      
+
       # cache other assets
       network "*"
     end
@@ -22,7 +24,7 @@ Wripe::Application.routes.draw do
   end
 
   resources :pages, :constraints => { :id => /\d{1}\w{5,32}/ }, :only => [:new, :create, :index] do
-    collection do 
+    collection do
       get :archived
       get :calendar
       get :search
@@ -43,7 +45,7 @@ Wripe::Application.routes.draw do
 
   resources :messages
   resources :helps, :constraints => { :id => /\w+/ }, :only => [:destroy] do
-    collection do 
+    collection do
       post :reset
     end
   end

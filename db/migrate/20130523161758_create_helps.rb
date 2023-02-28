@@ -1,4 +1,4 @@
-class CreateHelps < ActiveRecord::Migration
+class CreateHelps < ActiveRecord::Migration[4.2]
   def change
     create_table :helps do |t|
       t.integer :user_id

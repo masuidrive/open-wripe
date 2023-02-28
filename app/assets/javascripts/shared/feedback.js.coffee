@@ -1,4 +1,4 @@
-#= require shared/html2canvas
+#= require html2canvas/dist/html2canvas
 #= require shared/modal_dialog
 
 

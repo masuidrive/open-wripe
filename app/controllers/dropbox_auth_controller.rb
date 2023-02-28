@@ -1,7 +1,7 @@
 require "#{Rails.root}/lib/backup_dropbox"
 
 class DropboxAuthController < ApplicationController
-  before_filter :required_login
+  before_action :required_login
 
   def sign_in
     url, session[:dropbox] = DropboxBackup.new.request_auth(Rails.application.routes.url_helpers.dropbox_auth_callback_url)

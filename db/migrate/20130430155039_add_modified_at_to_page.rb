@@ -1,4 +1,4 @@
-class AddModifiedAtToPage < ActiveRecord::Migration
+class AddModifiedAtToPage < ActiveRecord::Migration[4.2]
   def change
     add_column :pages, :modified_at, :integer
     add_index :pages, [:user_id, :modified_at]

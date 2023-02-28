@@ -1,6 +1,6 @@
 class Pages::MembersController < ApplicationController
-  before_filter :required_login
-  before_filter :prepage_variants
+  before_action :required_login
+  before_action :prepage_variants
 
   def index
     @page_users = @page.page_users

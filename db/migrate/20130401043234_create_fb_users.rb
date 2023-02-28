@@ -1,4 +1,4 @@
-class CreateFbUsers < ActiveRecord::Migration
+class CreateFbUsers < ActiveRecord::Migration[4.2]
   def change
     create_table :fb_users do |t|
       t.integer :user_id
