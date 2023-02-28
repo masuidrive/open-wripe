@@ -1,5 +1,5 @@
 #= require jquery
-#= require shared/underscore
+#= require underscore/underscore
 
 userAgent = window.navigator.userAgent.toLowerCase()
 _device_type = 'desktop'

@@ -1,14 +1,17 @@
 #= require jquery/dist/jquery
 #= require bootstrap2/docs/assets/js/bootstrap
-#= require shared/underscore
-#= require shared/backbone
+#= require underscore/underscore
+#= require backbone/backbone
 #= require shared/utils
 #= require shared/app_cache
 #= require shared/feedback
 #= require shared/analytics
-#= require shared/iscroll-lite
+#= require iscroll/src/iscroll-lite
 #= require konami
 #= require_tree ./app
+
+# shared/sprintf.js (https://github.com/azatoth/jquery-sprintf)
+# konami.js (https://github.com/georgemandis/konami-js)
 
 class AppRouter extends Backbone.Router
   routes:

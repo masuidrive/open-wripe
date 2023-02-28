@@ -1,11 +1,12 @@
-#= require shared/underscore
-#= require shared/backbone
+#= require underscore/underscore
+#= require backbone/backbone
 #= require shared/localstorage
 #= require shared/pickup_dates
 #= require shared/defer
 #= require shared/jscache
 #= require session
 
+# shared/jscache (https://github.com/monsur/jscache/blob/master/cache.js)
 
 cache = new Cache(512 * 1024, false, new Cache.LocalStorageCacheStorage('page'))
 

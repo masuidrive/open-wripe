@@ -1,1 +1,1 @@
-#= require shared/marked
+#= require marked/lib/marked

@@ -273,6 +273,13 @@ are-we-there-yet@^4.0.0:
     delegates "^1.0.0"
     readable-stream "^4.1.0"
 
+backbone@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/backbone/-/backbone-1.0.0.tgz#5e146e1efa8a5361462e578377c39ed0f16b0b4c"
+  integrity sha512-8rhC3q3npBssGGBArAY5RF4lvIpciCvDY0lHmFrLqOi0/fj5rm25H0DJrJFXPwRnuIzIhQ6eS0j7URAxV3u9hA==
+  dependencies:
+    underscore ">=1.4.3"
+
 balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
@@ -806,6 +813,11 @@ is-lambda@^1.0.1:
   resolved "https://registry.yarnpkg.com/is-lambda/-/is-lambda-1.0.1.tgz#3d9877899e6a53efc0160504cde15f82e6f061d5"
   integrity sha512-z7CMFGNrENq5iFB9Bqo64Xk6Y9sg+epq1myIcdHaGnbMTYOxvzsEtdYqQUylB7LxfkvgrrjP32T6Ywciio9UIQ==
 
+iscroll@^4.1.9:
+  version "4.1.9"
+  resolved "https://registry.yarnpkg.com/iscroll/-/iscroll-4.1.9.tgz#a42a54889270f25898ff04d35e8c29a64a67e73e"
+  integrity sha512-JwgcJvvvcWraSS0z6gIfbr0iQ7G5jct4AsfYcvEwBoaO3n3ZTGxHKw8m50KA/Css4nLOoK93E++XBX/CskwC7A==
+
 isexe@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
@@ -1013,6 +1025,11 @@ make-fetch-happen@^11.0.0, make-fetch-happen@^11.0.1, make-fetch-happen@^11.0.3:
     promise-retry "^2.0.1"
     socks-proxy-agent "^7.0.0"
     ssri "^10.0.0"
+
+marked@0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.1.tgz#156a3b803cc54c59290e60354b83baaa7d66c074"
+  integrity sha512-5j0gQzJggGbyJrK0e8T9Wf3GRsHjP7ZcoXp2Q5tfU/o44haXY9n+pECDWgrsKixqIwT/oHxygHWTV1j1RExIxw==
 
 minimatch@^3.1.1:
   version "3.1.2"
@@ -1683,6 +1700,11 @@ tuf-js@^1.0.0:
   dependencies:
     make-fetch-happen "^11.0.1"
     minimatch "^6.1.0"
+
+underscore@>=1.4.3:
+  version "1.13.6"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.13.6.tgz#04786a1f589dc6c09f761fc5f45b89e935136441"
+  integrity sha512-+A5Sja4HP1M08MaXya7p5LvjuM7K6q/2EaC0+iovj/wOcMsTzMvDFbasi/oSapiwOlt252IqsKqPjCl7huKS0A==
 
 unique-filename@^2.0.0:
   version "2.0.1"

@@ -1,5 +1,5 @@
-#= require shared/underscore
-#= require shared/backbone
+#= require underscore/underscore
+#= require backbone/backbone
 #= require app/panel
 #= require app/markdown_toolbar
 #= require models/page
@@ -9,7 +9,7 @@
 #= require shared/diff
 #= require shared/utils
 #= require shared/localstorage
-#= require shared/marked
+#= require marked/lib/marked
 #= require bootstrap-growl-ifightcrime/jquery.bootstrap-growl
 #= require jquery-ui/custom
 

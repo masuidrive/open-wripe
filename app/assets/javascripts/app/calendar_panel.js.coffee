@@ -1,5 +1,5 @@
-#= require shared/underscore
-#= require shared/backbone
+#= require underscore/underscore
+#= require backbone/backbone
 #= require app/panel
 #= require models/page
 #= require models/page_collection

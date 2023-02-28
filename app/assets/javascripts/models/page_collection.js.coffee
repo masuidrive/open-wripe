@@ -1,9 +1,11 @@
-#= require shared/underscore
-#= require shared/backbone
+#= require underscore/underscore
+#= require backbone/backbone
 #= require shared/defer
 #= require shared/localstorage
 #= require shared/jscache
 #= require session
+
+# shered/jscache (https://github.com/monsur/jscache/blob/master/cache.js)
 
 cache = new Cache(128 * 1024, false, new Cache.LocalStorageCacheStorage('page-collection'))
 
