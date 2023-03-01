@@ -10,7 +10,7 @@
 #= require shared/utils
 #= require shared/localstorage
 #= require marked/lib/marked
-#= require bootstrap-growl-ifightcrime/jquery.bootstrap-growl
+#= require shared/jquery.bootstrap-growl
 
 class LeaveConfirmationDialog extends ModalDialog
   el: $('#page-edit-leave')
