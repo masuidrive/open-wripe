@@ -1612,6 +1612,7 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.5.0)
       loofah (~> 2.19, >= 2.19.1)
+    rails-perftest (0.0.7)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
@@ -1751,6 +1752,7 @@ DEPENDENCIES
   puma
   rack-offline!
   rails (= 5.2.8.1)
+  rails-perftest
   rails_12factor
   redcarpet
   rspec-rails

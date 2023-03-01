@@ -28,6 +28,7 @@ group :development, :test do
   gem 'faraday-retry'
   gem 'database_rewinder'
   gem 'sunspot-rails-tester'
+  gem 'rails-perftest'
   gem 'ruby-prof'
 end
 
