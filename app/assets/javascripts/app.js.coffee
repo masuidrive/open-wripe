@@ -1,4 +1,5 @@
 #= require jquery/dist/jquery
+#= require jquery-ui/dist/jquery-ui
 #= require bootstrap2/docs/assets/js/bootstrap
 #= require underscore/underscore
 #= require backbone/backbone
