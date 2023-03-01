@@ -7,7 +7,7 @@ class UserMessage < ActiveRecord::Base
   scope :type, -> t { where(message_type: t) }
   scope :read, -> p { where(read: true) }
   scope :unread, -> p { where(read: false) }
-  validate :message_type, :inclusion => { :in => %w(free sidehelp) }
+  validates :message_type, :inclusion => { :in => %w(free sidehelp) }
 
   def to_hash(*args)
     {
