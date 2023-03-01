@@ -4,16 +4,16 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 
-FactoryGirl.find_definitions
+FactoryBot.find_definitions
 
 ActiveSupport::Deprecation.behavior = :silence
 
 require 'capybara/rspec'
 Capybara.server_port = 57124
-Capybara.default_wait_time = 10
+Capybara.default_max_wait_time = 10
 
 # Capybara.javascript_driver = :selenium, :chrome or :safari
-Capybara.javascript_driver = ENV['DRIVER'] ? ENV['DRIVER'].to_sym : :webkit
+Capybara.javascript_driver = ENV['DRIVER'] ? ENV['DRIVER'].to_sym : :chrome_headless
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -25,8 +25,25 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 
 RSpec.configure do |config|
+  config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
+
+  config.before(:each, type: :system, js: true) do
+    # if ENV["SELENIUM_DRIVER_URL"].present?
+      driven_by :selenium, using: :chrome, options: {
+        browser: :remote,
+        url: "http://selenium_chrome:4444/wd/hub",
+        desired_capabilities: :chrome
+      }
+    # else
+    #  driven_by :selenium_chrome_headless
+    # end
+  end
+
   # database_cleaner
   config.before :suite do
+    #DatabaseRewinder.clean_all
     DatabaseRewinder.strategy = :truncation
     DatabaseRewinder.clean_with :truncation
     Sunspot.session = Sunspot::Rails::StubSessionProxy.new($original_sunspot_session)
@@ -63,5 +80,9 @@ RSpec.configure do |config|
     Sunspot::Rails::Tester.start_original_sunspot_session
     Sunspot.session = $original_sunspot_session
     Sunspot.remove_all!
+  end
+
+  config.after(:each) do
+    DatabaseRewinder.clean
   end
 end

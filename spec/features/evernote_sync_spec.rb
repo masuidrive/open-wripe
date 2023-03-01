@@ -23,7 +23,7 @@ def login_evernote(evernote_user, clear_data: true)
   signout_evernote
   clear_session
 
-  user = FactoryGirl.create(:testdrive1)
+  user = FactoryBot.create(:testdrive1)
   test_login 'testdrive1'
   find('#nav-username-link').click
 

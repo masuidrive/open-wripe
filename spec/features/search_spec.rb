@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 def create_test_users
-  user = FactoryGirl.create(:testdrive1)
+  user = FactoryBot.create(:testdrive1)
   user.pages.create :title => 'TITLE1', :body => 'BODY1'
   user.pages.create :title => 'TITLE2', :body => 'BODY2'
 
-  user = FactoryGirl.create(:testdrive2)
+  user = FactoryBot.create(:testdrive2)
   user.pages.create :title => 'TITLE1 a', :body => 'BODY1 a'
   user.pages.create :title => 'TITLE2 a', :body => 'BODY2 a'
 end

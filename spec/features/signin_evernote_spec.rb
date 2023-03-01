@@ -44,7 +44,7 @@ feature 'Evernote', :js => true do
     else
       signout_evernote
 
-      user = FactoryGirl.create(:testdrive1)
+      user = FactoryBot.create(:testdrive1)
       test_login 'testdrive1'
       find('#nav-username-link').click
 

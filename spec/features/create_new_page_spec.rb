@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'create new note', :js => true do
   scenario 'create note' do
-    user = FactoryGirl.create(:testdrive1)
+    user = FactoryBot.create(:testdrive1)
     test_login 'testdrive1'
 
     find('#navigator-new').click

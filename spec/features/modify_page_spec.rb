@@ -1,7 +1,7 @@
 require 'spec_helper'
 feature 'Modify note', :js => true do
   scenario 'load exists note, modify and save' do
-    user = FactoryGirl.create(:testdrive1)
+    user = FactoryBot.create(:testdrive1)
     page = user.pages.create :title => 'TITLE', :body => 'BODY'
 
     test_login 'testdrive1'
@@ -34,7 +34,7 @@ end
 
 feature 'Modify note and conflict', :js => true do
   scenario 'modify and conflict' do
-    user = FactoryGirl.create(:testdrive1)
+    user = FactoryBot.create(:testdrive1)
     page = user.pages.create :title => 'TITLE', :body => 'BODY'
 
     test_login 'testdrive1'
@@ -74,7 +74,7 @@ end
 
 feature 'Modify note and delay', :js => true do
   scenario 'modify and conflict' do
-    user = FactoryGirl.create(:testdrive1)
+    user = FactoryBot.create(:testdrive1)
     page = user.pages.create :title => 'TITLE', :body => 'BODY'
 
     test_login 'testdrive1'
