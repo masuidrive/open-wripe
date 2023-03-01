@@ -13,12 +13,12 @@
       <input type="text" class="search-query" id="list-page-search-query">
       <button type="submit" id="list-page-search-submit" class="btn">
         <span class="hidden-phone">Search</span>
-        <span class="visible-phone"><i class="icon-search"></i></span>
+        <span class="visible-phone"><i class="fas fa-search"></i></span>
       </button>
      </div>
     </form><!-- list-page-searchbox -->
     <div id="list-page-header-title" class="pull-left">
-     <i class="icon-file-alt"></i> Notes
+     <i class="fas fa-file-alt"></i> Notes
     </div>
     <div id="list-page-pageno"></div>
    </div><!-- list-page-header -->
@@ -60,9 +60,9 @@
       <div class="name">Yuichiro MASUI</div>
       <div class="title">Developer
        <span class="social">
-        <a href="http://twitter.com/masuidrive_en" target="_blank"><i class="icon-twitter"></i></a>
-        <a href="https://facebook.com/masuidrive" target="_blank"><i class="icon-facebook-sign"></i></a>
-        <a href="https://github.com/masuidrive" target="_blank"><i class="icon-github"></i></a>
+        <a href="http://twitter.com/masuidrive_en" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://facebook.com/masuidrive" target="_blank"><i class="fab fa-facebook-square"></i></a>
+        <a href="https://github.com/masuidrive" target="_blank"><i class="fab fa-github"></i></a>
        </span>
       </div>
      </div>
@@ -91,7 +91,7 @@
    </div>
 
    <div id="list-page-auto-loading">
-    <i class="icon-spinner icon-spin"></i> Auto loading...
+    <i class="fas fa-spinner"></i> Auto loading...
    </div>
 
   </div><!-- .scrollable -->
@@ -102,14 +102,14 @@
 
    <div class="secret">
     <div id="list-page-sidebar-tags" class="alert alert-help">
-     <div class="title"><i class="icon-tags"></i> Tags</div>
+     <div class="title"><i class="fas fa-tags"></i> Tags</div>
      <div class="body">
       <!-- tags -->
      </div>
     </div>
    </div>
 
-   <%= render_help 'help-hotkey', '<i class="icon-keyboard"></i> Shortcuts' do %>
+   <%= render_help 'help-hotkey', '<i class="fas fa-keyboard"></i> Shortcuts' do %>
     <p>
      <ul>
       <li>New - <span class="list-page-search-visible">[Ctrl]+</span><strong>N</strong></li>
@@ -117,7 +117,7 @@
       <li>Archive - <span class="list-page-search-visible">[Ctrl]+</span><strong>D</strong></li>
       <li>Calendar - <span class="list-page-search-visible">[Ctrl]+</span><strong>C</strong></li>
       <li>Search - <span class="list-page-search-visible">[Ctrl]+</span><strong>S</strong></li>
-      <li>Up/Down cursor - <i class="icon-arrow-up"></i>/<i class="icon-arrow-down"></i>/<strong>K</strong>/<strong>J</strong></li>
+      <li>Up/Down cursor - <i class="fas fa-arrow-up"></i>/<i class="fas fa-arrow-down"></i>/<strong>K</strong>/<strong>J</strong></li>
       <li>Edit - <span class="list-page-search-hidden">[Enter]/</span><span class="list-page-search-visible">[Ctrl]+</span><strong>O</strong></li>
       <li>Archive a note - <span class="list-page-search-visible">[Ctrl]+</span><strong>E</strong></li>
      </ul>
@@ -125,38 +125,38 @@
     <div class="list-page-search-visible">You can use [Alt] and ⌘ instead of [Ctrl].</div>
    <% end %>
     
-   <%= render_help 'help-whatsnew', '<i class="icon-mobile-phone"></i> Updates' do %>
-    <!-- p><i class="icon-cloud-upload"></i> Connect with Evernote <i class="date">[July ??]</i></p -->
-    <p><i class="icon-cloud-upload"></i> Added Evernote sync <i class="date">[Sept 28th]</i></p>
-    <p><i class="icon-font"></i> Added font selector <i class="date">[Aug 3rd]</i></p>
-    <p><i class="icon-save"></i> Added autosave <i class="date">[July 29th]</i></p>
-    <p><i class="icon-calendar"></i> Sync with your calendar app <i class="date">[June 8]</i></p>
-    <p><i class="icon-pencil"></i> Open <a href="http://wripe.tumblr.com/" target="_blank">blog</a> <i class="date">[June 2]</i></p>
+   <%= render_help 'help-whatsnew', '<i class="fas fa-mobile-alt"></i> Updates' do %>
+    <!-- p><i class="fas fa-cloud"></i> Connect with Evernote <i class="fas fa-clock">[July ??]</i></p -->
+    <p><i class="fas fa-cloud"></i> Added Evernote sync <i class="fas fa-clock">[Sept 28th]</i></p>
+    <p><i class="fas fa-font"></i> Added font selector <i class="fas fa-clock">[Aug 3rd]</i></p>
+    <p><i class="fas fa-save"></i> Added autosave <i class="fas fa-clock">[July 29th]</i></p>
+    <p><i class="fas fa-calendar"></i> Sync with your calendar app <i class="fas fa-clock">[June 8]</i></p>
+    <p><i class="fas fa-pencil-alt"></i> Open <a href="http://wripe.tumblr.com/" target="_blank">blog</a> <i class="fas fa-clock">[June 2]</i></p>
    <% end %>
    
-   <%= render_help 'help-mobile', '<i class="icon-mobile-phone"></i> iPhone / Android' do %>
+   <%= render_help 'help-mobile', '<i class="fas fa-mobile-alt"></i> iPhone / Android' do %>
     wri.pe works on iPhone, iPad and Android.
    <% end %>
    
-   <%= render_help 'help-backup', '<i class="icon-time"></i> Backup' do %>
+   <%= render_help 'help-backup', '<i class="fas fa-clock"></i> Backup' do %>
      <p>
      wri.pe can do an automatic daily backup of all your notes. Even if wri.pe is out of service your data will be safe. You can set the daily backup clicking on your account name on the top-right. 
      </p>
      <div>
-      <a id="help-backup-button" class="btn btn-mini"><i class="icon-time"></i> Back up to Dropbox</a>
+      <a id="help-backup-button" class="btn btn-mini"><i class="fas fa-clock"></i> Back up to Dropbox</a>
      </div>
    <% end %>
 
-   <%= render_help 'help-evernote', '<i class="icon-cloud-upload"></i> Evernote' do %>
+   <%= render_help 'help-evernote', '<i class="fas fa-cloud"></i> Evernote' do %>
      <p>
       Connect with Evernote
      </p>
      <div>
-      <a id="help-evernote-button" class="btn btn-mini"><i class="icon-cloud-upload"></i> Connect with Evernote</a>
+      <a id="help-evernote-button" class="btn btn-mini"><i class="fas fa-cloud"></i> Connect with Evernote</a>
      </div>
    <% end %>
    
-   <%= render_help 'help-upcoming', '<i class="icon-star"></i> Upcoming' do %>
+   <%= render_help 'help-upcoming', '<i class="fas fa-star"></i> Upcoming' do %>
     <ul>
      <li>Tagging</li>
      <li>Share with friends</li>
@@ -191,10 +191,10 @@
    </span>
    -->
    <a href="#" id="list-page-archive-${key}" key="${key}" class="btn btn-mini archive-btn ${archived ? 'hide' : ''}">
-    <i class="icon-folder-open"></i> Archive
+    <i class="fas fa-folder-open"></i> Archive
    </a>
    <a href="#" id="list-page-unarchive-${key}" key="${key}" class="btn btn-mini unarchive-btn ${archived ? '' : 'hide'}">
-    <i class="icon-inbox"></i> Move to notes
+    <i class="fas fa-inbox"></i> Move to notes
    </a>
    <span id="list-page-moving-${key}" class="unarchive-btn hide">moving...</span>
   </div>

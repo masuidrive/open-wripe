@@ -28,8 +28,8 @@ class AppRouter extends Backbone.Router
 
   panels:
     'edit': new PageEditPanel()
-    'index': new PageListPanel($("#navigator-index"), 'notes', '<i class="icon-file-alt"></i> Notes', '/pages.json')
-    'archived': new PageListPanel($("#navigator-archived"), 'archived', '<i class="icon-folder-close"></i> Archive', '/pages/archived.json')
+    'index': new PageListPanel($("#navigator-index"), 'notes', '<i class="fas fa-file-alt"></i> Notes', '/pages.json')
+    'archived': new PageListPanel($("#navigator-archived"), 'archived', '<i class="fas fa-folder-minus"></i> Archive', '/pages/archived.json')
     'search': new PageSearchPanel($("#navigator-search"), 'search', '')
     'calendar': new CalendarPanel($("#navigator-calendar"))
 

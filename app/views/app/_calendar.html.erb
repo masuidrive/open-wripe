@@ -10,17 +10,17 @@
    <div id="calendar-header" class="clearfix">
     <h2 class="hidden-phone pull-left">
      <span id="calendar-date"></span>
-     <button class="btn btn-small" id="calendar-prev-month-button"><i class="icon-backward"></i></button>
-     <button class="btn btn-small" id="calendar-next-month-button"><i class="icon-forward"></i></button>
+     <button class="btn btn-small" id="calendar-prev-month-button"><i class="fas fa-backward"></i></button>
+     <button class="btn btn-small" id="calendar-next-month-button"><i class="fas fa-forward"></i></button>
     </h2>
     <div id="calendar-select-date" class="pull-right">
      <select id="calendar-month">
-      <option value="1">January - 1</option>       
-      <option value="2">February - 2</option>       
-      <option value="3">March - 3</option>       
-      <option value="4">April - 4</option>       
-      <option value="5">May - 5</option>       
-      <option value="6">June - 6</option>       
+      <option value="1">January - 1</option>
+      <option value="2">February - 2</option>
+      <option value="3">March - 3</option>
+      <option value="4">April - 4</option>
+      <option value="5">May - 5</option>
+      <option value="6">June - 6</option>
       <option value="7">July - 7</option>       
       <option value="8">August - 8</option>       
       <option value="9">September - 9</option>       
@@ -72,7 +72,7 @@
  <div id="calendar-sidebar-pane" class="scrollable hidden-phone">
   <div class="wrapper">
 
-   <%= render_help 'help-hotkey', '<i class="icon-keyboard"></i> Shortcuts' do %>
+   <%= render_help 'help-hotkey', '<i class="fas fa-keyboard"></i> Shortcuts' do %>
     <p>
      <ul>
       <li>New - <strong>N</strong></li>
@@ -80,21 +80,21 @@
       <li>Archive - <strong>D</strong></li>
       <li>Calendar - <strong>C</strong></li>
       <li>Search - <strong>S</strong></li>
-      <li>Prev/Next month - <i class="icon-arrow-left"></i>/<i class="icon-arrow-right"></i>/<strong>H</strong>/<strong>L</strong></li>
+      <li>Prev/Next month - <i class="fas fa-arrow-left"></i>/<i class="fas fa-arrow-right"></i>/<strong>H</strong>/<strong>L</strong></li>
      </ul>
     </p>
    <% end %>
 
-   <%= render_help 'help-calendar', '<i class="icon-calendar"></i> Calendar' do %>
+   <%= render_help 'help-calendar', '<i class="fas fa-calendar-alt"></i> Calendar' do %>
     Dates writen in the title or body of your notes are automatically inserted in your calendar.
    <% end %>
 
-   <%= render_help 'help-calendar-external', '<i class="icon-link"></i> Sync with externals' do %>
+   <%= render_help 'help-calendar-external', '<i class="fas fa-link"></i> Sync with externals' do %>
     <p>
      wri.pe can sync calendar with external services.<br/>
      ex) Google calendar, iCal
     </p>
-    <a class="btn btn-mini" role="button" data-toggle="modal" href="#calendar-sync-external"><i class="icon-calendar"></i> Sync with external services</a>
+    <a class="btn btn-mini" role="button" data-toggle="modal" href="#calendar-sync-external"><i class="fas fa-calendar-alt"></i> Sync with external services</a>
    <% end %>
 
    <div>
@@ -117,13 +117,13 @@
  or
 </p>
 <p>
- <a id="calendar-sync-gcal" class="btn" href="#" target="_blank"><i class="icon-calendar"></i> Add to your Google Calendar</a></br>
+ <a id="calendar-sync-gcal" class="btn" href="#" target="_blank"><i class="fas fa-calendar"></i> Add to your Google Calendar</a></br>
  Synchronization may take a while to be applied to Google Calendar.
 </p -->
 
 <hr/>
 <p>
- <span id="calendar-sync-generate-key" class="btn"><i class="icon-lock"></i> Regenerate new URL</span><br/>
+ <span id="calendar-sync-generate-key" class="btn"><i class="fas fa-lock"></i> Regenerate new URL</span><br/>
  You can regenerate new URL for sharing. Old URLs will be discard. 
 </p>
 
