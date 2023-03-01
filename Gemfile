@@ -31,6 +31,10 @@ group :development, :test do
   gem 'ruby-prof'
 end
 
+group :development do
+  gem 'localhost'
+end
+
 group :production do
   gem 'pg'
   gem 'newrelic_rpm'
