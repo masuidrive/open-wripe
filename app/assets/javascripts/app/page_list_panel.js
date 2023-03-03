@@ -47,7 +47,7 @@ class PageListPanel extends AbsolutePanel {
     setInterval(() => {
       if (this.is_active) {
         if ($("#list-page-auto-loading").offset().top < (window_height() * 2)) {
-          return this.load_old_page();
+          this.load_old_page();
         }
       }
     }
@@ -60,7 +60,7 @@ class PageListPanel extends AbsolutePanel {
         for (let tag of data) {
           html += `<a href=\"#notes/${encodeURIComponent(tag.name)}\">${escape_html(tag.name)}</a> `;
         }
-        return $("#list-page-sidebar-tags .body").html(html);
+        $("#list-page-sidebar-tags .body").html(html);
       });
     }
   }
@@ -91,7 +91,7 @@ class PageListPanel extends AbsolutePanel {
         local_session(data => {
           return load_defer.done(() => {
             if ((data.pages_count === 0) && (this.collection.pages.length === 0)) {
-              return this.welcome_el.show();
+              this.welcome_el.show();
             }
           });
         });
@@ -118,7 +118,7 @@ class PageListPanel extends AbsolutePanel {
     this.list_el.html('');
     this.loading_error_el.hide();
     this.loading_el.hide();
-    return this.empty_message_el.hide();
+    this.empty_message_el.hide();
   }
 
   render() {
@@ -130,25 +130,21 @@ class PageListPanel extends AbsolutePanel {
     if (this.collection) {
       if (this.collection.pages.length > 0) {
         this.pageno_el.text(`${this.collection.total_pages} ${this.collection.total_pages > 1 ? 'pages' : 'page'}`);
-        return (() => {
-          const result = [];
-          for (let i = 0; i <= this.collection.pages.length-1; i++) {
-            var page = $.extend({}, this.collection.pages[i]);
-            page.cursor = (this.cursor === i);
-            this.list_el.append(this.template('list-page-template', page));
-            $("#list-page-archive-"+page.key).click(e => {
-              e.preventDefault();
-              return this.archive($(e.currentTarget).attr('key'));
-            });
-            result.push($("#list-page-unarchive-"+page.key).click(e => {
-              e.preventDefault();
-              return this.unarchive($(e.currentTarget).attr('key'));
-            }));
-          }
-          return result;
-        })();
+        for (let i = 0; i <= this.collection.pages.length-1; i++) {
+          var page = $.extend({}, this.collection.pages[i]);
+          page.cursor = (this.cursor === i);
+          this.list_el.append(this.template('list-page-template', page));
+          $("#list-page-archive-"+page.key).click(e => {
+            e.preventDefault();
+            this.archive($(e.currentTarget).attr('key'));
+          });
+          $("#list-page-unarchive-"+page.key).click(e => {
+            e.preventDefault();
+            this.unarchive($(e.currentTarget).attr('key'));
+          });
+        }
       } else {
-        if (this.tab_name === 'archived') { return this.empty_message_el.show(); }
+        if (this.tab_name === 'archived') { this.empty_message_el.show(); }
       }
     }
   }
@@ -160,11 +156,11 @@ class PageListPanel extends AbsolutePanel {
     const page = this.page_by_key(page_key);
     const defer = page.archive();
     defer.always(() => {
-      return $(`#list-page-moving-${page_key}`).hide();
+      $(`#list-page-moving-${page_key}`).hide();
     });
     return defer.done(() => {
       $(`#list-page-unarchive-${page_key}`).show();
-      return $.bootstrapGrowl("Archived", {type: 'success', delay:2000});
+      $.bootstrapGrowl("Archived", {type: 'success', delay:2000});
     });
   }
 
@@ -175,11 +171,11 @@ class PageListPanel extends AbsolutePanel {
     const page = this.page_by_key(page_key);
     const defer = page.unarchive();
     defer.always(() => {
-      return $(`#list-page-moving-${page_key}`).hide();
+      $(`#list-page-moving-${page_key}`).hide();
     });
     return defer.done(() => {
       $(`#list-page-archive-${page_key}`).show();
-      return $.bootstrapGrowl("Move to Notes", {type: 'success', delay:2000});
+      $.bootstrapGrowl("Move to Notes", {type: 'success', delay:2000});
     });
   }
 
@@ -189,22 +185,22 @@ class PageListPanel extends AbsolutePanel {
     if (this.loading_collection) { this.loading_collection.abort(); }
     this.loading_collection = collection;
     this.loading_collection.on('update', () => {
-      return this.render();
+      this.render();
     });
     const load_defer = this.loading_collection.load(true);
     load_defer.always(() => {
       this.loading_el.hide();
-      return this.empty_message_el.hide();
+      this.empty_message_el.hide();
     });
     load_defer.done(() => {
       this.collection = this.loading_collection;
       this.loading_collection = undefined;
-      return this.render();
+      this.render();
     });
     load_defer.fail(error => {
       this.loading_collection = undefined;
       this.loading_error_text_el.text(error);
-      return this.loading_error_el.show();
+      this.loading_error_el.show();
     });
     return load_defer;
   }
@@ -217,19 +213,19 @@ class PageListPanel extends AbsolutePanel {
       const load_defer = this.old_collection.load();
       load_defer.done(() => {
         this.collection.append(this.old_collection);
-        return this.render();
+        this.render();
       });
       load_defer.fail(error => {
         this.loading_error_text_el.text(error);
         this.loading_error_el.show();
         return setTimeout(() => {
-          return this.load_old_page;
+          this.load_old_page;
         }
         , 3 * 1000);
       });
       return load_defer.always(() => {
         this.old_collection = undefined;
-        return this.auto_loading_el.hide();
+        this.auto_loading_el.hide();
       });
     }
   }
@@ -248,17 +244,17 @@ class PageListPanel extends AbsolutePanel {
     const cur = $("#list-page .cursor");
     const bottom = 32;
     if ((cur.length > 0) && (cur.offset().top < $("#list-page-wrapper").offset().top)) {
-      return $("#list-page-wrapper").scrollTop(($("#list-page").offset().top * -1) + cur.offset().top);
+      $("#list-page-wrapper").scrollTop(($("#list-page").offset().top * -1) + cur.offset().top);
     } else if ((cur.length > 0) && ((cur.offset().top + cur.height() + bottom) > ($("#list-page-wrapper").offset().top + $("#list-page-wrapper").height()))) {
       const top = ((-1*$("#list-page").offset().top)+cur.offset().top+$("#list-page-wrapper").offset().top)-$("#list-page-wrapper").height();
-      return $("#list-page-wrapper").scrollTop(top + bottom);
+      $("#list-page-wrapper").scrollTop(top + bottom);
     }
   }
 
   cursor_enter() {
     if (typeof this.cursor !== 'undefined') {
       const href = $(`#list-page .page:nth-child(${this.cursor+1}) .title a`).attr('href');
-      return Backbone.history.navigate(href, {trigger:true}); 
+      Backbone.history.navigate(href, {trigger:true});
     }
   }
 
@@ -267,26 +263,26 @@ class PageListPanel extends AbsolutePanel {
       const page_key = $(`#list-page .page:nth-child(${this.cursor+1})`).attr('name');
       const page = this.page_by_key(page_key);
       if (page.archived) {
-        return this.unarchive(page_key);
+        this.unarchive(page_key);
       } else {
-        return this.archive(page_key);
+        this.archive(page_key);
       }
     }
   }
 
   cursor_up() {
-    if (this.cursor > 0) { return this.cursor_move(this.cursor - 1); }
+    if (this.cursor > 0) { this.cursor_move(this.cursor - 1); }
   }
 
   cursor_down() {
-    if (this.cursor < (this.collection.pages.length - 1)) { return this.cursor_move(this.cursor + 1); }
+    if (this.cursor < (this.collection.pages.length - 1)) { this.cursor_move(this.cursor + 1); }
   }
 
   resize() {
     this.container_el.show();
     this.full_height(this.container_el, 0);
     this.full_height(this.list_wrapper_el, 0);
-    return this.full_height(this.sidebar_el, 0);
+    this.full_height(this.sidebar_el, 0);
   }
 
   hotkeys(ev, keychar) {
@@ -311,14 +307,14 @@ class PageListPanel extends AbsolutePanel {
           ev.preventDefault();
           return Backbone.history.navigate('search', {trigger: true});
         case 'J':
-            ev.preventDefault();
-            return this.cursor_down();
+          ev.preventDefault();
+          return this.cursor_down();
         case 'K':
-            ev.preventDefault();
-            return this.cursor_up();
+          ev.preventDefault();
+          return this.cursor_up();
         case 'O':
-            ev.preventDefault();
-            return this.cursor_enter();
+          ev.preventDefault();
+          return this.cursor_enter();
       }
     };
 
@@ -337,7 +333,7 @@ class PageListPanel extends AbsolutePanel {
           return this.cursor_enter();
       }
     } else if (ev.ctrlKey || ev.metaKey || ev.altKey) {
-      return key_func();
+      key_func();
     }
   }
 }
