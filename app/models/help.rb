@@ -1,4 +1,4 @@
-class Help < ActiveRecord::Base
+class Help < ApplicationRecord
   belongs_to :user
   scope :key, -> k { where(:key => k) }
   validates :key, :uniqueness => { :scope => :user_id }

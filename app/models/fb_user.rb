@@ -1,4 +1,4 @@
-class FbUser < ActiveRecord::Base
+class FbUser < ApplicationRecord
   belongs_to :user
 
   def self.auth(fbtoken)

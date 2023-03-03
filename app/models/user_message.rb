@@ -1,4 +1,4 @@
-class UserMessage < ActiveRecord::Base
+class UserMessage < ApplicationRecord
   belongs_to :user
   belongs_to :sender_user, :class_name => 'User', optional: true
   belongs_to :page, optional: true

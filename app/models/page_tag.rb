@@ -1,4 +1,4 @@
-class PageTag < ActiveRecord::Base
+class PageTag < ApplicationRecord
   belongs_to :user, optional: true
   has_many :page_taggings, :dependent => :destroy
   has_many :pages, :through => :page_taggings

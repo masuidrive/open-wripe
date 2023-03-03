@@ -1,4 +1,4 @@
-class GhUser < ActiveRecord::Base
+class GhUser < ApplicationRecord
   belongs_to :user
 
   def self.auth(ghtoken)

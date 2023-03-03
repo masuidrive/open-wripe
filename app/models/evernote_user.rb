@@ -1,4 +1,4 @@
-class EvernoteUser < ActiveRecord::Base
+class EvernoteUser < ApplicationRecord
   belongs_to :user
 
   def self.auth(access_token)
