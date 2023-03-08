@@ -7,7 +7,7 @@ feature 'Modify note', :js => true do
     test_login 'testdrive1'
 
     wait_until do
-      find('#list-page')&.text.present?
+      not find('#list-page')&.text.blank?
     end
 
     expect(find("#list-page-#{page.key} .title")).to have_content("TITLE")
@@ -40,7 +40,7 @@ feature 'Modify note and conflict', :js => true do
     test_login 'testdrive1'
 
     wait_until do
-      find('#list-page')&.text.present?
+      not find('#list-page')&.text.blank?
     end
 
     expect(find("#list-page-#{page.key} .title")).to have_content("TITLE")
@@ -80,7 +80,7 @@ feature 'Modify note and delay', :js => true do
     test_login 'testdrive1'
 
     wait_until do
-      find('#list-page')&.text.present?
+      not find('#list-page')&.text.blank?
     end
 
     expect(find("#list-page-#{page.key} .title")).to have_content("TITLE")

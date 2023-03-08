@@ -20,7 +20,7 @@ feature 'Search', :js => true, :solr => true do
     wait_and_find('#list-page-search-query').set "TITLE1"
     wait_and_find('#list-page-search-submit').click
 
-    wait_until { find('#list-page').text.present? }
+    wait_until { not find('#list-page')&.text.blank? }
     expect(page).to have_content('TITLE1')
     expect(page).to have_no_content('TITLE2')
     expect(page).to have_no_content('TITLE1 a')
@@ -29,7 +29,7 @@ feature 'Search', :js => true, :solr => true do
     find('#list-page-search-query').set "TITLE2"
     find('#list-page-search-submit').click
 
-    wait_until { find('#list-page').text.present? }
+    wait_until { not find('#list-page')&.text.blank? }
     expect(page).to have_no_content('TITLE1')
     expect(page).to have_content('TITLE2')
     expect(page).to have_no_content('TITLE1 a')
@@ -45,7 +45,7 @@ feature 'Search', :js => true, :solr => true do
     wait_and_find('#list-page-search-query').set "BODY1"
     wait_and_find('#list-page-search-submit').click
 
-    wait_until { not find('#list-page').text.blank? }
+    wait_until { not find('#list-page')&.text.blank? }
     expect(page).to have_no_content('TITLE1')
     expect(page).to have_no_content('TITLE2')
     expect(page).to have_no_content('TITLE1 a')
