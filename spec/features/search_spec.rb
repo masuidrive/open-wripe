@@ -16,7 +16,7 @@ feature 'Search', :js => true, :solr => true do
     test_login 'testdrive1'
 
     wait_and_find('#navigator-search').click
-    
+
     wait_and_find('#list-page-search-query').set "TITLE1"
     wait_and_find('#list-page-search-submit').click
 

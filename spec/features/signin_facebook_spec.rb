@@ -28,7 +28,7 @@ feature 'Facebook', :js => true do
     find(:xpath, "//input[@name='login']|//button[@name='login']").click
 
     wait_until_visible('#nav-username-link')
-    
+
     expect(current_path).to eq '/app'
     expect(evaluate_script('session.username()')).to eq test_user['account']
     user = User.find_by_email test_user['email']
