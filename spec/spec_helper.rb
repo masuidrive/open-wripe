@@ -2,7 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
+require 'sunspot/rails/spec_helper'
 
 FactoryBot.find_definitions
 
@@ -23,6 +23,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
+$original_sunspot_session = ::Sunspot.session
 
 RSpec.configure do |config|
   config.before(:each, type: :system) do
@@ -46,7 +47,6 @@ RSpec.configure do |config|
     #DatabaseRewinder.clean_all
     DatabaseRewinder.strategy = :truncation
     DatabaseRewinder.clean_with :truncation
-    Sunspot.session = Sunspot::Rails::StubSessionProxy.new($original_sunspot_session)
   end
 
   # ## Mock Framework
@@ -77,12 +77,11 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.before :each, :solr => true do
-    Sunspot::Rails::Tester.start_original_sunspot_session
-    Sunspot.session = $original_sunspot_session
-    Sunspot.remove_all!
+    ::Sunspot.session = ::Sunspot::Rails::StubSessionProxy.new($original_sunspot_session)
   end
 
   config.after(:each) do
+    ::Sunspot.session = $original_sunspot_session
     DatabaseRewinder.clean
   end
 end
