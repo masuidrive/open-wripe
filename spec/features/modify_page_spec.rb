@@ -109,7 +109,7 @@ feature 'Modify note and delay', :js => true do
     find($el[:edit_save]).click
 
     wait_until_visible "#{$el[:edit_save]} span[name='save']"
-    find($el[:edit_body]).value.should == "BODY\n1\n2"
+    expect(find($el[:edit_body]).value).to eq "BODY\n1\n2"
 
     expect(user.pages.count).to eq 1
     expect(user.pages.first.lock_version).to eq 2
