@@ -29,11 +29,11 @@ feature 'Evernote', :js => true do
 
       wait_and_find_xpath("//input[@name='reauthorize' or @name='authorize']").click
 
-      evaluate_script('session.username()').should == test_user['account']
+      expect(evaluate_script('session.username()')).to eq test_user['account']
 
-      current_path.should == '/app'
+      expect(current_path).to eq '/app'
       user = User.find_by_username test_user['account']
-      user.pages.should be_empty
+      expect(user.pages).to must_be_empty
     end
   end
 =end
@@ -63,8 +63,8 @@ feature 'Evernote', :js => true do
 
       wait_until_visible('#settings-evernote-turnedon')
 
-      current_path.should == '/app'
-      user.pages.should be_empty
+      expect(current_path).to eq '/app'
+      expect(user.pages).to must_be_empty
     end
   end
 end
