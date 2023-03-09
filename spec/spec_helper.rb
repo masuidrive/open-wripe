@@ -32,11 +32,13 @@ RSpec.configure do |config|
 
   config.before(:each, type: :system, js: true) do
     # if ENV["SELENIUM_DRIVER_URL"].present?
+    if [:chrome, :chrome_headless].include? Capybara.javascript_driver
       driven_by :selenium, using: :chrome, options: {
         browser: :remote,
         url: "http://selenium_chrome:4444/wd/hub",
         desired_capabilities: :chrome
       }
+    end
     # else
     #  driven_by :selenium_chrome_headless
     # end
