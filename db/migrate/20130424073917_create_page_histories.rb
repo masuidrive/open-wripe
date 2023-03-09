@@ -1,4 +1,4 @@
-class CreatePageHistories < ActiveRecord::Migration
+class CreatePageHistories < ActiveRecord::Migration[4.2]
   def change
     create_table :page_histories do |t|
       t.integer :page_id

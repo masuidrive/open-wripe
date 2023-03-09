@@ -1,4 +1,4 @@
-class AlterFbUser < ActiveRecord::Migration
+class AlterFbUser < ActiveRecord::Migration[4.2]
   def up
     rename_column :fb_users, :account, :fbid
     rename_column :fb_users, :name, :json

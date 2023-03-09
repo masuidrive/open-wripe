@@ -32,7 +32,7 @@ $header_tags_height: 32px;
   }
 }
 
-// 
+//
 #list-page-container {
   #list-page:empty {
     border: 0 !important;
@@ -41,7 +41,7 @@ $header_tags_height: 32px;
   #list-page-tags-head {
     position: relative;
     height: $header_tags_height;
-    background-color: blue;    
+    background-color: blue;
     margin: 0 $panel_margin 0 $panel_margin;
 
     ul {
@@ -60,7 +60,7 @@ $header_tags_height: 32px;
   #list-page-wrapper {
     position: relative;
     z-index: 1;
-  }  
+  }
 
   #list-page {
     background-color: white;
@@ -91,7 +91,7 @@ $header_tags_height: 32px;
       .info {
         color: #aaa;
         font-size: 88%;
-      
+
         .updated_at {
           margin-right: 1em;
         }
@@ -129,7 +129,7 @@ $header_tags_height: 32px;
 
     .form-search {
       float: left;
-      
+
       .input-append {
         position: absolute;
         bottom: $panel_margin;
@@ -198,14 +198,14 @@ $header_tags_height: 32px;
         height: 64px;
         border-radius: 32px;
         box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
-        background-image: url('/images/masuidrive64.jpg');
+        background-image: url(/images/masuidrive64.jpg);
       }
 
       .author {
         position: absolute;
         left: 64px+16px;
         top: 24px;
-        
+
         .name {
           font-weight: bold;
           font-size: 16px;

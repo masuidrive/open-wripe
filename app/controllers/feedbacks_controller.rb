@@ -1,5 +1,5 @@
 class FeedbacksController < ApplicationController
-  before_filter :required_admin, except: [:create]
+  before_action :required_admin, except: [:create]
 
   def create
     @feedback = Feedback.new params.require(:feedback).permit(:body, :image_data, :subject)

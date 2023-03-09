@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  around_filter :active_record_queue_filter if !Settings.flags.disable_ar_async
+  around_action :active_record_queue_filter if !Settings.flags.disable_ar_async
 
   private
   def required_login

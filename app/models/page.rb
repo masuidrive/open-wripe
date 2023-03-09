@@ -1,4 +1,4 @@
-class Page < ActiveRecord::Base
+class Page < ApplicationRecord
   attr_accessor :dates_json
   before_create :generate_key
   around_save :save_to_history

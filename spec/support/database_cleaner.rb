@@ -14,6 +14,5 @@ RSpec.configure do |config|
 
   config.after do
     DatabaseRewinder.clean
-    Sunspot.remove_all!
   end
 end

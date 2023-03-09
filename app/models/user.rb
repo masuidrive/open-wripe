@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   after_create :create_defaults
   after_create :generate_export_key
   has_one :fb_user, :dependent => :destroy

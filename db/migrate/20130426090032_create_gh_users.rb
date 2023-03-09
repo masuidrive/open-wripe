@@ -1,4 +1,4 @@
-class CreateGhUsers < ActiveRecord::Migration
+class CreateGhUsers < ActiveRecord::Migration[4.2]
   def change
     create_table :gh_users do |t|
       t.integer :user_id

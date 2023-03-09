@@ -1,7 +1,7 @@
 require './lib/paperclip_ext'
 require 'base64'
 
-class Feedback < ActiveRecord::Base
+class Feedback < ApplicationRecord
   belongs_to :user
   if %w(production).include?(Rails.env)
     has_attached_file :image, :storage => :s3, :s3_credentials => "#{Rails.root}/config/paperclip_feedbacks_s3.yml"

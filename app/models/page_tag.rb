@@ -1,5 +1,5 @@
-class PageTag < ActiveRecord::Base
-  belongs_to :user
+class PageTag < ApplicationRecord
+  belongs_to :user, optional: true
   has_many :page_taggings, :dependent => :destroy
   has_many :pages, :through => :page_taggings
   scope :tag_name, -> tag_name { where(:name => tag_name) }

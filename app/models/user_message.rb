@@ -1,13 +1,13 @@
-class UserMessage < ActiveRecord::Base
+class UserMessage < ApplicationRecord
   belongs_to :user
-  belongs_to :sender_user, :class_name => 'User'
-  belongs_to :page
+  belongs_to :sender_user, :class_name => 'User', optional: true
+  belongs_to :page, optional: true
   scope :user, -> u { where(user: u) }
   scope :page, -> p { where(page: p) }
   scope :type, -> t { where(message_type: t) }
   scope :read, -> p { where(read: true) }
   scope :unread, -> p { where(read: false) }
-  validate :message_type, :inclusion => { :in => %w(free sidehelp) }
+  validates :message_type, :inclusion => { :in => %w(free sidehelp) }
 
   def to_hash(*args)
     {

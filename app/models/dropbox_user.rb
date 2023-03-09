@@ -1,3 +1,3 @@
-class DropboxUser < ActiveRecord::Base
+class DropboxUser < ApplicationRecord
   belongs_to :user
 end

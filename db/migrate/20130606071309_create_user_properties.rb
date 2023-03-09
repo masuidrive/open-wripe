@@ -1,4 +1,4 @@
-class CreateUserProperties < ActiveRecord::Migration
+class CreateUserProperties < ActiveRecord::Migration[4.2]
   def change
     create_table :user_properties do |t|
       t.integer :user_id

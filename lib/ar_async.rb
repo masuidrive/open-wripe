@@ -7,7 +7,7 @@ module ActiveRecordAsync
   end
 
   def self.sqs
-    @sqs ||= AWS::SQS::Queue.new(ActiveRecordAsync.config['sqs'])
+    @sqs ||= Aws::SQS::Queue.new(ActiveRecordAsync.config['sqs'])
   end
 
   def async(methodname, args=[])
@@ -68,7 +68,7 @@ module ActiveRecordAsync
   end
 end
 
-AWS.config(
+Aws.config.update(
   access_key_id: ActiveRecordAsync.config['access_key_id'],
   secret_access_key: ActiveRecordAsync.config['secret_access_key']
 )

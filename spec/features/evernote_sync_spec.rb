@@ -23,7 +23,7 @@ def login_evernote(evernote_user, clear_data: true)
   signout_evernote
   clear_session
 
-  user = FactoryGirl.create(:testdrive1)
+  user = FactoryBot.create(:testdrive1)
   test_login 'testdrive1'
   find('#nav-username-link').click
 
@@ -45,7 +45,7 @@ def login_evernote(evernote_user, clear_data: true)
   sleep 1.0 # wait for face out
 
   user = User.find_by_username 'testdrive1'
-  user.pages.should be_empty
+  expect(user.pages).to must_be_empty
   user.reload
   user
 end
@@ -53,7 +53,7 @@ end
 def get_notes(user)
   note_store = user.evernote_user.note_store
   notebook = note_store.listNotebooks.select {|notebook| notebook.name == EvernoteUser.notebook_name }.first
-  notebook.should_not be_nil
+  expect(notebook).to must_be_nil
 
   note_filter = Evernote::EDAM::NoteStore::NoteFilter.new(notebookGuid: notebook.guid)
   spec = Evernote::EDAM::NoteStore::NotesMetadataResultSpec.new
@@ -81,15 +81,15 @@ feature 'Evernote', :js => true do
       sleep 0.1
       wait_until_visible "#{$el[:edit_save]} span[name='save']"
 
-      user.pages.count.should == 1
+      expect(user.pages.count).to eq 1
 
       notes = get_notes(user)
-      notes.count.should == 1
+      expect(notes.count).to eq 1
       note = notes.first
-      note.title.should == "EVERNOTE TEST NOTE1"
+      expect(note.title).to eq "EVERNOTE TEST NOTE1"
       doc = Nokogiri::HTML(note.content)
-      doc.css('en-note h1').text.should == "TEST"
-      doc.css('en-note div p').text.should == "123"
+      expect(doc.css('en-note h1').text).to eq "TEST"
+      expect(doc.css('en-note div p').text).to eq "123"
 
       find($el[:edit_title]).set "EVERNOTE TEST NOTE2"
       find($el[:edit_body]).set "# TEST2\nABC\n"
@@ -97,15 +97,15 @@ feature 'Evernote', :js => true do
 
       wait_until_visible "#{$el[:edit_save]} span[name='save']"
 
-      user.pages.count.should == 1
+      expect(user.pages.count).to eq 1
 
       notes = get_notes(user)
-      notes.count.should == 1
+      expect(notes.count).to eq 1
       note = notes.first
-      note.title.should == "EVERNOTE TEST NOTE2"
+      expect(note.title).to eq "EVERNOTE TEST NOTE2"
       doc = Nokogiri::HTML(note.content)
-      doc.css('en-note h1').text.should == "TEST2"
-      doc.css('en-note div p').text.should == "ABC"
+      expect(doc.css('en-note h1').text).to eq "TEST2"
+      expect(doc.css('en-note div p').text).to eq "ABC"
     end
   end
 end

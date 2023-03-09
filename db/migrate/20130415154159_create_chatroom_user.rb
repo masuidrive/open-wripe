@@ -1,4 +1,4 @@
-class CreateChatroomUser < ActiveRecord::Migration
+class CreateChatroomUser < ActiveRecord::Migration[4.2]
   def change
     create_table :chatroom_users do |t|
       t.integer :chatroom_id

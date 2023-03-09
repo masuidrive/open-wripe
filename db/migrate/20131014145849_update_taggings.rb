@@ -1,4 +1,4 @@
-class UpdateTaggings < ActiveRecord::Migration
+class UpdateTaggings < ActiveRecord::Migration[4.2]
   def up
     Page.find_each do |page|
       page.send 'generate_tags'

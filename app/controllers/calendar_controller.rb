@@ -2,7 +2,7 @@ require 'icalendar'
 
 class CalendarController < ApplicationController
   include ActionView::Helpers::TextHelper
-  before_filter :required_login, except: [:export]
+  before_action :required_login, except: [:export]
 
   def export
     prop = UserProperty.where(key: 'export-key', value: params[:key]).first

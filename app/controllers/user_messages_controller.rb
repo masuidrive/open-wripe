@@ -1,5 +1,5 @@
 class UserMessagesController < ApplicationController
-  before_filter :required_login
+  before_action :required_login
 
   # TODO
 end

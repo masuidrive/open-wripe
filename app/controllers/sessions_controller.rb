@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_filter :required_login, only: [:show]
+  before_action :required_login, only: [:show]
   
   def show
     current_user.helps.clear(:mobile) if request.user_agent && request.user_agent.downcase.include?('mobile')

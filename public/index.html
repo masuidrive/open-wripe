@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="wri.pe - simple and smart markdown-based notepad"/>
     <meta name="keywords" content="wri.pe,wripe,write,wripu,wripo,wripa,notepad,memo,markdown,offline,archive,calendar"/>
-    <link href="/assets/shared/bootstrap.css" media="all" rel="stylesheet" />
-    <link href="/assets/shared/bootstrap-responsive.css" media="all" rel="stylesheet" />
-    <link href="/assets/shared/font-awesome.css" media="all" rel="stylesheet" />
-    
+    <link href="shared/bootstrap2/css/bootstrap.css" media="all" rel="stylesheet" />
+    <link href="shared/bootstrap2/css/bootstrap-responsive.css" media="all" rel="stylesheet" />
+    <link href="shared/font-awesome5/css/all.css" media="all" rel="stylesheet" />
+
     <link rel="apple-touch-icon-precomposed" href="/images/wripe114s.png" />
 
     <meta property="og:type" content="website" />
@@ -20,7 +20,7 @@
 
     <!-- Le styles -->
     <script>
-if (window.location.protocol != "https:" && window.location.hostname.indexOf('wri.pe') >= 0) {
+if (window.location.protocol !== "https:" && window.location.hostname.indexOf('wri.pe') >= 0) {
     window.location.href = "https://wri.pe/"
 }
 </script>
@@ -191,7 +191,7 @@ var hide_authorizing = function() {
 <body onpageshow="hide_authorizing();">
  <div id="authorizing-panel">
   <div class="authorizing-box">
-   <i class="icon-spinner icon-spin"></i> <span class="authorizing-label">Authorizing...</span>
+   <i class="fas fa-spinner"></i> <span class="authorizing-label">Authorizing...</span>
   </div>
  </div>
 
@@ -215,11 +215,11 @@ var hide_authorizing = function() {
     <div class="guest">
      <div>
       <a class="btn btn-facebook clearfix" href="/fbauth/sign_in" onclick="return authorizing();" id="signin-facebook">
-       <i class="icon-facebook icon-2x pull-left" style="padding: 0px 6px 3px 6px;display:block"></i><div style="line-height:37px;" class="pull-left">Sign in with Facebook</div>
+       <i class="fab fa-facebook fa-2x pull-left" style="padding: 0px 6px 3px 6px;display:block" aria-hidden="true"></i><div style="line-height:37px;" class="pull-left">Sign in with Facebook</div>
       </a>
 
       <a class="btn btn-github" href="/ghauth/sign_in" onclick="return authorizing();" id="signin-github">
-       <i class="icon-github icon-2x pull-left" style="padding: 0 8px 3px 0;display:block"></i><div style="line-height:37px;" class="pull-left">Sign in with Github</div>
+       <i class="fab fa-github fa-2x pull-left" style="padding: 0 8px 3px 0;display:block" aria-hidden="true"></i><div style="line-height:37px;" class="pull-left">Sign in with Github</div>
       </a>
 
      </div>
@@ -232,7 +232,7 @@ var hide_authorizing = function() {
     </div>
     <div class="loggedin">
      <a class="btn btn-success" href="/app">
-      <i class="icon-file-alt icon-2x" style="padding: 0 8px 0 0"></i><span style="position: relative; top:-3px; font-size: 1.2em">Access your notes</span>
+      <i class="fas fa-file-alt fa-2x" style="padding: 0 8px 0 0"></i><span style="position: relative; top:-3px; font-size: 1.2em">Access your notes</span>
      </a>
     </div>
    </div>
@@ -279,7 +279,7 @@ var hide_authorizing = function() {
     margin: 0 !important;
   }
 
-  .screenshots-row {  
+  .screenshots-row {
     padding: 0 12px;
   }
 }
@@ -289,19 +289,19 @@ var hide_authorizing = function() {
   <div class="marketing">
    <div class="row-fluid">
     <div class="span4"><div class="box">
-     <div class="big-icon"><i class="icon-pencil icon-4x"></i><strong>Simple</strong></div>
+     <div class="big-icon"><i class="fas fa-pencil-alt fa-4x" aria-hidden="true"></i><strong>Simple</strong></div>
      <p class="en">Are you tired of complexity? All you want is just taking notes? Then wri.pe is for you, we focus on simplicity</p>
      <p class="ja ja-font">ノートを取りたいだけなのに、複雑なアプリにうんざりしていませんか？  そんなあなたのためにwri.peがあります。私たちは、シンプルであることにフォーカスしています。</p>
     </div></div>
 
     <div class="span4"><div class="box">
-     <div class="big-icon"><i class="icon-calendar icon-4x"></i><strong>Calendar</strong></div>
+     <div class="big-icon"><i class="fas fa-calendar-alt fa-4x"></i><strong>Calendar</strong></div>
      <p class="en">Dates writen in the title or body of your notes are automatically inserted in your calendar.</p>
      <p class="ja ja-font">ノートに書かれた日付を解析し、カレンダーで表示します。</p>
     </div></div>
 
     <div class="span4"><div class="box">
-     <div class="big-icon"><i class="icon-keyboard icon-4x"></i><strong>Shortcut keys and markdown.</strong></div>
+     <div class="big-icon"><i class="fas fa-keyboard fa-4x"></i><strong>Shortcut keys and markdown.</strong></div>
      <p class="en">You can use almost all functions using your keyboard. wri.pe also supports markdown.</p>
      <p class="ja ja-font">キーボードだけですべての機能を。 また、wri.peはmarkdown記法をサポートしています。</p>
     </div></div>
@@ -309,29 +309,29 @@ var hide_authorizing = function() {
 
    <div class="row-fluid">
     <div class="span4"><div class="box">
-     <div class="big-icon"><i class="icon-mobile-phone icon-4x"></i><strong>Available on any device</strong></div>
+     <div class="big-icon"><i class="fas fa-mobile-alt fa-4x"></i><strong>Available on any device</strong></div>
      <p class="en">Access your notes from any location. wri.pe can be used from iPhone/iPad, Android and PC browsers.</p>
      <p class="ja ja-font">どんな場所からでも使えます。 wri.peはiPhoneやiPad、Android、PCブラウザに対応しています。</p>
     </div></div>
 
     <div class="span4"><div class="box">
-     <div class="big-icon"><i class="icon-time icon-4x"></i><strong>Backup to clouds</strong></div>
+     <div class="big-icon"><i class="fas fa-cloud fa-4x"></i><strong>Backup to clouds</strong></div>
      <p class="en">Your notes are safe at wri.pe with <span class="secret"><span class="evernote-color">Evernote</span> sync and</span> a daily backup to Dropbox and Evernote.</p>
      <p class="ja ja-font">wri.peで書いたメモはDropboxやEvernoteに毎日バックアップされます。</p>
     </div></div>
 
     <div class="span4"><div class="box">
-     <div class="big-icon"><i class="icon-search icon-4x"></i><strong>More informations</strong></div>
+     <div class="big-icon"><i class="fas fa-search fa-4x"></i><strong>More informations</strong></div>
      <p>
-      <a href="http://www.youtube.com/watch?v=PWKV6Z3pSW0"><i class="icon-play"></i>
+      <a href="http://www.youtube.com/watch?v=PWKV6Z3pSW0"><i class="fas fa-play"></i>
        <span class="en">Tutorial video</span>
        <span class="ja ja-font">チュートリアル</span>
       </a><br/>
-      <a href="http://wripe.tumblr.com/"><i class="icon-pencil"></i>
+      <a href="http://wripe.tumblr.com/"><i class="fas fa-pencil-alt"></i>
       Dev blog</a><br/>
-      <a href="http://masuidrive.com/"><i class="icon-user"></i>
+      <a href="http://masuidrive.com/"><i class="fas fa-user"></i>
       masuidrive projects</a>
-　    </p>
+     </p>
     </div></div>
 
    </div><!-- row-fluid -->
@@ -339,19 +339,19 @@ var hide_authorizing = function() {
    <h3>Upcoming...</h3>
    <div class="row-fluid">
     <div class="span4"><div class="box">
-     <div class="big-icon"><i class="icon-unlink icon-4x"></i><strong>Offline</strong></div>
+     <div class="big-icon"><i class="fas fa-unlink fa-4x"></i><strong>Offline</strong></div>
      <p class="en">wri.pe support HTML5 offline capability. wri.pe will be able to be used without an Internet connection.</p>
      <p class="ja ja-font">wri.peはHTML5オフライン機能を利用しています。ネットが使えない場所でも利用できるようになります。</p>
     </div></div>
 
     <div class="span4"><div class="box">
-     <div class="big-icon"><i class="icon-group icon-4x"></i><strong>Share</strong></div>
+     <div class="big-icon"><i class="fas fa-users fa-4x"></i><strong>Share</strong></div>
       <p class="en">Notes will be able to be published online or restricted to friends.</p>
       <p class="ja ja-font">ノートをネット全体や友達限定で公開できるようになります。</p>
      </div></div>
 
      <div class="span4"><div class="box">
-      <div class="big-icon"><i class="icon-code-fork icon-4x"></i><strong>Collaboration</strong></div>
+      <div class="big-icon"><i class="fas fa-code-branch fa-4x"></i><strong>Collaboration</strong></div>
       <p class="en">wri.pe will support fork and pull-request features like Git.</p>
       <p class="ja ja-font">Gitのようなfork / pull requestをサポートし、新しいコラボレーションを提案します。</p>
      </div></div>
@@ -376,12 +376,13 @@ var hide_authorizing = function() {
  </div> <!-- /container -->
 </body>
 
-<script src="/assets/jquery.js"></script>
+<script src="shared/jquery/dist/jquery.js"></script>
+<script src="shared/bootstrap2/js/bootstrap.js"></script>
 <script>
 
 function browserLanguage() {
   try {
-    return (navigator.browserLanguage || navigator.language || navigator.userLanguage).substr(0,2)
+    return (window.navigator.browserLanguage || window.navigator.language).substr(0,2)
   }
   catch(e) {
     return undefined;
@@ -390,7 +391,8 @@ function browserLanguage() {
 
 function setLanguage(default_language, languages) {
   var addCSSRule = (document.createStyleSheet)
-    ? (function(sheet) {
+    ?
+    (function(sheet) {
       return function(selector, declaration) {
         sheet.addRule(selector, declaration);
       };
@@ -410,16 +412,18 @@ function setLanguage(default_language, languages) {
     })(document.createElement('style')));
 
   var removeCSSRule = function(ruleName) {
-    for(var i = 0; i < document.styleSheets.length; i++) { 
+    for(var i = 0; i < document.styleSheets.length; i++) {
       var styleSheet = document.styleSheets[i];
-      var ii = cssRule = 0;                              
+      var ii = 0
+      var cssRule = null;
       do {
+        styleSheet.crossOrigin = "anonymous";
         cssRule = (styleSheet.cssRules ? styleSheet.cssRules : styleSheet.rules)[ii];
-        if(cssRule && cssRule.selectorText && cssRule.selectorText.toLowerCase() == ruleName) { 
+        if(cssRule && cssRule.selectorText && cssRule.selectorText.toLowerCase() === ruleName) {
             styleSheet.cssRules ? styleSheet.deleteRule(ii) : styleSheet.removeRule(ii);
             return true;
         }
-        ii++;                                 
+        ii++;
       } while(cssRule);
     }
     return false;
@@ -427,13 +431,13 @@ function setLanguage(default_language, languages) {
 
   var array_include = function(ary, v) {
     for (var i in ary) {
-      if (ary[i] == v) return true;
+      if (ary[i] === v) return true;
     }
     return false;
   };
 
   var lang = browserLanguage();
-  if(lang==default_language || !array_include(languages, lang)) return false;
+  if(lang === default_language || !array_include(languages, lang)) return false;
 
   addCSSRule("." + default_language, "display: none;");
   removeCSSRule("." + lang);

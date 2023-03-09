@@ -1,3 +1,5 @@
+//= require bootstrap-switch/dist/css/bootstrap2/bootstrap-switch
+
 $icon_size: 128px;
 
 #settings-backup {
@@ -9,7 +11,7 @@ $icon_size: 128px;
     height: $icon_size;
     padding: 0 !important;
     margin: 0 !important;
-    background-image: url('/images/dropbox_icon128.png');
+    background-image: url(/images/dropbox_icon128.png);
   }
 }
 
@@ -22,7 +24,7 @@ $icon_size: 128px;
     height: $icon_size;
     padding: 0 !important;
     margin: 0 !important;
-    background-image: url('/images/evernote_icon128.png');
+    background-image: url(/images/evernote_icon128.png);
   }
 }
 

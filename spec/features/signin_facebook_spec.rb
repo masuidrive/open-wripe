@@ -28,10 +28,10 @@ feature 'Facebook', :js => true do
     find(:xpath, "//input[@name='login']|//button[@name='login']").click
 
     wait_until_visible('#nav-username-link')
-    
-    current_path.should.should == '/app'
-    evaluate_script('session.username()').should == test_user['account']
+
+    expect(current_path).to eq '/app'
+    expect(evaluate_script('session.username()')).to eq test_user['account']
     user = User.find_by_email test_user['email']
-    user.pages.should be_empty
+    expect(user.pages).to must_be_empty
   end
 end

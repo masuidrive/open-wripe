@@ -5,8 +5,22 @@ because I can't resolve below.
 Poltergeist detected another element with CSS selector 'html body.phone div.modal-backdrop.fade.in' at this position. It may be overlapping the element you are trying to interact with. If you don't care about overlapping elements, try using node.trigger('click').
 =end
 
+client = Selenium::WebDriver::Remote::Http::Default.new
+client.read_timeout = 120
+
 Capybara.register_driver :chrome do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
+  Capybara::Selenium::Driver.new(app, browser: :chrome, http_client: client)
+end
+
+Capybara.register_driver :chrome_headless do |app|
+  options = ::Selenium::WebDriver::Chrome::Options.new
+
+  options.add_argument('--headless')
+  options.add_argument('--no-sandbox')
+  options.add_argument('--disable-dev-shm-usage')
+  options.add_argument('--window-size=1400,1400')
+
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options, http_client: client)
 end
 
 Capybara.register_driver :safari do |app|
@@ -25,7 +39,7 @@ Capybara.register_driver :ie do |app|
 end
 
 Capybara.register_driver :iphone do |app|
-  Capybara.default_wait_time = 30
+  Capybara.default_max_wait_time = 30
   Capybara::Selenium::Driver.new app,
     browser: :remote,
     url: "http://127.0.0.1:4723/wd/hub",
@@ -38,7 +52,7 @@ Capybara.register_driver :iphone do |app|
 end
 
 Capybara.register_driver :ipad do |app|
-  Capybara.default_wait_time = 30
+  Capybara.default_max_wait_time = 30
   Capybara::Selenium::Driver.new app,
     browser: :remote,
     url: "http://127.0.0.1:4723/wd/hub",
@@ -52,7 +66,7 @@ Capybara.register_driver :ipad do |app|
 end
 
 Capybara.register_driver :android do |app|
-  Capybara.default_wait_time = 30
+  Capybara.default_max_wait_time = 30
   Capybara::Selenium::Driver.new app,
     browser: :remote,
     url: "http://127.0.0.1:4723/wd/hub",
@@ -66,11 +80,11 @@ Capybara.register_driver :android do |app|
 end
 
 Capybara.register_driver :phone do |app|
-  Capybara::Webkit::Driver.new(app)
+  Capybara::Selenium::Driver.new(app)
 end
 
 Capybara.register_driver :tablet do |app|
-  Capybara::Webkit::Driver.new(app)
+  Capybara::Selenium::Driver.new(app)
 end
 
 if %i(iphone ipad phone tablet ios android).include?(Capybara.javascript_driver)
