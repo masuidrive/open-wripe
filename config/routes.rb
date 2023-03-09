@@ -81,7 +81,10 @@ Rails.application.routes.draw do
     get 'callback'
   end
 
-  get 'export/:action', :controller => 'exports'
+  # get 'export/:action', :controller => 'exports'
+  %w(zip).each do | action |
+    get "export/#{action}", controller: "exports", action: action
+  end
 
   resources :feedbacks
 
