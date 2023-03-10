@@ -70,7 +70,9 @@ gem 'sunspot_solr'
 
 # backup to dropbox
 gem 'dropbox-api'
+
 gem "rubyzip"
+gem 'zip-zip'
 
 # evernote
 gem "evernote_oauth"
@@ -90,7 +92,7 @@ group :assets do
   # gem 'therubyracer', platforms: :ruby
 end
 
-gem 'zip-zip'
+
 gem 'bootsnap', require: false
 
 gem 'config'
