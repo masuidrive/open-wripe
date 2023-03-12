@@ -8,7 +8,7 @@ feature 'Evernote', :js => true do
 =begin
   # disabled evernote signin feature
   scenario 'signin' do
-    if %i(iphone ipad safari firefox selenium webkit).include?(Capybara.javascript_driver)
+    if %i(iphone ipad safari selenium).include?(Capybara.javascript_driver)
       pending "#{Capybara.javascript_driver} doesn't support this test"
     else
       signout_evernote
@@ -39,7 +39,7 @@ feature 'Evernote', :js => true do
 =end
 
   scenario 'connect with existing account' do
-    if %i(iphone ipad ie safari firefox selenium webkit).include?(Capybara.javascript_driver)
+    if %i(iphone ipad ie safari selenium).include?(Capybara.javascript_driver)
       pending "#{Capybara.javascript_driver} doesn't support this test"
     else
       signout_evernote

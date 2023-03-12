@@ -65,7 +65,7 @@ end
 
 feature 'Evernote', :js => true do
   scenario 'create new note, modify' do
-    if %i(iphone ipad safari firefox selenium webkit).include?(Capybara.javascript_driver)
+    if %i(iphone ipad safari selenium).include?(Capybara.javascript_driver)
       pending "#{Capybara.javascript_driver} doesn't support this test"
     else
       user = login_evernote(EvernoteAuth.config['tests'].first)

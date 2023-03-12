@@ -12,7 +12,7 @@ end
 
 feature 'GitHub', :js => true do
   scenario 'signin' do
-    if %i(safari firefox selenium).include?(Capybara.javascript_driver)
+    if %i(safari selenium).include?(Capybara.javascript_driver)
       pending "#{Capybara.javascript_driver} doesn't support this test"
     else
       signout_github
