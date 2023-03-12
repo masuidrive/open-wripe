@@ -5,6 +5,20 @@ because I can't resolve below.
 Poltergeist detected another element with CSS selector 'html body.phone div.modal-backdrop.fade.in' at this position. It may be overlapping the element you are trying to interact with. If you don't care about overlapping elements, try using node.trigger('click').
 =end
 
+Capybara.register_driver :selenium_chrome_headless do |app|
+  version = Capybara::Selenium::Driver.load_selenium
+  options_key = Capybara::Selenium::Driver::CAPS_VERSION.satisfied_by?(version) ? :capabilities : :options
+  browser_options = Selenium::WebDriver::Chrome::Options.new.tap do |opts|
+    opts.add_argument('--headless')
+    opts.add_argument('--disable-gpu') if Gem.win_platform?
+    # Workaround https://bugs.chromium.org/p/chromedriver/issues/detail?id=2650&q=load&sort=-id&colspec=ID%20Status%20Pri%20Owner%20Summary
+    opts.add_argument('--disable-site-isolation-trials')
+    opts.add_argument('--no-sandbox')
+  end
+
+  Capybara::Selenium::Driver.new(app, **{ :browser => :chrome, options_key => browser_options })
+end
+
 Capybara.register_driver :safari do |app|
   Capybara::Selenium::Driver.new(app, browser: :safari)
 end
