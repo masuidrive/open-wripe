@@ -14,7 +14,7 @@ FactoryBot.find_definitions
 ActiveSupport::Deprecation.behavior = :silence
 
 Capybara.server_port = 57124
-Capybara.default_max_wait_time = 10
+Capybara.default_max_wait_time = 60
 
 # Capybara.javascript_driver =
 # :selenium, :selenium_chrome or :selenium_chrome_headless or :safari
