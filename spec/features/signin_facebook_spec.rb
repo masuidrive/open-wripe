@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 def signout_facebook
   visit 'https://www.facebook.com/'

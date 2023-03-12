@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 def create_test_users
   user = FactoryBot.create(:testdrive1)

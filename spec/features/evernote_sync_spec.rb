@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 def signout_evernote
   visit 'https://sandbox.evernote.com/Logout.action'

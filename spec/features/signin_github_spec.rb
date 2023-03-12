@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 def signout_github
   visit 'https://github.com/logout'

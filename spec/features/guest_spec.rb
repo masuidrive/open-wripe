@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature 'Guest', :js => true do
   scenario 'access to app page' do

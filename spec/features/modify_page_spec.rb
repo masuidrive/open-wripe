@@ -1,4 +1,5 @@
-require 'spec_helper'
+require 'rails_helper'
+
 feature 'Modify note', :js => true do
 
   before(:each) do
@@ -34,7 +35,7 @@ feature 'Modify note', :js => true do
     expect(wait_and_find("#list-page-#{@page.key} .title")).to have_content("TEST NOTE")
   end
 
-  feature ' and conflict', :js => true do
+  feature 'and conflict', :js => true do
     scenario 'modify and conflict' do
       test_login 'testdrive1'
 
@@ -71,7 +72,7 @@ feature 'Modify note', :js => true do
     end
   end
 
-  feature ' and delay', :js => true do
+  feature 'and delay', :js => true do
     scenario 'modify and conflict' do
       test_login 'testdrive1'
 
