@@ -1,7 +1,7 @@
 def wait_until(time=Capybara.default_max_wait_time)
   require "timeout"
   Timeout.timeout(time) do
-    loop until yield
+    sleep(0.1) until yield
   end
   yield if block_given?
 end
