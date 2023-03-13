@@ -12,6 +12,10 @@ RSpec.configure do |config|
     DatabaseRewinder.start
   end
 
+  config.after :each do
+    DatabaseRewinder.clean
+  end
+
   config.after do
     DatabaseRewinder.clean
   end

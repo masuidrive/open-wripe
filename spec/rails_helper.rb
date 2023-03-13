@@ -98,6 +98,5 @@ RSpec.configure do |config|
 
   config.after(:each) do
     ::Sunspot.session = $original_sunspot_session
-    DatabaseRewinder.clean
   end
 end
