@@ -10,6 +10,10 @@ class EnableAutoSaveDialog extends ModalDialog {
   static initClass() {
     this.prototype.el = $('#edit-page-enable-autosave');
   }
+
+  constructor() {
+    super();
+  }
 }
 EnableAutoSaveDialog.initClass();
 
@@ -43,7 +47,7 @@ const get_session = function(callback) {
     }
 
     if ((typeof(session_data.properties.autosave) === 'undefined') || (session_data.properties.autosave === null)) {
-      const dialog = (new EnableAutoSaveDialog).show();
+      const dialog = (new EnableAutoSaveDialog()).show();
       dialog.done(action => {
         return session.autosave(true);
       });

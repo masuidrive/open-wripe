@@ -8,6 +8,10 @@ class SplashDialog extends ModalDialog {
   static initClass() {
     this.prototype.el = $('#splash-dialog');
   }
+
+  constructor() {
+    super();
+  }
 }
 SplashDialog.initClass();
 

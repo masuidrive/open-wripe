@@ -15,6 +15,10 @@ class InsetLinkDialog extends ModalDialog {
     this.prototype.focus_el = $('#edit-page-body');
   }
 
+  constructor() {
+    super();
+  }
+
   shown() {
     delay(500, () => this.title_el.focus());
   }
