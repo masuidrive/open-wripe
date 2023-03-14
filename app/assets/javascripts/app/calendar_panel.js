@@ -186,6 +186,7 @@ class CalendarPanel extends AbsolutePanel {
       case 37: // left
         ev.preventDefault();
         $('#calendar-prev-month-button').trigger('click');
+        break;
       case 39: // right
         ev.preventDefault();
         $('#calendar-next-month-button').trigger('click');

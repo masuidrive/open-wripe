@@ -17,6 +17,10 @@ class ExportNotesDialog extends ModalDialog {
     this.prototype.el = $('#settings-export');
   }
 
+  constructor() {
+    super();
+  }
+
   action(name) {
     if (name === 'download') {
       location.href = '/export/zip';
