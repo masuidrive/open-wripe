@@ -55,7 +55,7 @@ const today_string = function() {
   return `${today.getFullYear()}/${today.getMonth()+1}/${today.getDate()}`;
 };
 
-var resize_el = function(el, height, recur) {
+const resize_el = function(el, height, recur) {
   el.height(height);
   if (!recur && ((el[0].clientHeight || el.height()) !== height)) {
     delay(100, () => resize_el(el, height, true));

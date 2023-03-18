@@ -14,8 +14,8 @@ class AbsolutePanel {
     this.compiled_template = {};
 
     if (klass && klass.el) {
-      for (var name in klass.el) {
-        var selector = klass.el[name];
+      for (let name in klass.el) {
+        const selector = klass.el[name];
         this[`${name}_el`] = $(selector);
       }
     }

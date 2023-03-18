@@ -131,7 +131,7 @@ class PageListPanel extends AbsolutePanel {
       if (this.collection.pages.length > 0) {
         this.pageno_el.text(`${this.collection.total_pages} ${this.collection.total_pages > 1 ? 'pages' : 'page'}`);
         for (let i = 0; i <= this.collection.pages.length-1; i++) {
-          var page = $.extend({}, this.collection.pages[i]);
+          const page = $.extend({}, this.collection.pages[i]);
           page.cursor = (this.cursor === i);
           this.list_el.append(this.template('list-page-template', page));
           $("#list-page-archive-"+page.key).click(e => {
@@ -231,7 +231,7 @@ class PageListPanel extends AbsolutePanel {
   }
 
   page_by_key(page_key) {
-    for (var page of this.collection.pages) {
+    for (let page of this.collection.pages) {
       if (page.key === page_key) { return page; }
     }
     return undefined;
@@ -243,11 +243,12 @@ class PageListPanel extends AbsolutePanel {
     $(`#list-page .page:nth-child(${this.cursor+1})`).addClass('cursor');
     const cur = $("#list-page .cursor");
     const bottom = 32;
-    if ((cur.length > 0) && (cur.offset().top < $("#list-page-wrapper").offset().top)) {
-      $("#list-page-wrapper").scrollTop(($("#list-page").offset().top * -1) + cur.offset().top);
-    } else if ((cur.length > 0) && ((cur.offset().top + cur.height() + bottom) > ($("#list-page-wrapper").offset().top + $("#list-page-wrapper").height()))) {
-      const top = ((-1*$("#list-page").offset().top)+cur.offset().top+$("#list-page-wrapper").offset().top)-$("#list-page-wrapper").height();
-      $("#list-page-wrapper").scrollTop(top + bottom);
+    const list_page_wrapper_el = $("#list-page-wrapper")
+    if ((cur.length > 0) && (cur.offset().top < list_page_wrapper_el.offset().top)) {
+      list_page_wrapper_el.scrollTop(($("#list-page").offset().top * -1) + cur.offset().top);
+    } else if ((cur.length > 0) && ((cur.offset().top + cur.height() + bottom) > (list_page_wrapper_el.offset().top + list_page_wrapper_el.height()))) {
+      const top = ((-1*$("#list-page").offset().top)+cur.offset().top+list_page_wrapper_el.offset().top)-list_page_wrapper_el.height();
+      list_page_wrapper_el.scrollTop(top + bottom);
     }
   }
 

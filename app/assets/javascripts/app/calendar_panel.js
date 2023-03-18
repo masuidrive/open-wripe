@@ -117,8 +117,8 @@ class CalendarPanel extends AbsolutePanel {
       let html = '';
       if (wday > 0) { for (let i = 1; i <= wday; i++) { html += '<li class="day blank"></li>'; } }
       for (let day = 1; day <= days; day++) {
-        var w = ` <span class=\"wday\">${msg.wdays[((day - 1) + wday) % 7]}</span>`;
-        var yearmonth = `<span class=\"year-month\">${data.year}-${data.month}-</span>`;
+        const w = ` <span class=\"wday\">${msg.wdays[((day - 1) + wday) % 7]}</span>`;
+        const yearmonth = `<span class=\"year-month\">${data.year}-${data.month}-</span>`;
         html += `<li class=\"day${cal[day] ? '' : ' blank'}\"><span class=\"wrap\">${yearmonth}${day}${w} <ul>`;
         if (cal[day]) {
           html += cal[day].map(p => {
@@ -155,6 +155,8 @@ class CalendarPanel extends AbsolutePanel {
   }
 
   hotkeys(ev, keychar) {
+    const prev_month_button_el = $('#calendar-prev-month-button');
+    const next_month_button_el = $('#calendar-next-month-button')
     switch (keychar) {
       case 'N':
         ev.preventDefault();
@@ -174,22 +176,22 @@ class CalendarPanel extends AbsolutePanel {
         break;
       case 'H':
         ev.preventDefault();
-        $('#calendar-prev-month-button').trigger('click');
+        prev_month_button_el.trigger('click');
         break;
       case 'L':
         ev.preventDefault();
-        $('#calendar-next-month-button').trigger('click');
+        next_month_button_el.trigger('click');
         break;
     }
 
     switch (ev.keyCode) {
       case 37: // left
         ev.preventDefault();
-        $('#calendar-prev-month-button').trigger('click');
+        prev_month_button_el.trigger('click');
         break;
       case 39: // right
         ev.preventDefault();
-        $('#calendar-next-month-button').trigger('click');
+        next_month_button_el.trigger('click');
     }
   }
 }

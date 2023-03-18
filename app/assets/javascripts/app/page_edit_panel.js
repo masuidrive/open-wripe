@@ -206,7 +206,7 @@ class PageEditPanel extends AbsolutePanel {
             this.page = undefined;
             return Backbone.history.navigate('notes', {trigger: true});
           });
-          return destroy_defer.fail((error, mesg) => {
+          return destroy_defer.fail((error, msg) => {
             const dialog = new DeletePageErrorDialog();
             dialog.show();
           });

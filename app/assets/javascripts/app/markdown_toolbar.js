@@ -33,7 +33,7 @@ class InsetLinkDialog extends ModalDialog {
 InsetLinkDialog.initClass();
 
 
-const insertTextAtPosision = function(obj, pos, txt, start_idx, end_idx) {
+const insertTextAtPosition = function(obj, pos, txt, start_idx, end_idx) {
   obj.focus();
   if (document.uniqueID) { // if IE
     pos.text = txt;
@@ -81,21 +81,21 @@ class MarkdownToolbar {
       }
       while (head > 0) {
         if (body.substring(head, head + 1) === "\n") {
-          insertTextAtPosision(this.el[0], head + 1, text, start_idx, end_idx);
+          insertTextAtPosition(this.el[0], head + 1, text, start_idx, end_idx);
           return;
         }
         --head;
       }
     }
-    insertTextAtPosision(this.el[0], head, text, start_idx, end_idx);
+    insertTextAtPosition(this.el[0], head, text, start_idx, end_idx);
   }
 
   insertToday() {
-    insertTextAtPosision(this.el[0], getCaretPosition(this.el[0]), today_string());
+    insertTextAtPosition(this.el[0], getCaretPosition(this.el[0]), today_string());
   }
 
   insertTab() {
-    insertTextAtPosision(this.el[0], getCaretPosition(this.el[0]), "\t");
+    insertTextAtPosition(this.el[0], getCaretPosition(this.el[0]), "\t");
   }
 }
 MarkdownToolbar.initClass();

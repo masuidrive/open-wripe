@@ -54,8 +54,9 @@ const openFeedback = function() {
         const dialog = new FeedbackDialog();
         dialog.show();
         $("#feedback-image-data").val(canvas.toDataURL());
-        $("#feedback-capture").attr('src', canvas.toDataURL());
-        $("#feedback-capture").css('width', $("#feedback-capture").height() *  (canvas.width/canvas.height) );
+        const capture_el = $("#feedback-capture");
+        capture_el.attr('src', canvas.toDataURL());
+        capture_el.css('width', capture_el.height() *  (canvas.width/canvas.height) );
       }
     }
     );
