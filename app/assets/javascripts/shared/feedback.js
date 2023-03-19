@@ -48,25 +48,22 @@ FeedbackDialog.initClass();
 
 
 const openFeedback = function() {
-  try {
-    return html2canvas([document.body], {
-      onrendered(canvas) {
-        const dialog = new FeedbackDialog();
-        dialog.show();
-        $("#feedback-image-data").val(canvas.toDataURL());
-        const capture_el = $("#feedback-capture");
-        capture_el.attr('src', canvas.toDataURL());
-        capture_el.css('width', capture_el.height() *  (canvas.width/canvas.height) );
-      }
+  return html2canvas(document.body).then(
+    (canvas) => {
+      const dialog = new FeedbackDialog();
+      dialog.show();
+      $("#feedback-image-data").val(canvas.toDataURL());
+      const capture_el = $("#feedback-capture");
+      capture_el.attr('src', canvas.toDataURL());
+      capture_el.css('width', capture_el.height() *  (canvas.width/canvas.height) );
+    },
+    (e) => {
+      $("#feedback-attach-capture").hide();
+      const dialog = new FeedbackDialog();
+      dialog.show();
     }
-    );
-  } catch (e) {
-    $("#feedback-attach-capture").hide();
-    const dialog = new FeedbackDialog();
-    dialog.show();
-  }
+  );
 };
-
 
 $(function() {
   $("#feedback-tab").click(() => openFeedback());
